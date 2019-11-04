@@ -11,8 +11,8 @@ class FTPcontroller: public QObject
 {
     Q_OBJECT
 private:
-    const int QUEUE_SIZE = 10;
-    const int BUFF_SIZE = 512;
+    static constexpr int QUEUE_SIZE = 10;
+    static constexpr int BUFF_SIZE = 512;
     const ReplyCodes codes;
     int serverSocket;
     bool sendReplyCode(int clientSocket, QString code);

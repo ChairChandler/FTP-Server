@@ -2,6 +2,7 @@
 #include <arpa/inet.h>
 #include <qdebug.h>
 #include <unistd.h>
+#include <algorithm>
 
 FTPcontroller::FTPcontroller(QString address, int port)
 {
@@ -54,8 +55,7 @@ void FTPcontroller::handleConnection(int clientSocket)
 
 bool FTPcontroller::sendReplyCode(int clientSocket, QString code)
 {
-    char buff[BUFF_SIZE];
-    strcpy(buff, code.toStdString().c_str());
-    qDebug() << buff << endl;
-    return write(clientSocket, buff, strlen(buff) + 1) > 0;
+    std::array<char, BUFF_SIZE> buff;
+    std::copy(code.begin(), code.end(), buff);
+    return write(clientSocket, buff.data(), BUFF_SIZE) > 0;
 }
