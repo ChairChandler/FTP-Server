@@ -17,9 +17,9 @@ public:
     ~CmdUserTest();
 
 private slots:
-    void test_execute_accountWasntCreated_resultAccountCreatedAndLoggedIn();
-    void test_execute_accountCreatedAndLoggedIn_resultNothingChanged();
-    void test_execute_accountCreatedAndLoggedOut_resultLoggedIn();
+    void test_execute_accountWasntCreated_resultAccountCreatedAndLoggedIn_returnTrue();
+    void test_execute_accountCreatedAndLoggedIn_resultNothingChanged_returnFalse();
+    void test_execute_accountCreatedAndLoggedOut_resultLoggedIn_returnTrue();
 };
 
 CmdUserTest::CmdUserTest(): cmd(QString::fromStdString(std::string(USER_NAME)), USER_SOCKET)
@@ -33,7 +33,7 @@ CmdUserTest::~CmdUserTest()
 
 }
 
-void CmdUserTest::test_execute_accountWasntCreated_resultAccountCreatedAndLoggedIn()
+void CmdUserTest::test_execute_accountWasntCreated_resultAccountCreatedAndLoggedIn_returnTrue()
 {
     DB::AccountInfo acc;
     acc.name = QString::fromStdString(std::string(USER_NAME));
@@ -48,13 +48,13 @@ void CmdUserTest::test_execute_accountWasntCreated_resultAccountCreatedAndLogged
     QCOMPARE(getAccount.status, DB::LoginStatus::LoggedIn);
 }
 
-void CmdUserTest::test_execute_accountCreatedAndLoggedIn_resultNothingChanged()
+void CmdUserTest::test_execute_accountCreatedAndLoggedIn_resultNothingChanged_returnFalse()
 {
     QCOMPARE(cmd.execute(), false);
     QCOMPARE(db->getAccountInfo(USER_SOCKET).status, DB::LoginStatus::LoggedIn);
 }
 
-void CmdUserTest::test_execute_accountCreatedAndLoggedOut_resultLoggedIn()
+void CmdUserTest::test_execute_accountCreatedAndLoggedOut_resultLoggedIn_returnTrue()
 {
     DB::AccountInfo acc = db->getAccountInfo(USER_SOCKET);
     acc.status = DB::LoginStatus::LoggedOut;
