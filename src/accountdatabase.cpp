@@ -45,12 +45,14 @@ void AccountDatabase::setAccountInfo(AccountDatabase::AccountInfo accountInfo) {
 }
 
 AccountDatabase::AccountInfo *AccountDatabase::findAccount(QString name) {
-    AccountInfo *ac = std::find_if(accounts.begin(), accounts.end(), [name](AccountInfo acc){return acc.name == name;});
+    auto iter = std::find_if(accounts.begin(), accounts.end(), [name](AccountInfo acc){return acc.name == name;});
+    AccountInfo *ac = (iter != accounts.end())? iter : nullptr;
     return ac;
 }
 
 AccountDatabase::AccountInfo *AccountDatabase::findAccount(int socket) {
-    AccountInfo *ac = std::find_if(accounts.begin(), accounts.end(), [socket](AccountInfo acc){return acc.commandStreamSocket == socket;});
+    auto iter = std::find_if(accounts.begin(), accounts.end(), [socket](AccountInfo acc){return acc.commandStreamSocket == socket;});
+    AccountInfo *ac = (iter != accounts.end())? iter : nullptr;
     return ac;
 }
 

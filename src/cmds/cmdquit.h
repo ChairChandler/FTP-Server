@@ -1,6 +1,6 @@
 #ifndef CMDQUIT_H
 #define CMDQUIT_H
-#include "src/ftpcommand.h"
+#include "ftpcommand.h"
 
 /**
  * @brief Sign out a logged client

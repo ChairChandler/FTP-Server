@@ -1,6 +1,6 @@
 #ifndef CMDPORT_H
 #define CMDPORT_H
-#include "src/ftpcommand.h"
+#include "ftpcommand.h"
 #include <arpa/inet.h>
 #include <netinet/ip.h>
 

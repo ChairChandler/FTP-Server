@@ -16,6 +16,13 @@ class AccountDatabase {
             LoginStatus status;
             int commandStreamSocket;
             int dataStreamSocket;
+
+            bool operator==(const AccountInfo &a) const {
+                return  name == a.name &&
+                        status == a.status &&
+                        commandStreamSocket == a.commandStreamSocket &&
+                        dataStreamSocket == a.dataStreamSocket;
+            }
         };
 
     private:

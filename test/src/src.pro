@@ -6,4 +6,9 @@ CONFIG -= app_bundle
 
 TEMPLATE = app
 
-SOURCES +=  tst_accountdatabase.cpp
+SOURCES +=  \
+    tst_accountdatabasetest.cpp
+CONFIG += c++17 console
+
+include(../../TestIncludeFiles.pri)
+include(../../TestIncludePath.pri)

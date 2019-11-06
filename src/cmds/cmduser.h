@@ -1,6 +1,6 @@
 #ifndef CMDUSER_H
 #define CMDUSER_H
-#include "src/ftpcommand.h"
+#include "ftpcommand.h"
 #include <QString>
 
 /**
