@@ -18,7 +18,7 @@ public:
 
 private slots:
     void test_execute_accountWasntCreated_resultAccountCreatedAndLoggedIn();
-    void test_execute_accountCreatedAndLoggedIn_resultPass();
+    void test_execute_accountCreatedAndLoggedIn_resultNothingChanged();
     void test_execute_accountCreatedAndLoggedOut_resultLoggedIn();
 };
 
@@ -40,7 +40,7 @@ void CmdUserTest::test_execute_accountWasntCreated_resultAccountCreatedAndLogged
     acc.commandStreamSocket = USER_SOCKET;
 
     QVERIFY_EXCEPTION_THROWN(db->getAccountInfo(USER_SOCKET), DB::AccountNotFoundException);
-    cmd.execute();
+    QCOMPARE(cmd.execute(), true);
 
 
     DB::AccountInfo getAccount = db->getAccountInfo(USER_SOCKET);
@@ -48,9 +48,9 @@ void CmdUserTest::test_execute_accountWasntCreated_resultAccountCreatedAndLogged
     QCOMPARE(getAccount.status, DB::LoginStatus::LoggedIn);
 }
 
-void CmdUserTest::test_execute_accountCreatedAndLoggedIn_resultPass()
+void CmdUserTest::test_execute_accountCreatedAndLoggedIn_resultNothingChanged()
 {
-    cmd.execute();
+    QCOMPARE(cmd.execute(), false);
     QCOMPARE(db->getAccountInfo(USER_SOCKET).status, DB::LoginStatus::LoggedIn);
 }
 
@@ -60,7 +60,7 @@ void CmdUserTest::test_execute_accountCreatedAndLoggedOut_resultLoggedIn()
     acc.status = DB::LoginStatus::LoggedOut;
     db->setAccountInfo(acc);
 
-    cmd.execute();
+    QCOMPARE(cmd.execute(), true);
     QCOMPARE(db->getAccountInfo(USER_SOCKET).status, DB::LoginStatus::LoggedIn);
 }
 
