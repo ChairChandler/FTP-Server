@@ -44,6 +44,11 @@ void AccountDatabase::setAccountInfo(AccountDatabase::AccountInfo accountInfo) {
     }
 }
 
+void AccountDatabase::resetDatabase()
+{
+    accounts.clear();
+}
+
 AccountDatabase::AccountInfo *AccountDatabase::findAccount(QString name) {
     auto iter = std::find_if(accounts.begin(), accounts.end(), [name](AccountInfo acc){return acc.name == name;});
     AccountInfo *ac = (iter != accounts.end())? iter : nullptr;

@@ -38,6 +38,7 @@ class AccountDatabase {
         AccountInfo getAccountInfo(int socket);
         void addAccountInfo(AccountInfo accountInfo);
         void setAccountInfo(AccountInfo accountInfo);
+        void resetDatabase();
 
 
         struct AccountNotFoundException: std::exception {};

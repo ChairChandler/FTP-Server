@@ -26,6 +26,7 @@ private slots:
     void test_getAccountInfo_byName_accountCreated_resultEqualAccounts();
     void test_getAccountInfo_bySocket_accountCreated_resultEqualAccounts();
     void test_setAccountInfo_accountCreated_resultEqualAccounts();
+    void test_resetDatabase_resultEmptyDatabase();
 };
 
 AccountDatabaseTest::AccountDatabaseTest()
@@ -62,7 +63,7 @@ void AccountDatabaseTest::test_addAccountInfo_accountWasntCreated_resultPass()
 
 void AccountDatabaseTest::test_addAccountInfo_accountCreated_resultThrow()
 {
-    QVERIFY_EXCEPTION_THROWN(db->addAccountInfo(account);, DB::AccountExistsException);
+    QVERIFY_EXCEPTION_THROWN(db->addAccountInfo(account), DB::AccountExistsException);
 }
 
 void AccountDatabaseTest::test_getAccountInfo_byName_accountCreated_resultEqualAccounts()
@@ -80,6 +81,12 @@ void AccountDatabaseTest::test_setAccountInfo_accountCreated_resultEqualAccounts
     account.dataStreamSocket = 1;
     db->setAccountInfo(account);
     QCOMPARE(db->getAccountInfo(COMMAND_STREAM_SOCKET), account);
+}
+
+void AccountDatabaseTest::test_resetDatabase_resultEmptyDatabase()
+{
+    db->resetDatabase();
+    QVERIFY_EXCEPTION_THROWN(db->getAccountInfo(ACCOUNT_NAME), DB::AccountNotFoundException);
 }
 
 QTEST_APPLESS_MAIN(AccountDatabaseTest)
