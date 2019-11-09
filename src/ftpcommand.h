@@ -6,11 +6,13 @@ class FTPcommand {
 
     private:
         AccountDatabase &database;
+
     protected:
         FTPcommand();
-        AccountDatabase& getDatabase();
+        AccountDatabase& getDatabase() const;
+
     public:
-        virtual bool execute() = 0;
+        virtual void execute() = 0;
         virtual ~FTPcommand();
 };
 

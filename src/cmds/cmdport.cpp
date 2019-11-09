@@ -1,4 +1,5 @@
 #include "cmdport.h"
+#pragma GCC diagnostic ignored "-Wold-style-cast"
 
 using DB = AccountDatabase;
 
@@ -6,22 +7,22 @@ CmdPort::CmdPort(int commandStreamSocket, sockaddr_in address): address(address)
 
 }
 
-bool CmdPort::execute() {
+void CmdPort::execute() {
     try {
         DB::AccountInfo account = getDatabase().getAccountInfo(cmdSocket);
-        int dSocket = socket(AF_INET, SOCK_STREAM,0);
+        int dSocket = socket(AF_INET, SOCK_STREAM, 0);
+
         if(connect(dSocket, (const sockaddr*)&address, sizeof(address))) {
-            return false;
+            throw CannotConnectException();
         } else {
             dataSocket = dSocket;
-            return true;
         }
-    } catch (DB::AccountNotFoundException exc) {
-        return false;
+    } catch (DB::AccountNotFoundException &exc) {
+        throw exc;
     }
 }
 
-int CmdPort::getDataStreamSocket() {
+int CmdPort::getDataStreamSocket() const {
     if(dataSocket == -1) {
         throw DataStreamSocketNotExistsException();
     } else {

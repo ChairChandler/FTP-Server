@@ -4,7 +4,7 @@ FTPcommand::FTPcommand(): database(AccountDatabase::getInstance()) {
 
 }
 
-AccountDatabase &FTPcommand::getDatabase()
+AccountDatabase &FTPcommand::getDatabase() const
 {
     return database;
 }

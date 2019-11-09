@@ -16,7 +16,10 @@ class CmdQuit: public FTPcommand {
          * @param socket Socket to communication with client on command stream
          */
         CmdQuit(int socket);
-        bool execute() override;
+        void execute() override;
+
+        using AccountNotFoundException = AccountDatabase::AccountNotFoundException;
+        struct AccountIsUnloggedException: std::exception {};
 };
 
 #endif // CMDQUIT_H

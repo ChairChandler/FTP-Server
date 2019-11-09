@@ -6,4 +6,12 @@ CONFIG -= app_bundle
 
 TEMPLATE = app
 
-SOURCES +=  tst_cmdporttest.cpp
+SOURCES +=  tst_cmdporttest.cpp \
+    fakeclientdataserver.cpp
+CONFIG += c++17 console
+
+include(../../TestIncludeFiles.pri)
+include(../../TestIncludePath.pri)
+
+HEADERS += \
+    fakeclientdataserver.h

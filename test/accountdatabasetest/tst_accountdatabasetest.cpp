@@ -1,15 +1,15 @@
 #include <QtTest>
+#include "test.h"
+#pragma GCC diagnostic ignored "-Wpadded"
 
 
 #include "accountdatabase.h"
 
-#pragma GCC diagnostic ignored "-Wpadded"
 class AccountDatabaseTest : public QObject
 {
     Q_OBJECT
     using DB = AccountDatabase;
     DB *db;
-    DB::AccountInfo account;
     const QString ACCOUNT_NAME = "NAME";
     const int COMMAND_STREAM_SOCKET = 1;
 
@@ -18,21 +18,23 @@ public:
     ~AccountDatabaseTest();
 
 private slots:
-    void test_getAccountInfo_byName_accountWasntCreated_resultThrow();
-    void test_getAccountInfo_bySocket_accountWasntCreated_resultThrow();
-    void test_setAccountInfo_accountWasntCreated_resultThrow();
-    void test_addAccountInfo_accountWasntCreated_resultPass();
-    void test_addAccountInfo_accountCreated_resultThrow();
+    void init();
+    void test_getAccountInfo_byName_accountWasntCreated_resultAccountNotFoundException();
+    void test_getAccountInfo_bySocket_accountWasntCreated_resultAccountNotFoundException();
+    void test_setAccountInfo_accountWasntCreated_resultAccountNotFoundException();
+    void test_addAccountInfo_accountWasntCreated_resultAccountCreated();
+    void test_addAccountInfo_accountCreated_resultAccountExistsException();
     void test_getAccountInfo_byName_accountCreated_resultEqualAccounts();
     void test_getAccountInfo_bySocket_accountCreated_resultEqualAccounts();
     void test_setAccountInfo_accountCreated_resultEqualAccounts();
-    void test_resetDatabase_resultEmptyDatabase();
+    void test_resetDatabase_accountCreated_resultEmptyDatabase();
+
+private:
+    DB::AccountInfo getAccount();
 };
 
 AccountDatabaseTest::AccountDatabaseTest()
 {
-    account.name = ACCOUNT_NAME;
-    account.commandStreamSocket = COMMAND_STREAM_SOCKET;
     db = &AccountDatabase::getInstance();
 }
 
@@ -41,52 +43,71 @@ AccountDatabaseTest::~AccountDatabaseTest()
 
 }
 
-void AccountDatabaseTest::test_getAccountInfo_byName_accountWasntCreated_resultThrow()
+void AccountDatabaseTest::init()
 {
-    QVERIFY_EXCEPTION_THROWN(db->getAccountInfo(""), DB::AccountNotFoundException);
+    db->accounts.clear();
 }
 
-void AccountDatabaseTest::test_getAccountInfo_bySocket_accountWasntCreated_resultThrow()
+void AccountDatabaseTest::test_getAccountInfo_byName_accountWasntCreated_resultAccountNotFoundException()
 {
-    QVERIFY_EXCEPTION_THROWN(db->getAccountInfo(0), DB::AccountNotFoundException);
+    QVERIFY_EXCEPTION_THROWN(db->getAccountInfo(getAccount().name), DB::AccountNotFoundException);
 }
 
-void AccountDatabaseTest::test_setAccountInfo_accountWasntCreated_resultThrow()
+void AccountDatabaseTest::test_getAccountInfo_bySocket_accountWasntCreated_resultAccountNotFoundException()
 {
-    QVERIFY_EXCEPTION_THROWN(db->setAccountInfo(DB::AccountInfo()), DB::AccountNotFoundException);
+    QVERIFY_EXCEPTION_THROWN(db->getAccountInfo(getAccount().commandStreamSocket), DB::AccountNotFoundException);
 }
 
-void AccountDatabaseTest::test_addAccountInfo_accountWasntCreated_resultPass()
+void AccountDatabaseTest::test_setAccountInfo_accountWasntCreated_resultAccountNotFoundException()
 {
-    db->addAccountInfo(account);
+    QVERIFY_EXCEPTION_THROWN(db->setAccountInfo(getAccount()), DB::AccountNotFoundException);
 }
 
-void AccountDatabaseTest::test_addAccountInfo_accountCreated_resultThrow()
+void AccountDatabaseTest::test_addAccountInfo_accountWasntCreated_resultAccountCreated()
 {
-    QVERIFY_EXCEPTION_THROWN(db->addAccountInfo(account), DB::AccountExistsException);
+    db->addAccountInfo(getAccount());
+}
+
+void AccountDatabaseTest::test_addAccountInfo_accountCreated_resultAccountExistsException()
+{
+    db->addAccountInfo(getAccount());
+    QVERIFY_EXCEPTION_THROWN(db->addAccountInfo(getAccount()), DB::AccountExistsException);
 }
 
 void AccountDatabaseTest::test_getAccountInfo_byName_accountCreated_resultEqualAccounts()
 {
-    QCOMPARE(db->getAccountInfo(ACCOUNT_NAME), account);
+    db->addAccountInfo(getAccount());
+    QCOMPARE(db->getAccountInfo(ACCOUNT_NAME), getAccount());
 }
 
 void AccountDatabaseTest::test_getAccountInfo_bySocket_accountCreated_resultEqualAccounts()
 {
-    QCOMPARE(db->getAccountInfo(COMMAND_STREAM_SOCKET), account);
+    db->addAccountInfo(getAccount());
+    QCOMPARE(db->getAccountInfo(COMMAND_STREAM_SOCKET), getAccount());
 }
 
 void AccountDatabaseTest::test_setAccountInfo_accountCreated_resultEqualAccounts()
 {
+    db->addAccountInfo(getAccount());
+    DB::AccountInfo account = getAccount();
     account.dataStreamSocket = 1;
     db->setAccountInfo(account);
     QCOMPARE(db->getAccountInfo(COMMAND_STREAM_SOCKET), account);
 }
 
-void AccountDatabaseTest::test_resetDatabase_resultEmptyDatabase()
+void AccountDatabaseTest::test_resetDatabase_accountCreated_resultEmptyDatabase()
 {
+    db->addAccountInfo(getAccount());
     db->resetDatabase();
     QVERIFY_EXCEPTION_THROWN(db->getAccountInfo(ACCOUNT_NAME), DB::AccountNotFoundException);
+}
+
+AccountDatabase::AccountInfo AccountDatabaseTest::getAccount()
+{
+    DB::AccountInfo account;
+    account.name = ACCOUNT_NAME;
+    account.commandStreamSocket = COMMAND_STREAM_SOCKET;
+    return account;
 }
 
 QTEST_APPLESS_MAIN(AccountDatabaseTest)

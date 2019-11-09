@@ -44,8 +44,7 @@ void AccountDatabase::setAccountInfo(AccountDatabase::AccountInfo accountInfo) {
     }
 }
 
-void AccountDatabase::resetDatabase()
-{
+void AccountDatabase::resetDatabase() {
     accounts.clear();
 }
 

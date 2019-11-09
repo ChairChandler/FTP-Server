@@ -1,7 +1,6 @@
 #include <QtTest>
 #include <string_view>
 #include "accountdatabase.h"
-#include "cmds/cmdquit.h"
 
 #include "cmds/cmduser.h"
 
@@ -11,7 +10,6 @@ class CmdUserTest : public QObject
     using DB = AccountDatabase;
     DB *db;
     CmdUser cmd;
-    CmdQuit quit;
     DB::AccountInfo account;
     static constexpr std::string_view USER_NAME = "NAME";
     static constexpr int USER_SOCKET = 0;
@@ -20,12 +18,17 @@ public:
     ~CmdUserTest();
 
 private slots:
-    void test_execute_accountWasntCreated_resultAccountCreatedAndLoggedIn_returnTrue();
-    void test_execute_accountCreatedAndLoggedIn_resultNothingChanged_returnFalse();
-    void test_execute_accountCreatedAndLoggedOut_resultLoggedIn_returnTrue();
+    void init();
+    void test_execute_accountWasntCreated_resultAccountCreatedAndLoggedIn();
+    void test_execute_accountCreatedAndLoggedIn_resultAccountIsLoggedException();
+    void test_execute_accountCreatedAndLoggedOut_resultLoggedIn();
+
+private:
+    void createUser(DB::LoginStatus status);
+    QString toQString(std::string_view view);
 };
 
-CmdUserTest::CmdUserTest(): cmd(QString::fromStdString(std::string(USER_NAME)), USER_SOCKET), quit(USER_SOCKET)
+CmdUserTest::CmdUserTest(): cmd(toQString(USER_NAME), USER_SOCKET)
 {
     account.name = QString::fromStdString(std::string(USER_NAME));
     account.commandStreamSocket = USER_SOCKET;
@@ -37,10 +40,15 @@ CmdUserTest::~CmdUserTest()
 
 }
 
-void CmdUserTest::test_execute_accountWasntCreated_resultAccountCreatedAndLoggedIn_returnTrue()
+void CmdUserTest::init()
+{
+    db->resetDatabase();
+}
+
+void CmdUserTest::test_execute_accountWasntCreated_resultAccountCreatedAndLoggedIn()
 {
     QVERIFY_EXCEPTION_THROWN(db->getAccountInfo(USER_SOCKET), DB::AccountNotFoundException);
-    QCOMPARE(cmd.execute(), true);
+    cmd.execute();
 
 
     DB::AccountInfo getAccount = db->getAccountInfo(USER_SOCKET);
@@ -48,19 +56,33 @@ void CmdUserTest::test_execute_accountWasntCreated_resultAccountCreatedAndLogged
     QCOMPARE(getAccount.status, DB::LoginStatus::LoggedIn);
 }
 
-void CmdUserTest::test_execute_accountCreatedAndLoggedIn_resultNothingChanged_returnFalse()
+void CmdUserTest::test_execute_accountCreatedAndLoggedIn_resultAccountIsLoggedException()
 {
-    QCOMPARE(cmd.execute(), false);
+    createUser(DB::LoginStatus::LoggedIn);
+    QVERIFY_EXCEPTION_THROWN(cmd.execute(), CmdUser::AccountIsLoggedException);
+}
+
+void CmdUserTest::test_execute_accountCreatedAndLoggedOut_resultLoggedIn()
+{
+    createUser(DB::LoginStatus::LoggedOut);
+    cmd.execute();
     QCOMPARE(db->getAccountInfo(USER_SOCKET).status, DB::LoginStatus::LoggedIn);
 }
 
-void CmdUserTest::test_execute_accountCreatedAndLoggedOut_resultLoggedIn_returnTrue()
+void CmdUserTest::createUser(AccountDatabase::LoginStatus status)
 {
-    quit.execute();
-
-    QCOMPARE(cmd.execute(), true);
-    QCOMPARE(db->getAccountInfo(USER_SOCKET).status, DB::LoginStatus::LoggedIn);
+    DB::AccountInfo account;
+    account.name = toQString(USER_NAME);
+    account.commandStreamSocket = USER_SOCKET;
+    account.status = status;
+    db->addAccountInfo(account);
 }
+
+QString CmdUserTest::toQString(std::string_view view)
+{
+    return QString::fromStdString(std::string(view));
+}
+
 
 QTEST_APPLESS_MAIN(CmdUserTest)
 

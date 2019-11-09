@@ -21,9 +21,11 @@ class CmdPort : public FTPcommand {
          * @param address Client data communication server address
          */
         CmdPort(int commandStreamSocket, sockaddr_in address);
-        bool execute() override;
-        int getDataStreamSocket();
+        void execute() override;
+        int getDataStreamSocket() const;
 
+        using AccountNotFoundException = AccountDatabase::AccountNotFoundException;
+        struct CannotConnectException: std::exception {};
         struct DataStreamSocketNotExistsException: std::exception {};
 };
 

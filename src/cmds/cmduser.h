@@ -18,7 +18,9 @@ class CmdUser: public FTPcommand {
          * @param socket Socket to communication with client on command stream
          */
         CmdUser(QString name, int socket);
-        bool execute() override;
+        void execute() override;
+
+        struct AccountIsLoggedException: std::exception {};
 };
 
 #endif // CMDUSER_H
