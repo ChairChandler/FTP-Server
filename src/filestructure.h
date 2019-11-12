@@ -1,0 +1,4 @@
+#ifndef FILESTRUCTURE_H
+#define FILESTRUCTURE_H
+
+#endif // FILESTRUCTURE_H
