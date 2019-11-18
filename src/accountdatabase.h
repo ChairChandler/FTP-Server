@@ -2,6 +2,9 @@
 #define ACCOUNTDATABASE_H
 #include <QString>
 #include <QVector>
+#include "transmission/transmission.h"
+#include "mode.h"
+#include "filestructure.h"
 
 class AccountDatabase {
 
@@ -14,14 +17,24 @@ class AccountDatabase {
         struct AccountInfo {
             QString name;
             LoginStatus status;
-            int commandStreamSocket;
-            int dataStreamSocket;
+            int commandChannelSocket;
+            int dataChannelSocket;
+            Transmission *transmission;
+            Mode *mode;
+            FileStructure *fileStructure;
 
             bool operator==(const AccountInfo &a) const {
                 return  name == a.name &&
                         status == a.status &&
-                        commandStreamSocket == a.commandStreamSocket &&
-                        dataStreamSocket == a.dataStreamSocket;
+                        commandChannelSocket == a.commandChannelSocket &&
+                        dataChannelSocket == a.dataChannelSocket &&
+                        transmission == a.transmission &&
+                        mode == a.mode &&
+                        fileStructure == a.fileStructure;
+            }
+
+            AccountInfo(): status(LoginStatus::LoggedOut), commandChannelSocket(-1), dataChannelSocket(-1), transmission(nullptr) {
+
             }
         };
 

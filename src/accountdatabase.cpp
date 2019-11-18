@@ -55,7 +55,7 @@ AccountDatabase::AccountInfo *AccountDatabase::findAccount(QString name) {
 }
 
 AccountDatabase::AccountInfo *AccountDatabase::findAccount(int socket) {
-    auto iter = std::find_if(accounts.begin(), accounts.end(), [socket](AccountInfo acc){return acc.commandStreamSocket == socket;});
+    auto iter = std::find_if(accounts.begin(), accounts.end(), [socket](AccountInfo acc){return acc.commandChannelSocket == socket;});
     AccountInfo *ac = (iter != accounts.end())? iter : nullptr;
     return ac;
 }

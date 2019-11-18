@@ -8,11 +8,11 @@
 class CmdPortTest : public QObject
 {
     Q_OBJECT
-    const in_port_t CLIENT_DATA_STREAM_SOCKET = 2137;
+    const in_port_t CLIENT_DATA_CHANNEL_PORT = 2137;
     const std::string CLIENT_ADDRESS = "127.0.0.1";
-    const sockaddr_in ADDRESS_STRUCT = createAddressStruct();
-    const int SERVER_COMMAND_STREAM_SOCKET = 2137;
-    const AccountDatabase::AccountInfo ACCOUNT = createAccount();
+    const sockaddr_in CLIENT_DATA_CHANNEL_ADDRESS_STRUCT = createAddressStruct();
+    const int CLIENT_SOCKET_ON_SERVER_COMMAND_CHANNEL = 2137;
+    const AccountDatabase::AccountInfo CLIENT_ACCOUNT = createAccount();
     const unsigned long WAIT_TIME_MS = 200;
 
     using DB = AccountDatabase;
@@ -29,8 +29,8 @@ private slots:
     void cleanup();
     void test_execute_accountWasntCreated_resultAccountNotFoundException();
     void test_execute_accountCreated_clientDidntStartDataStream_resultCannotConnectException();
-    void test_execute_and_getDataStreamSocket_accountCreated_clientStartDataStream_resultConnected();
-    void test_getDataStreamSocket_notConected_resultDataStreamSocketNotExistsException();
+    void test_execute_and_getDataChannelSocket_accountCreated_clientStartDataChannel_resultConnected();
+    void test_getDataChannelSocket_notConected_resultDataChannelSocketNotExistsException();
 
 private:
     const sockaddr_in createAddressStruct() const;
@@ -52,7 +52,7 @@ CmdPortTest::~CmdPortTest()
 
 void CmdPortTest::init()
 {
-    cmd = new CmdPort(SERVER_COMMAND_STREAM_SOCKET, ADDRESS_STRUCT);
+    cmd = new CmdPort(CLIENT_SOCKET_ON_SERVER_COMMAND_CHANNEL, CLIENT_DATA_CHANNEL_ADDRESS_STRUCT);
 }
 
 void CmdPortTest::cleanup()
@@ -69,26 +69,26 @@ void CmdPortTest::test_execute_accountWasntCreated_resultAccountNotFoundExceptio
 
 void CmdPortTest::test_execute_accountCreated_clientDidntStartDataStream_resultCannotConnectException()
 {
-    db->addAccountInfo(ACCOUNT);
+    db->addAccountInfo(CLIENT_ACCOUNT);
     QVERIFY_EXCEPTION_THROWN(cmd->execute(), CmdPort::CannotConnectException);
 }
 
-void CmdPortTest::test_execute_and_getDataStreamSocket_accountCreated_clientStartDataStream_resultConnected()
+void CmdPortTest::test_execute_and_getDataChannelSocket_accountCreated_clientStartDataChannel_resultConnected()
 {
     createDataStream();
     waitUntilServerReady();
 
-    db->addAccountInfo(ACCOUNT);
+    db->addAccountInfo(CLIENT_ACCOUNT);
     cmd->execute();
     QThread::msleep(WAIT_TIME_MS);
     QCOMPARE(fakeClient->isNewConnection(), true);
     QCOMPARE(fakeClient->isError(), false);
-    close(cmd->getDataStreamSocket());
+    close(cmd->getDataChannelSocket());
 }
 
-void CmdPortTest::test_getDataStreamSocket_notConected_resultDataStreamSocketNotExistsException()
+void CmdPortTest::test_getDataChannelSocket_notConected_resultDataChannelSocketNotExistsException()
 {
-    QVERIFY_EXCEPTION_THROWN(cmd->getDataStreamSocket(), CmdPort::DataStreamSocketNotExistsException);
+    QVERIFY_EXCEPTION_THROWN(cmd->getDataChannelSocket(), CmdPort::DataChannelSocketNotExistsException);
 }
 
 const sockaddr_in CmdPortTest::createAddressStruct() const
@@ -96,7 +96,7 @@ const sockaddr_in CmdPortTest::createAddressStruct() const
     sockaddr_in address;
     memset(&address, 0, sizeof(address));
     address.sin_family = AF_INET;
-    address.sin_port = htons(CLIENT_DATA_STREAM_SOCKET);
+    address.sin_port = htons(CLIENT_DATA_CHANNEL_PORT);
     inet_pton(AF_INET, CLIENT_ADDRESS.c_str(), &address.sin_addr);
     return address;
 }
@@ -104,13 +104,13 @@ const sockaddr_in CmdPortTest::createAddressStruct() const
 const AccountDatabase::AccountInfo CmdPortTest::createAccount() const
 {
     DB::AccountInfo account;
-    account.commandStreamSocket = SERVER_COMMAND_STREAM_SOCKET;
+    account.commandChannelSocket = CLIENT_SOCKET_ON_SERVER_COMMAND_CHANNEL;
     return account;
 }
 
 void CmdPortTest::createDataStream()
 {
-    fakeClient = new FakeClientDataServer(ADDRESS_STRUCT);
+    fakeClient = new FakeClientDataServer(CLIENT_DATA_CHANNEL_ADDRESS_STRUCT);
 }
 
 void CmdPortTest::waitUntilServerReady()

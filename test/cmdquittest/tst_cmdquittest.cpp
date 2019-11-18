@@ -11,7 +11,7 @@ class CmdQuitTest : public QObject
     DB *db;
     CmdQuit cmd;
     static constexpr std::string_view USER_NAME = "NAME";
-    static constexpr int USER_SOCKET = 0;
+    static constexpr int USER_SOCKET_ON_SERVER_COMMAND_CHANNEL = 0;
 public:
     CmdQuitTest();
     ~CmdQuitTest();
@@ -27,7 +27,7 @@ private:
     QString toQString(std::string_view view) const;
 };
 
-CmdQuitTest::CmdQuitTest(): cmd(USER_SOCKET)
+CmdQuitTest::CmdQuitTest(): cmd(USER_SOCKET_ON_SERVER_COMMAND_CHANNEL)
 {
     db = &AccountDatabase::getInstance();
 }
@@ -52,7 +52,7 @@ void CmdQuitTest::test_execute_userCreatedAndLogged_resultLoggedOut()
     createUser(DB::LoginStatus::LoggedIn);
     cmd.execute();
 
-    DB::AccountInfo getAccount = db->getAccountInfo(USER_SOCKET);
+    DB::AccountInfo getAccount = db->getAccountInfo(USER_SOCKET_ON_SERVER_COMMAND_CHANNEL);
     QCOMPARE(getAccount.status, DB::LoginStatus::LoggedOut);
 }
 
@@ -66,7 +66,7 @@ void CmdQuitTest::createUser(AccountDatabase::LoginStatus status) const
 {
     DB::AccountInfo account;
     account.name = toQString(USER_NAME);
-    account.commandStreamSocket = USER_SOCKET;
+    account.commandChannelSocket = USER_SOCKET_ON_SERVER_COMMAND_CHANNEL;
     account.status = status;
     db->addAccountInfo(account);
 }

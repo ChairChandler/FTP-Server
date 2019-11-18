@@ -3,7 +3,7 @@
 
 using DB = AccountDatabase;
 
-CmdPort::CmdPort(int commandStreamSocket, sockaddr_in address): address(address), cmdSocket(commandStreamSocket) {
+CmdPort::CmdPort(int commandChannelSocket, sockaddr_in address): address(address), cmdSocket(commandChannelSocket) {
 
 }
 
@@ -22,9 +22,9 @@ void CmdPort::execute() {
     }
 }
 
-int CmdPort::getDataStreamSocket() const {
+int CmdPort::getDataChannelSocket() const {
     if(dataSocket == -1) {
-        throw DataStreamSocketNotExistsException();
+        throw DataChannelSocketNotExistsException();
     } else {
         return dataSocket;
     }

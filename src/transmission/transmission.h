@@ -2,39 +2,60 @@
 #define TRANSMISSION_H
 #include <QFile>
 
+class TransmissionReaderInterface;
+class TransmissionWriterInterface;
+
 class Transmission {
 
     private:
-        std::array<QChar, 1024> buffer;
-        std::array<QChar, 2> EOF_BYTES = {0xFF, 2};
+        static const size_t BUFF_SIZE = 1024;
+        const std::array<char, 2> EOF_BYTES = {0x7F, 0x2};
+        std::array<char, BUFF_SIZE> localBuff;
+        TransmissionReaderInterface &reader;
+        TransmissionWriterInterface &writer;
+
+
+        void copyConverted(std::array<QChar, BUFF_SIZE>&, std::array<char, BUFF_SIZE>&);
+        void copyConverted(std::array<char, BUFF_SIZE>&, std::array<QChar, BUFF_SIZE>&);
+
+        bool containsEOF();
+        void deleteEOF();
+
+        size_t eofStart, eofStop;
 
     public:
-        Transmission() = default;
+        using Buffer = std::array<QChar, BUFF_SIZE>;
+
+        Transmission(TransmissionReaderInterface&, TransmissionWriterInterface&);
         void send(int dataChannelSocket, QFile &file);
         void receive(int dataChannelSocket, QFile &file);
         virtual ~Transmission() = default;
         virtual bool operator==(Transmission &transmission) = 0;
+};
 
-    protected:
+class TransmissionFileAccessInterface {
 
-        class iterator: public std::iterator<std::forward_iterator_tag,     // iterator_category
-                                            QString,                        // value_type
-                                            QString,                        // difference_type
-                                            const QString*,                 // pointer
-                                            const QString&>                 // reference
-        {
-                QString value = "";
-            public:
-                iterator(long _num = 0) : num(_num) {}
-                iterator& operator++() {num = TO >= FROM ? num + 1: num - 1; return *this;}
-                iterator operator++(int) {iterator retval = *this; ++(*this); return retval;}
-                bool operator==(iterator other) const {return value == other.value;}
-                bool operator!=(iterator other) const {return !(*this == other);}
-                QString operator*() {return value;}
-        };
+    public:
+        virtual void init(QFile &file) = 0;
+        virtual void cleanUp() = 0;
+        virtual ~TransmissionFileAccessInterface() = default;
+};
 
-        virtual QString fileRead(QFile &file) = 0;
-        virtual void fileWrite(QFile &file, QString txt) = 0;
+class TransmissionReaderInterface: public TransmissionFileAccessInterface {
+
+    public:
+        virtual Transmission::Buffer& readDataPortion() = 0;
+        virtual bool isEndOfFile() = 0;
+        virtual ~TransmissionReaderInterface() = default;
+
+        struct FileOpeningException: std::exception {};
+};
+
+class TransmissionWriterInterface: public TransmissionFileAccessInterface {
+
+    public:
+        virtual void writeDataPortion(Transmission::Buffer& txt) = 0;
+        virtual ~TransmissionWriterInterface() = default;
 };
 
 #endif // TRANSMISSION_H

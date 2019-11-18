@@ -2,13 +2,13 @@
 
 using DB = AccountDatabase;
 
-CmdQuit::CmdQuit(int socket): socket(socket) {
+CmdQuit::CmdQuit(int commandChannelSocket): commandStreamSocket(commandChannelSocket) {
 
 }
 
 void CmdQuit::execute() {
     try {
-        DB::AccountInfo account = getDatabase().getAccountInfo(socket);
+        DB::AccountInfo account = getDatabase().getAccountInfo(commandStreamSocket);
         if(account.status == DB::LoginStatus::LoggedOut) {
             throw AccountIsUnloggedException();
         }

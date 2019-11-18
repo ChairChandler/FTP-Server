@@ -6,4 +6,11 @@ CONFIG -= app_bundle
 
 TEMPLATE = app
 
-SOURCES +=  tst_cmdtypetest.cpp
+SOURCES +=  tst_cmdtypetest.cpp \
+    FakeTransmissionClasses.cpp
+CONFIG += c++17 console
+include(../../TestIncludeFiles.pri)
+include(../../TestIncludePath.pri)
+
+HEADERS += \
+    FakeTransmissionClasses.h

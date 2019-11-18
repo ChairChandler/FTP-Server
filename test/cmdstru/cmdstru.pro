@@ -7,3 +7,9 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES +=  tst_cmdstrutest.cpp
+CONFIG += c++17 console
+include(../../TestIncludeFiles.pri)
+include(../../TestIncludePath.pri)
+
+HEADERS += \
+    FakeFileStructureClasses.h

@@ -12,7 +12,7 @@ class CmdUserTest : public QObject
     CmdUser cmd;
     DB::AccountInfo account;
     static constexpr std::string_view USER_NAME = "NAME";
-    static constexpr int USER_SOCKET = 0;
+    static constexpr int USER_SOCKET_ON_SERVER_SIDE_COMMAND_CHANNEL = 0;
 public:
     CmdUserTest();
     ~CmdUserTest();
@@ -28,10 +28,10 @@ private:
     QString toQString(std::string_view view);
 };
 
-CmdUserTest::CmdUserTest(): cmd(toQString(USER_NAME), USER_SOCKET)
+CmdUserTest::CmdUserTest(): cmd(toQString(USER_NAME), USER_SOCKET_ON_SERVER_SIDE_COMMAND_CHANNEL)
 {
     account.name = QString::fromStdString(std::string(USER_NAME));
-    account.commandStreamSocket = USER_SOCKET;
+    account.commandChannelSocket = USER_SOCKET_ON_SERVER_SIDE_COMMAND_CHANNEL;
     db = &AccountDatabase::getInstance();
 }
 
@@ -47,12 +47,12 @@ void CmdUserTest::init()
 
 void CmdUserTest::test_execute_accountWasntCreated_resultAccountCreatedAndLoggedIn()
 {
-    QVERIFY_EXCEPTION_THROWN(db->getAccountInfo(USER_SOCKET), DB::AccountNotFoundException);
+    QVERIFY_EXCEPTION_THROWN(db->getAccountInfo(USER_SOCKET_ON_SERVER_SIDE_COMMAND_CHANNEL), DB::AccountNotFoundException);
     cmd.execute();
 
 
-    DB::AccountInfo getAccount = db->getAccountInfo(USER_SOCKET);
-    QVERIFY(getAccount.name == account.name && getAccount.commandStreamSocket == account.commandStreamSocket);
+    DB::AccountInfo getAccount = db->getAccountInfo(USER_SOCKET_ON_SERVER_SIDE_COMMAND_CHANNEL);
+    QVERIFY(getAccount.name == account.name && getAccount.commandChannelSocket == account.commandChannelSocket);
     QCOMPARE(getAccount.status, DB::LoginStatus::LoggedIn);
 }
 
@@ -66,14 +66,14 @@ void CmdUserTest::test_execute_accountCreatedAndLoggedOut_resultLoggedIn()
 {
     createUser(DB::LoginStatus::LoggedOut);
     cmd.execute();
-    QCOMPARE(db->getAccountInfo(USER_SOCKET).status, DB::LoginStatus::LoggedIn);
+    QCOMPARE(db->getAccountInfo(USER_SOCKET_ON_SERVER_SIDE_COMMAND_CHANNEL).status, DB::LoginStatus::LoggedIn);
 }
 
 void CmdUserTest::createUser(AccountDatabase::LoginStatus status)
 {
     DB::AccountInfo account;
     account.name = toQString(USER_NAME);
-    account.commandStreamSocket = USER_SOCKET;
+    account.commandChannelSocket = USER_SOCKET_ON_SERVER_SIDE_COMMAND_CHANNEL;
     account.status = status;
     db->addAccountInfo(account);
 }

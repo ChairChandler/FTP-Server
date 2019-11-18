@@ -2,6 +2,10 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     accountdatabasetest \
+    cmdmodetest \
     cmdporttest \
     cmdquittest \
-    cmdusertest
+    cmdstru \
+    cmdtypetest \
+    cmdusertest \
+    transmissiontest

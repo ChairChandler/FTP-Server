@@ -4,24 +4,38 @@
 #TARGET = src
 
 HEADERS = \
-   $$PWD/src/cmds/cmdport.h \
-   $$PWD/src/cmds/cmdquit.h \
-   $$PWD/src/cmds/cmduser.h \
-   $$PWD/src/accountdatabase.h \
-   $$PWD/src/ftpcommand.h \
-   $$PWD/src/ReplyCodes.h
+   src/cmds/cmdport.h \
+   src/cmds/cmdquit.h \
+   src/cmds/cmdstru.h \
+   src/cmds/cmduser.h \
+   src/accountdatabase.h \
+   src/filestructure.h \
+   src/ftpcommand.h \
+   src/ReplyCodes.h \
+   src/cmds/cmdtype.h \
+   src/cmds/cmdmode.h \
+   src/mode.h \
+   src/transmission/transmission.h \
+   src/transmission/types/asciitransmission.h \
+   src/transmission/types/binarytransmission.h
 
 SOURCES = \
-   $$PWD/src/cmds/cmdport.cpp \
-   $$PWD/src/cmds/cmdquit.cpp \
-   $$PWD/src/cmds/cmduser.cpp \
-   $$PWD/src/accountdatabase.cpp \
-   $$PWD/src/ftpcommand.cpp \
-   $$PWD/src/main.cpp
-
+   src/cmds/cmdport.cpp \
+   src/cmds/cmdquit.cpp \
+   src/cmds/cmdstru.cpp \
+   src/cmds/cmduser.cpp \
+   src/accountdatabase.cpp \
+   src/ftpcommand.cpp \
+   src/main.cpp \
+   src/cmds/cmdtype.cpp \
+   src/cmds/cmdmode.cpp \
+   src/transmission/transmission.cpp \
+   src/transmission/types/asciitransmission.cpp \
+   src/transmission/types/binarytransmission.cpp
 INCLUDEPATH = \
-    $$PWD/src \
-    $$PWD/src/cmds
+    src \
+    src/cmds
 
-#DEFINES = 
+DISTFILES +=
 
+STATECHARTS +=

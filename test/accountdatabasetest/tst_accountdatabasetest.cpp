@@ -11,7 +11,7 @@ class AccountDatabaseTest : public QObject
     using DB = AccountDatabase;
     DB *db;
     const QString ACCOUNT_NAME = "NAME";
-    const int COMMAND_STREAM_SOCKET = 1;
+    const int USER_SOCKET_ON_SERVER_SIDE_COMMAND_CHANNEL = 1;
 
 public:
     AccountDatabaseTest();
@@ -55,7 +55,7 @@ void AccountDatabaseTest::test_getAccountInfo_byName_accountWasntCreated_resultA
 
 void AccountDatabaseTest::test_getAccountInfo_bySocket_accountWasntCreated_resultAccountNotFoundException()
 {
-    QVERIFY_EXCEPTION_THROWN(db->getAccountInfo(getAccount().commandStreamSocket), DB::AccountNotFoundException);
+    QVERIFY_EXCEPTION_THROWN(db->getAccountInfo(getAccount().commandChannelSocket), DB::AccountNotFoundException);
 }
 
 void AccountDatabaseTest::test_setAccountInfo_accountWasntCreated_resultAccountNotFoundException()
@@ -83,16 +83,16 @@ void AccountDatabaseTest::test_getAccountInfo_byName_accountCreated_resultEqualA
 void AccountDatabaseTest::test_getAccountInfo_bySocket_accountCreated_resultEqualAccounts()
 {
     db->addAccountInfo(getAccount());
-    QCOMPARE(db->getAccountInfo(COMMAND_STREAM_SOCKET), getAccount());
+    QCOMPARE(db->getAccountInfo(USER_SOCKET_ON_SERVER_SIDE_COMMAND_CHANNEL), getAccount());
 }
 
 void AccountDatabaseTest::test_setAccountInfo_accountCreated_resultEqualAccounts()
 {
     db->addAccountInfo(getAccount());
     DB::AccountInfo account = getAccount();
-    account.dataStreamSocket = 1;
+    account.dataChannelSocket = 1;
     db->setAccountInfo(account);
-    QCOMPARE(db->getAccountInfo(COMMAND_STREAM_SOCKET), account);
+    QCOMPARE(db->getAccountInfo(USER_SOCKET_ON_SERVER_SIDE_COMMAND_CHANNEL), account);
 }
 
 void AccountDatabaseTest::test_resetDatabase_accountCreated_resultEmptyDatabase()
@@ -106,7 +106,7 @@ AccountDatabase::AccountInfo AccountDatabaseTest::getAccount()
 {
     DB::AccountInfo account;
     account.name = ACCOUNT_NAME;
-    account.commandStreamSocket = COMMAND_STREAM_SOCKET;
+    account.commandChannelSocket = USER_SOCKET_ON_SERVER_SIDE_COMMAND_CHANNEL;
     return account;
 }
 

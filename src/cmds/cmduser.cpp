@@ -1,10 +1,11 @@
 #include "cmduser.h"
+#include "transmission/types/asciitransmission.h"
 
 using ADB = AccountDatabase;
 
-CmdUser::CmdUser(QString name, int socket) {
+CmdUser::CmdUser(QString name, int commandChannelSocket) {
     account.name = name;
-    account.commandStreamSocket = socket;
+    account.commandChannelSocket = commandChannelSocket;
     account.status = ADB::LoginStatus::LoggedIn;
 }
 

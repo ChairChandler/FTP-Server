@@ -13,6 +13,14 @@ with open(f"{path.dirname(__file__)}/src.pro", "r") as f:
         if isMain(i):
             cpp.remove(i)
 
+    for i, l in enumerate(headers):
+        l = l.replace(' ', '')
+        headers[i] = f'$$PWD/{l}'
+
+    for i, l in enumerate(cpp):
+        l = l.replace(' ', '')
+        cpp[i] = f'$$PWD/{l}'
+
     with open(f"{path.dirname(__file__)}/TestIncludeFiles.pri", "w+") as g:
         g.write("HEADERS += \\")
         g.write("\n")
