@@ -9,13 +9,13 @@ class FakeTransmissionReader: public TransmissionReaderInterface {
     private:
         QFile *file;
         bool eof;
-        Transmission::Buffer buff;
+        Transmission::ExternalBuffer buff;
         static constexpr std::string_view EXAMPLE_TEXT = "FIRST_TEXT";
     public:
 
         static QString getSentText();
         virtual void init(QFile &file) override;
-        virtual Transmission::Buffer& readDataPortion() override;
+        virtual BufferInfo readDataPortion() override;
         virtual bool isEndOfFile() override;
         virtual void cleanUp() override;
         virtual ~FakeTransmissionReader() override = default;
@@ -30,7 +30,7 @@ class FakeTransmissionWriter: public TransmissionWriterInterface {
     public:
         QString getRecvData() const;
         virtual void init(QFile &file) override;
-        virtual void writeDataPortion(Transmission::Buffer& txt) override;
+        virtual void writeDataPortion(BufferInfo info) override;
         virtual void cleanUp() override;
         virtual ~FakeTransmissionWriter() override = default;
 };

@@ -10,10 +10,12 @@ void AsciiTransmissionReader::init(QFile &file) {
     }
 }
 
-Transmission::Buffer& AsciiTransmissionReader::readDataPortion() {
+TransmissionFileAccessInterface::BufferInfo AsciiTransmissionReader::readDataPortion() {
     QString line = stream->read(static_cast<long long>(buff.size()));
     std::copy(line.begin(), line.end(), buff.begin());
-    return buff;
+    data_size buffSize = static_cast<size_t>(line.size());
+
+    return BufferInfo(buff, buffSize);
 }
 
 bool AsciiTransmissionReader::isEndOfFile() {
@@ -31,8 +33,15 @@ void AsciiTransmissionWriter::init(QFile &file) {
     stream = new QTextStream(&file);
 }
 
-void AsciiTransmissionWriter::writeDataPortion(Transmission::Buffer &txt) {
-    *stream << txt.data();
+void AsciiTransmissionWriter::writeDataPortion(BufferInfo info) {
+    QByteArray array(static_cast<int>(info.second), '\0');
+
+    for(int i=0; i<static_cast<int>(info.second); i++) {
+        ulong index = static_cast<unsigned long>(i);
+        array[i] = info.first[index].toLatin1();
+    }
+
+    *stream << array;
 }
 
 void AsciiTransmissionWriter::cleanUp() {

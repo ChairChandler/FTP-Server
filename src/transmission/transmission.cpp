@@ -1,5 +1,6 @@
 #include "transmission.h"
 #include <unistd.h>
+#pragma GCC diagnostic ignored "-Wc++17-extensions"
 
 Transmission::Transmission(TransmissionReaderInterface &reader, TransmissionWriterInterface &writer): reader(reader), writer(writer) {
 
@@ -12,15 +13,15 @@ void Transmission::send(int dataChannelSocket, QFile &file) {
         throw e;
     }
 
-    while(!reader.isEndOfFile()) {
-        Buffer &buffer = reader.readDataPortion();
+    forever {
+        auto [buffer, size] = reader.readDataPortion();
 
-        size_t i = 0;
-        for(QChar q: buffer) {
-            localBuff[i++] = q.toLatin1();
+        copyConverted(buffer, localBuff);
+        write(dataChannelSocket, localBuff.data(), size);
+
+        if(size < BUFF_SIZE) {
+            break;
         }
-
-        write(dataChannelSocket, localBuff.data(), localBuff.size());
     }
 
     reader.cleanUp();
@@ -30,26 +31,40 @@ void Transmission::send(int dataChannelSocket, QFile &file) {
 void Transmission::receive(int dataChannelSocket, QFile &file) {
     writer.init(file);
 
-    Buffer buffer;
+    using DataTransmission = TransmissionFileAccessInterface;
+    DataTransmission::data_size size = BUFF_SIZE;
+    ExternalBuffer buffer;
     bool endOfTransmission = false;
 
     do{
         read(dataChannelSocket, localBuff.data(), localBuff.size());
 
         if(containsEOF()) {
-            deleteEOF();
             endOfTransmission = true;
+            size = eofStart;
         }
 
-        size_t i = 0;
-        for(char c: localBuff) {
-            buffer[i++] = c;
-        }
+        copyConverted(localBuff, buffer);
 
-        writer.writeDataPortion(buffer);
+        DataTransmission::BufferInfo info(buffer, size);
+        writer.writeDataPortion(info);
     }while(!endOfTransmission);
 
     writer.cleanUp();
+}
+
+void Transmission::copyConverted(std::array<QChar, Transmission::BUFF_SIZE> &src, std::array<char, Transmission::BUFF_SIZE> &dst) {
+    size_t i = 0;
+    for(QChar c: src) {
+       dst[i++] = c.toLatin1();
+    }
+}
+
+void Transmission::copyConverted(std::array<char, Transmission::BUFF_SIZE> &src, std::array<QChar, Transmission::BUFF_SIZE> &dst) {
+    size_t i = 0;
+    for(char c: src) {
+        dst[i++] = c;
+    }
 }
 
 bool Transmission::containsEOF() {
@@ -69,8 +84,6 @@ bool Transmission::containsEOF() {
     return false;
 }
 
-void Transmission::deleteEOF() {
-    for(size_t i=eofStart; i<eofStop; i++) {
-        localBuff[i] = '\0';
-    }
+size_t Transmission::getBuffSize(){
+    return BUFF_SIZE;
 }

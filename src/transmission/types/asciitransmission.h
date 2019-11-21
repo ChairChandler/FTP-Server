@@ -8,11 +8,11 @@ class AsciiTransmissionReader: public TransmissionReaderInterface {
     private:
         QFile *file;
         QTextStream *stream;
-        Transmission::Buffer buff;
+        Transmission::ExternalBuffer buff;
 
     public:
         virtual void init(QFile &file) override;
-        virtual Transmission::Buffer& readDataPortion() override;
+        virtual BufferInfo readDataPortion() override;
         virtual bool isEndOfFile() override;
         virtual void cleanUp() override;
         virtual ~AsciiTransmissionReader() override = default;
@@ -26,7 +26,7 @@ class AsciiTransmissionWriter: public TransmissionWriterInterface {
 
     public:
         virtual void init(QFile &file) override;
-        virtual void writeDataPortion(Transmission::Buffer& txt) override;
+        virtual void writeDataPortion(BufferInfo info) override;
         virtual void cleanUp() override;
         virtual ~AsciiTransmissionWriter() override = default;
 };
@@ -34,7 +34,7 @@ class AsciiTransmissionWriter: public TransmissionWriterInterface {
 /**
  * @brief Send or receive file through data channel in ASCII chars
  */
-class AsciiTransmission: Transmission {
+class AsciiTransmission: public Transmission {
 
     private:
         AsciiTransmissionReader reader;
@@ -42,8 +42,10 @@ class AsciiTransmission: Transmission {
 
     public:
         AsciiTransmission();
-        virtual bool operator==(Transmission &transmission) = 0;
-        virtual ~AsciiTransmission() = default;
+        virtual bool operator==(Transmission &transmission) override;
+        virtual ~AsciiTransmission() override = default;
+
+        using FileOpeningException = TransmissionReaderInterface::FileOpeningException;
 };
 
 #endif // ASCIITRANSMISSION_H

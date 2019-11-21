@@ -14,11 +14,11 @@ void FakeTransmissionReader::init(QFile &file) {
     }
 }
 
-Transmission::Buffer& FakeTransmissionReader::readDataPortion() {
+TransmissionFileAccessInterface::BufferInfo FakeTransmissionReader::readDataPortion() {
     std::copy(EXAMPLE_TEXT.begin(), EXAMPLE_TEXT.end(), buff.begin());
     eof = true;
 
-    return buff;
+    return BufferInfo(buff, EXAMPLE_TEXT.size());
 }
 
 bool FakeTransmissionReader::isEndOfFile() {
@@ -47,8 +47,8 @@ void FakeTransmissionWriter::init(QFile &file) {
     this->file = &file;
 }
 
-void FakeTransmissionWriter::writeDataPortion(Transmission::Buffer& txt) {
-    QString buff(txt.data() + '\0');
+void FakeTransmissionWriter::writeDataPortion(BufferInfo info) {
+    QString buff(info.first.data(), static_cast<int>(info.second));
     recvData += buff;
 }
 

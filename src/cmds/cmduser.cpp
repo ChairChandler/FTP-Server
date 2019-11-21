@@ -7,6 +7,7 @@ CmdUser::CmdUser(QString name, int commandChannelSocket) {
     account.name = name;
     account.commandChannelSocket = commandChannelSocket;
     account.status = ADB::LoginStatus::LoggedIn;
+    account.transmission = new AsciiTransmission();
 }
 
 void CmdUser::execute() {

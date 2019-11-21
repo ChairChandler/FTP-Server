@@ -3,17 +3,25 @@
 void BinaryTransmissionReader::init(QFile &file) {
     this->file = &file;
     using Flags = QFile::OpenModeFlag;
-    if(!file.open(QFile::OpenMode(Flags::Text|Flags::ExistingOnly))) {
+    if(!file.open(QFile::OpenMode(Flags::ReadOnly))) {
         throw FileOpeningException();
     } else {
-        stream = new QTextStream(&file);
+        stream = new QDataStream(&file);
+        buffSize = Transmission::getBuffSize();
     }
 }
 
-Transmission::Buffer& BinaryTransmissionReader::readDataPortion() {
-    QString line = stream->read(static_cast<long long>(buff.size()));
+TransmissionFileAccessInterface::BufferInfo BinaryTransmissionReader::readDataPortion() {
+    int iSize = static_cast<int>(buffSize);
+
+    char *data = new char[buffSize];
+
+    data_size readBytes = static_cast<data_size>(stream->readRawData(data, iSize));
+    QByteArray line(data, static_cast<int>(readBytes));
     std::copy(line.begin(), line.end(), buff.begin());
-    return buff;
+
+    delete[] data;
+    return BufferInfo(buff, readBytes);
 }
 
 bool BinaryTransmissionReader::isEndOfFile() {
@@ -27,12 +35,20 @@ void BinaryTransmissionReader::cleanUp() {
 void BinaryTransmissionWriter::init(QFile &file) {
     this->file = &file;
     using Flags = QFile::OpenModeFlag;
-    file.open(QFile::OpenMode(Flags::Text));
-    stream = new QTextStream(&file);
+    file.open(QFile::OpenMode(Flags::WriteOnly));
+    stream = new QDataStream(&file);
+    buffSize = Transmission::getBuffSize();
 }
 
-void BinaryTransmissionWriter::writeDataPortion(Transmission::Buffer &txt) {
-    *stream << txt.data();
+void BinaryTransmissionWriter::writeDataPortion(BufferInfo info) {
+    QByteArray array(static_cast<int>(info.second), 0);
+
+    for(int i=0; i<static_cast<int>(info.second); i++) {
+        ulong index = static_cast<unsigned long>(i);
+        array[i] = info.first[index].toLatin1();
+    }
+
+    stream->writeRawData(array, static_cast<int>(info.second));
 }
 
 void BinaryTransmissionWriter::cleanUp() {
