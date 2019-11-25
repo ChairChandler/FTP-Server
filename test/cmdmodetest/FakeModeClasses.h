@@ -1,7 +1,7 @@
 #ifndef FAKEMODECLASSES_H
 #define FAKEMODECLASSES_H
 
-#include "mode.h"
+#include "mode/mode.h"
 
 class FakeClassA: public Mode {
     virtual bool operator==(Mode &t) override {

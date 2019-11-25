@@ -3,8 +3,10 @@
 #include <QString>
 #include <QVector>
 #include "transmission/transmission.h"
-#include "mode.h"
-#include "filestructure.h"
+#include "mode/mode.h"
+#include "structure/structure.h"
+#include "ftpfilesystem/ftpfilesystem.h"
+
 
 class AccountDatabase {
 
@@ -21,7 +23,8 @@ class AccountDatabase {
             int dataChannelSocket;
             Transmission *transmission;
             Mode *mode;
-            FileStructure *fileStructure;
+            Structure *structure;
+            FTPfileSystem *fileSystem;
 
             bool operator==(const AccountInfo &a) const {
                 return  name == a.name &&
@@ -30,10 +33,12 @@ class AccountDatabase {
                         dataChannelSocket == a.dataChannelSocket &&
                         transmission == a.transmission &&
                         mode == a.mode &&
-                        fileStructure == a.fileStructure;
+                        structure == a.structure &&
+                        fileSystem == a.fileSystem;
             }
 
-            AccountInfo(): status(LoginStatus::LoggedOut), commandChannelSocket(-1), dataChannelSocket(-1), transmission(nullptr) {
+            AccountInfo(): status(LoginStatus::LoggedOut), commandChannelSocket(-1), dataChannelSocket(-1), transmission(nullptr),
+            mode(nullptr), structure(nullptr), fileSystem(nullptr) {
 
             }
         };

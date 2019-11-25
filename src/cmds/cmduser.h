@@ -31,6 +31,7 @@ class CmdUser: public FTPcommand {
 
     private:
         AccountDatabase::AccountInfo account;
+        QDir USERS_DIR = QDir().absolutePath() + QDir::separator() + "Users";
 
     public:
         /**

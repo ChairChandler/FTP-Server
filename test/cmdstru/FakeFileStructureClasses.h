@@ -1,10 +1,10 @@
 #ifndef FAKEFILESTRUCTURECLASSES_H
 #define FAKEFILESTRUCTURECLASSES_H
 
-#include "filestructure.h"
+#include "structure/structure.h"
 
-class FakeClassA: public FileStructure {
-    virtual bool operator==(FileStructure &t) override {
+class FakeClassA: public Structure {
+    virtual bool operator==(Structure &t) override {
         if(dynamic_cast<FakeClassA*>(&t)) {
             return true;
         } else {
@@ -13,8 +13,8 @@ class FakeClassA: public FileStructure {
     }
 };
 
-class FakeClassB: public FileStructure {
-    virtual bool operator==(FileStructure &t) override {
+class FakeClassB: public Structure {
+    virtual bool operator==(Structure &t) override {
         if(dynamic_cast<FakeClassB*>(&t)) {
             return true;
         } else {

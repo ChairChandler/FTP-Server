@@ -1,7 +1,7 @@
 #ifndef CMDSTRU_H
 #define CMDSTRU_H
 #include "ftpcommand.h"
-#include "filestructure.h"
+#include "structure/structure.h"
 
 /*
          FILE STRUCTURE (STRU)
@@ -24,7 +24,7 @@
 class CmdStru: public FTPcommand  {
 
     private:
-        FileStructure * const fileStructure;
+        Structure * const structure;
         int cmdSocket;
 
     public:
@@ -33,30 +33,16 @@ class CmdStru: public FTPcommand  {
          * @param commandChannelSocket Socket to communication with client on command channel
          * @param fileStructure Type of files structure
          */
-        CmdStru(int commandChannelSocket, FileStructure * const fileStructure);
+        CmdStru(int commandChannelSocket, Structure * const structure);
         void execute() override;
 
         using AccountNotFoundException = AccountDatabase::AccountNotFoundException;
 };
 
-/*TODO: Set File structure as default for files structure.
-    File structure is the default to be assumed if the STRUcture
-    command has not been used.
-*/
-
 /*TODO: Add file structure.
     In file-structure there is no internal structure and the
     file is considered to be a continuous sequence of data
     bytes.
-*/
-
-
-/*TODO: Add record structure.
-            Record structures must be accepted for "text" files (i.e.,
-            files with TYPE ASCII or EBCDIC) by all FTP implementations.
-
-            In record-structure the file is made up of sequential
-            records.
 */
 
 #endif // CMDSTRU_H

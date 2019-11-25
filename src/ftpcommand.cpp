@@ -8,7 +8,3 @@ AccountDatabase &FTPcommand::getDatabase() const
 {
     return database;
 }
-
-FTPcommand::~FTPcommand() {
-
-}

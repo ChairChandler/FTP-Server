@@ -25,7 +25,7 @@
 class CmdQuit: public FTPcommand {
 
     private:
-        const int commandStreamSocket;
+        const int cmdSocket;
 
     public:
         /**

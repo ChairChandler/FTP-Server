@@ -1,7 +1,7 @@
 #ifndef CMDMODE_H
 #define CMDMODE_H
 #include "ftpcommand.h"
-#include "mode.h"
+#include "mode/mode.h"
 
 /*
          TRANSFER MODE (MODE)

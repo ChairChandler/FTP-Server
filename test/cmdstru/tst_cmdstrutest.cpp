@@ -10,7 +10,7 @@ class CmdStruTest : public QObject
     const int COMMAND_CHANNEL_SOCKET = 0;
     using DB = AccountDatabase;
     DB *db;
-    FileStructure *fileStructureA, *fileStructureB;
+    Structure *structureA, *structureB;
 public:
     CmdStruTest();
     ~CmdStruTest();
@@ -37,29 +37,29 @@ CmdStruTest::~CmdStruTest()
 
 void CmdStruTest::init()
 {
-    fileStructureA = new FakeClassA;
-    fileStructureB = new FakeClassB;
+    structureA = new FakeClassA;
+    structureB = new FakeClassB;
 }
 
 void CmdStruTest::cleanup()
 {
     db->resetDatabase();
-    delete fileStructureA;
-    delete fileStructureB;
+    delete structureA;
+    delete structureB;
 }
 
 void CmdStruTest::test_execute_accountWasntCreated_resultAccountNotFoundException()
 {
-    CmdStru cmd(COMMAND_CHANNEL_SOCKET, fileStructureA);
+    CmdStru cmd(COMMAND_CHANNEL_SOCKET, structureA);
     QVERIFY_EXCEPTION_THROWN(cmd.execute(), CmdStru::AccountNotFoundException);
 }
 
 void CmdStruTest::test_execute_accountCreated_resultFileStructureSet()
 {
     createAccount();
-    CmdStru cmd(COMMAND_CHANNEL_SOCKET, fileStructureA);
+    CmdStru cmd(COMMAND_CHANNEL_SOCKET, structureA);
     cmd.execute();
-    QVERIFY(db->getAccountInfo(COMMAND_CHANNEL_SOCKET).fileStructure != fileStructureB);
+    QVERIFY(db->getAccountInfo(COMMAND_CHANNEL_SOCKET).structure != structureB);
 }
 
 void CmdStruTest::createAccount()

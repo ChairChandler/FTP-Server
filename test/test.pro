@@ -6,7 +6,9 @@ SUBDIRS += \
     binarytransmissiontest \
     cmdmodetest \
     cmdporttest \
+    cmdpwdtest \
     cmdquittest \
     cmdstru \
     cmdtypetest \
-    cmdusertest
+    cmdusertest \
+    ftpfilesystemtest

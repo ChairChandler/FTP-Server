@@ -1,24 +1,33 @@
 HEADERS += \
+$$PWD/src/cmds/cmdnoop.h\
 $$PWD/src/cmds/cmdport.h\
+$$PWD/src/cmds/cmdpwd.h\
 $$PWD/src/cmds/cmdquit.h\
 $$PWD/src/cmds/cmdstru.h\
 $$PWD/src/cmds/cmduser.h\
 $$PWD/src/accountdatabase.h\
-$$PWD/src/filestructure.h\
+$$PWD/src/ftpfilesystem/ftpfilesystem.h\
+$$PWD/src/mode/types/streammode.h\
+$$PWD/src/structure/structure.h\
+$$PWD/src/structure/types/filestructure.h\
 $$PWD/src/ftpcommand.h\
-$$PWD/src/ReplyCodes.h\
 $$PWD/src/cmds/cmdtype.h\
 $$PWD/src/cmds/cmdmode.h\
-$$PWD/src/mode.h\
+$$PWD/src/mode/mode.h\
 $$PWD/src/transmission/transmission.h\
 $$PWD/src/transmission/types/asciitransmission.h\
 $$PWD/src/transmission/types/binarytransmission.h
 SOURCES += \
+$$PWD/src/cmds/cmdnoop.cpp\
 $$PWD/src/cmds/cmdport.cpp\
+$$PWD/src/cmds/cmdpwd.cpp\
 $$PWD/src/cmds/cmdquit.cpp\
 $$PWD/src/cmds/cmdstru.cpp\
 $$PWD/src/cmds/cmduser.cpp\
 $$PWD/src/accountdatabase.cpp\
+$$PWD/src/ftpfilesystem/ftpfilesystem.cpp\
+$$PWD/src/mode/types/streammode.cpp\
+$$PWD/src/structure/types/filestructure.cpp\
 $$PWD/src/ftpcommand.cpp\
 $$PWD/src/cmds/cmdtype.cpp\
 $$PWD/src/cmds/cmdmode.cpp\

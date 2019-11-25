@@ -13,7 +13,7 @@ class FTPcommand {
 
     public:
         virtual void execute() = 0;
-        virtual ~FTPcommand();
+        virtual ~FTPcommand() = default;
 };
 
 enum CommandList {
@@ -31,7 +31,12 @@ enum CommandList {
 
     //Additional commands
     RMD,//Minimum cmds
-    MKD//Minimum cmds
+    MKD,//Minimum cmds
+    CWD,
+    CDUP,
+    PWD,
+    LIST,
+    HELP
 };
 
 #endif // FTPCOMMAND_H
