@@ -1,0 +1,39 @@
+\hypertarget{classTransmission}{}\section{Transmission Class Reference}
+\label{classTransmission}\index{Transmission@{Transmission}}
+
+
+Inheritance diagram for Transmission\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTransmission__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTransmission_acd42be23ed21b738fa06f867222a7f8d}\label{classTransmission_acd42be23ed21b738fa06f867222a7f8d}} 
+using {\bfseries Buffer} = std\+::array$<$ Q\+Char, 1024 $>$
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTransmission_a8415d3268935ba7454d8587417458c8f}\label{classTransmission_a8415d3268935ba7454d8587417458c8f}} 
+{\bfseries Transmission} (\hyperlink{structTransmissionReaderInterface}{Transmission\+Reader\+Interface} \&, \hyperlink{structTransmissionWriterInterface}{Transmission\+Writer\+Interface} \&)
+\item 
+\mbox{\Hypertarget{classTransmission_adf3870436266de959b4d7024329ac2ad}\label{classTransmission_adf3870436266de959b4d7024329ac2ad}} 
+void {\bfseries send} (int data\+Channel\+Socket, Q\+File \&file)
+\item 
+\mbox{\Hypertarget{classTransmission_ad138c5347e49e5c4ccbce8d20446dcac}\label{classTransmission_ad138c5347e49e5c4ccbce8d20446dcac}} 
+void {\bfseries receive} (int data\+Channel\+Socket, Q\+File \&file)
+\item 
+\mbox{\Hypertarget{classTransmission_a58501d7643fabee07f82009aa7adcb15}\label{classTransmission_a58501d7643fabee07f82009aa7adcb15}} 
+virtual bool {\bfseries operator==} (\hyperlink{classTransmission}{Transmission} \&transmission)=0
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/transmission/transmission.\+h\item 
+src/transmission/transmission.\+cpp\end{DoxyCompactItemize}

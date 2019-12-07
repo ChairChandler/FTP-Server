@@ -13,6 +13,10 @@ class BsdSocketFactory {
         virtual int connect(int __fd, __CONST_SOCKADDR_ARG __addr, socklen_t __len) = 0;
         virtual ssize_t write(int __fd, const void *__buf, size_t __n) = 0;
         virtual ssize_t read(int __fd, void *__buf, size_t __nbytes) = 0;
+        virtual int bind(int __fd, __CONST_SOCKADDR_ARG __addr, socklen_t __len) = 0;
+        virtual int listen(int __fd, int __n) = 0;
+        virtual int accept(int __fd, __SOCKADDR_ARG __addr, socklen_t *__restrict __addr_len) = 0;
+        virtual int close (int __fd) = 0;
         virtual BsdSocketFactory* clone() const {
             return doClone();
         }
@@ -36,6 +40,18 @@ class BsdSocketFactoryDefault: public BsdSocketFactory {
         }
         virtual ssize_t read(int __fd, void *__buf, size_t __nbytes) override {
             return ::read(__fd, __buf, __nbytes);
+        }
+        virtual int bind(int __fd, __CONST_SOCKADDR_ARG __addr, socklen_t __len) override {
+            return ::bind(__fd, __addr, __len);
+        }
+        virtual int listen(int __fd, int __n) override {
+            return ::listen(__fd, __n);
+        }
+        virtual int accept(int __fd, __SOCKADDR_ARG __addr, socklen_t *__restrict __addr_len) override {
+            return ::accept(__fd, __addr, __addr_len);
+        }
+        virtual int close (int __fd) override {
+            return ::close(__fd);
         }
         virtual BsdSocketFactory* doClone() const override {
             return new BsdSocketFactoryDefault(*this);

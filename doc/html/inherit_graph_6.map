@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$structTransmissionReaderInterface.html" title="TransmissionReaderInterface" alt="" coords="5,19,199,45"/>
+<area shape="rect" id="node2" href="$classAsciiTransmissionReader.html" title="AsciiTransmissionReader" alt="" coords="247,5,417,32"/>
+<area shape="rect" id="node3" href="$classBinaryTransmission.html" title="Send or receive file through data channel in binary chars. " alt="" coords="263,56,401,83"/>
+<area shape="rect" id="node4" href="$structTransmissionWriterInterface.html" title="TransmissionWriterInterface" alt="" coords="9,81,195,108"/>
+<area shape="rect" id="node5" href="$classAsciiTransmissionWriter.html" title="AsciiTransmissionWriter" alt="" coords="250,107,414,133"/>
+</map>

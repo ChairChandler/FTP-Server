@@ -1,0 +1,49 @@
+\hypertarget{classAccountDatabase}{}\section{Account\+Database Class Reference}
+\label{classAccountDatabase}\index{Account\+Database@{Account\+Database}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structAccountDatabase_1_1AccountExistsException}{Account\+Exists\+Exception}
+\item 
+struct \hyperlink{structAccountDatabase_1_1AccountInfo}{Account\+Info}
+\item 
+struct \hyperlink{structAccountDatabase_1_1AccountNotFoundException}{Account\+Not\+Found\+Exception}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAccountDatabase_a586e317419560424b36eda71d4ebf0c9}\label{classAccountDatabase_a586e317419560424b36eda71d4ebf0c9}} 
+enum {\bfseries Login\+Status} \{ {\bfseries Logged\+Out}, 
+{\bfseries Logged\+In}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAccountDatabase_a7ec4d79ffa2fcb5bf7d1523e7c2450a5}\label{classAccountDatabase_a7ec4d79ffa2fcb5bf7d1523e7c2450a5}} 
+\hyperlink{structAccountDatabase_1_1AccountInfo}{Account\+Info} {\bfseries get\+Account\+Info} (Q\+String name)
+\item 
+\mbox{\Hypertarget{classAccountDatabase_a1e25558788eaf5fa5e06be4ee0d6f3eb}\label{classAccountDatabase_a1e25558788eaf5fa5e06be4ee0d6f3eb}} 
+\hyperlink{structAccountDatabase_1_1AccountInfo}{Account\+Info} {\bfseries get\+Account\+Info} (int socket)
+\item 
+\mbox{\Hypertarget{classAccountDatabase_a32dea5d1e714d02f887cc618ea90314c}\label{classAccountDatabase_a32dea5d1e714d02f887cc618ea90314c}} 
+void {\bfseries add\+Account\+Info} (\hyperlink{structAccountDatabase_1_1AccountInfo}{Account\+Info} account\+Info)
+\item 
+\mbox{\Hypertarget{classAccountDatabase_af9ecee51d63620c67f6baa15e5f7fe64}\label{classAccountDatabase_af9ecee51d63620c67f6baa15e5f7fe64}} 
+void {\bfseries set\+Account\+Info} (\hyperlink{structAccountDatabase_1_1AccountInfo}{Account\+Info} account\+Info)
+\item 
+\mbox{\Hypertarget{classAccountDatabase_ad37b1c0d68d762962c5ec79c31d5eaeb}\label{classAccountDatabase_ad37b1c0d68d762962c5ec79c31d5eaeb}} 
+void {\bfseries reset\+Database} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAccountDatabase_acd79aa3e28423ea3016e9428014167d0}\label{classAccountDatabase_acd79aa3e28423ea3016e9428014167d0}} 
+static \hyperlink{classAccountDatabase}{Account\+Database} \& {\bfseries get\+Instance} ()
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/accountdatabase.\+h\item 
+src/accountdatabase.\+cpp\end{DoxyCompactItemize}

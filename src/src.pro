@@ -13,6 +13,8 @@ HEADERS = \
    cmds/cmdstru.h \
    cmds/cmduser.h \
    accountdatabase.h \
+   controller/ftpconnectionworker.h \
+   controller/messagecommandparser.h \
    ftpfilesystem/ftpfilesystem.h \
    mode/types/streammode.h \
    structure/structure.h \
@@ -23,8 +25,10 @@ HEADERS = \
    mode/mode.h \
    transmission/transmission.h \
    transmission/types/asciitransmission.h \
-   transmission/types/binarytransmission.h
-
+   transmission/types/binarytransmission.h \
+   controller/ftpcontroller.h \
+   controller/replycodes.h
+    
 SOURCES = \
    accountinfo.cpp \
    bsdsocketfactory.cpp \
@@ -34,6 +38,9 @@ SOURCES = \
    cmds/cmdstru.cpp \
    cmds/cmduser.cpp \
    accountdatabase.cpp \
+   controller/ftpconnectionworker.cpp \
+   controller/messagecommandparser.cpp \
+   controller/replycodes.cpp \
    ftpfilesystem/ftpfilesystem.cpp \
    mode/types/streammode.cpp \
    structure/types/filestructure.cpp \
@@ -43,7 +50,8 @@ SOURCES = \
    cmds/cmdmode.cpp \
    transmission/transmission.cpp \
    transmission/types/asciitransmission.cpp \
-   transmission/types/binarytransmission.cpp
+   transmission/types/binarytransmission.cpp \
+   controller/ftpcontroller.cpp
 INCLUDEPATH += $$PWD
 
 DISTFILES +=

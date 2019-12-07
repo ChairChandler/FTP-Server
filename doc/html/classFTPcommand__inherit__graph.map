@@ -1,0 +1,8 @@
+<map id="FTPcommand" name="FTPcommand">
+<area shape="rect" id="node2" href="$classCmdMode.html" title="CmdMode" alt="" coords="5,80,88,107"/>
+<area shape="rect" id="node3" href="$classCmdPort.html" title="CmdPort" alt="" coords="112,80,187,107"/>
+<area shape="rect" id="node4" href="$classCmdQuit.html" title="Sign out a logged client. " alt="" coords="211,80,285,107"/>
+<area shape="rect" id="node5" href="$classCmdStru.html" title="CmdStru" alt="" coords="309,80,384,107"/>
+<area shape="rect" id="node6" href="$classCmdType.html" title="Change type of transmission. " alt="" coords="409,80,487,107"/>
+<area shape="rect" id="node7" href="$classCmdUser.html" title="Creates a new account or sign in a client. " alt="" coords="511,80,590,107"/>
+</map>

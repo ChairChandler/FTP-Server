@@ -21,16 +21,7 @@ SUBDIRS += \
     src \
     unit_tests
 
-SOURCES += \
-        src/ftpcontroller.cpp \
-        src/main.cpp
-
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-HEADERS += \
-    src/ReplyCodes.h \
-    src/ftpcommand.h \
-    src/ftpcontroller.h

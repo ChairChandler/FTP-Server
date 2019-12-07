@@ -1,0 +1,73 @@
+\hypertarget{classCmdPort}{}\section{Cmd\+Port Class Reference}
+\label{classCmdPort}\index{Cmd\+Port@{Cmd\+Port}}
+
+
+Inheritance diagram for Cmd\+Port\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=158pt]{classCmdPort__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Cmd\+Port\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=158pt]{classCmdPort__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structCmdPort_1_1CannotConnectException}{Cannot\+Connect\+Exception}
+\item 
+struct \hyperlink{structCmdPort_1_1DataChannelSocketNotExistsException}{Data\+Channel\+Socket\+Not\+Exists\+Exception}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCmdPort_a52b57e3d2984f4198fdbcb235e46509e}\label{classCmdPort_a52b57e3d2984f4198fdbcb235e46509e}} 
+using {\bfseries Account\+Not\+Found\+Exception} = \hyperlink{structAccountDatabase_1_1AccountNotFoundException}{Account\+Database\+::\+Account\+Not\+Found\+Exception}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCmdPort_a81f0136aa4cd9364e5998fffd703876f}{Cmd\+Port} (int command\+Channel\+Socket, sockaddr\+\_\+in address)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCmdPort}{Cmd\+Port}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCmdPort_a3b43d863b32447013c0e8ae5b7035914}\label{classCmdPort_a3b43d863b32447013c0e8ae5b7035914}} 
+void {\bfseries execute} () override
+\item 
+\mbox{\Hypertarget{classCmdPort_abbe13bd8440f5cbf0c16aa0bff57d4ad}\label{classCmdPort_abbe13bd8440f5cbf0c16aa0bff57d4ad}} 
+int {\bfseries get\+Data\+Channel\+Socket} () const
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCmdPort_a81f0136aa4cd9364e5998fffd703876f}\label{classCmdPort_a81f0136aa4cd9364e5998fffd703876f}} 
+\index{Cmd\+Port@{Cmd\+Port}!Cmd\+Port@{Cmd\+Port}}
+\index{Cmd\+Port@{Cmd\+Port}!Cmd\+Port@{Cmd\+Port}}
+\subsubsection{\texorpdfstring{Cmd\+Port()}{CmdPort()}}
+{\footnotesize\ttfamily Cmd\+Port\+::\+Cmd\+Port (\begin{DoxyParamCaption}\item[{int}]{command\+Channel\+Socket,  }\item[{sockaddr\+\_\+in}]{address }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{classCmdPort}{Cmd\+Port}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command\+Channel\+Socket} & Client command channel socket \\
+\hline
+{\em address} & Client data communication channel address \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/cmds/cmdport.\+h\item 
+src/cmds/cmdport.\+cpp\end{DoxyCompactItemize}

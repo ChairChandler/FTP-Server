@@ -1,0 +1,4 @@
+<map id="TransmissionReaderInterface" name="TransmissionReaderInterface">
+<area shape="rect" id="node2" href="$classAsciiTransmissionReader.html" title="AsciiTransmissionReader" alt="" coords="5,80,176,107"/>
+<area shape="rect" id="node3" href="$classBinaryTransmission.html" title="Send or receive file through data channel in binary chars. " alt="" coords="201,80,338,107"/>
+</map>

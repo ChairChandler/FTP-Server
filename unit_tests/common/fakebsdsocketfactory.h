@@ -25,6 +25,22 @@ public:
     virtual ssize_t read(int __fd, void *__buf, size_t __nbytes) override {
         return mock->get().read(__fd, __buf, __nbytes);
     }
+    virtual int bind(int __fd, __CONST_SOCKADDR_ARG __addr, socklen_t __len) override {
+        Q_UNUSED(__fd) Q_UNUSED(__addr) Q_UNUSED(__len)
+        return -1;
+    }
+    virtual int listen(int __fd, int __n) override {
+        Q_UNUSED(__fd) Q_UNUSED(__n)
+        return -1;
+    }
+    virtual int accept(int __fd, __SOCKADDR_ARG __addr, socklen_t *__restrict __addr_len) override {
+        Q_UNUSED(__fd) Q_UNUSED(__addr) Q_UNUSED(__addr_len)
+        return -1;
+    }
+    virtual int close (int __fd) override {
+        Q_UNUSED(__fd)
+        return -1;
+    }
     virtual ~FakeBsdSocketFactory() override;
 
 protected:

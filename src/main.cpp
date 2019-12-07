@@ -1,6 +1,6 @@
 #include <QCoreApplication>
 #include <QDebug>
-#include "ftpcontroller.h"
+#include "controller/ftpcontroller.h"
 
 int main(int argc, char *argv[])
 {

@@ -1,0 +1,58 @@
+\hypertarget{classBinaryTransmission}{}\section{Binary\+Transmission Class Reference}
+\label{classBinaryTransmission}\index{Binary\+Transmission@{Binary\+Transmission}}
+
+
+Send or receive file through data channel in binary chars.  
+
+
+
+
+{\ttfamily \#include $<$binarytransmission.\+h$>$}
+
+
+
+Inheritance diagram for Binary\+Transmission\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBinaryTransmission__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Binary\+Transmission\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBinaryTransmission__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBinaryTransmission_a48d357cdabd764fcb86022335d07c2ba}\label{classBinaryTransmission_a48d357cdabd764fcb86022335d07c2ba}} 
+virtual void {\bfseries init} (const Q\+File \&file) override
+\item 
+\mbox{\Hypertarget{classBinaryTransmission_a319cefe379f2ae1cd069770b4aa9c765}\label{classBinaryTransmission_a319cefe379f2ae1cd069770b4aa9c765}} 
+virtual Buffer \& {\bfseries read\+Data\+Portion} () override
+\item 
+\mbox{\Hypertarget{classBinaryTransmission_a639b12864309903735be1f4218020a7f}\label{classBinaryTransmission_a639b12864309903735be1f4218020a7f}} 
+virtual bool {\bfseries is\+End\+Of\+File} () override
+\item 
+\mbox{\Hypertarget{classBinaryTransmission_a009c962a3e275bc0e78157e3e208e31b}\label{classBinaryTransmission_a009c962a3e275bc0e78157e3e208e31b}} 
+virtual void {\bfseries clean\+Up} () override
+\item 
+\mbox{\Hypertarget{classBinaryTransmission_a091cecfcaca86cb7d4bd319b54723518}\label{classBinaryTransmission_a091cecfcaca86cb7d4bd319b54723518}} 
+virtual bool {\bfseries operator==} (\hyperlink{classTransmission}{Transmission} \&transmission) override
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Send or receive file through data channel in binary chars. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/transmission/types/binarytransmission.\+h\item 
+src/transmission/types/binarytransmission.\+cpp\end{DoxyCompactItemize}
