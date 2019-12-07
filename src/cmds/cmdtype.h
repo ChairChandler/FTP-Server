@@ -1,5 +1,6 @@
 #ifndef CMDTYPE_H
 #define CMDTYPE_H
+#pragma GCC diagnostic ignored "-Wpadded"
 #include "ftpcommand.h"
 #include "transmission//transmission.h"
 

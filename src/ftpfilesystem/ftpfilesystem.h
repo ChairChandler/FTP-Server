@@ -6,22 +6,40 @@
 
 class FTPfileSystem {
 
+    public:
+        virtual QString printWorkingDirectory(bool relativePath) const = 0;
+        virtual bool changeWorkingDirectory(const QFileInfo &dir) = 0;
+        virtual bool changeWorkingDirectoryToParent() = 0;
+        virtual bool mkdirWD(const QString &name) = 0;
+        virtual bool mkdirRelativeRootPath(const QString &path) = 0;
+        virtual bool rmdirWD(const QString &name) = 0;
+        virtual bool rmdirRelativeRootPath(const QString &path) = 0;
+        virtual QList<QFileInfo> getFilesInfoInWorkingDirectory() const = 0;
+        virtual QDir getRootDir() const = 0;
+        virtual QDir getActualDir() const = 0;
+        virtual ~FTPfileSystem();
+
+        struct WrongRootDirPathException: std::exception {};
+};
+
+class FTPfileSystemImpl: public FTPfileSystem {
+
     private:
         QDir rootDir, actualDir;
 
     public:
-        FTPfileSystem(const QFileInfo &beginUserFileSpace);
-        QString printWorkingDirectory(bool relativePath) const;
-        bool changeWorkingDirectory(const QFileInfo &dir);
-        bool changeWorkingDirectoryToParent();
-        bool mkdirWD(const QString &name);
-        bool mkdirRelativeRootPath(const QString &path);
-        bool rmdirWD(const QString &name);
-        bool rmdirRelativeRootPath(const QString &path);
-        QList<QFileInfo> getFilesInfoInWorkingDirectory() const;
-        QDir getRootDir() const;
-        QDir getActualDir() const;
-        ~FTPfileSystem();
+        FTPfileSystemImpl(const QFileInfo &beginUserFileSpace);
+        virtual QString printWorkingDirectory(bool relativePath) const override;
+        virtual bool changeWorkingDirectory(const QFileInfo &dir) override;
+        virtual bool changeWorkingDirectoryToParent() override;
+        virtual bool mkdirWD(const QString &name) override;
+        virtual bool mkdirRelativeRootPath(const QString &path) override;
+        virtual bool rmdirWD(const QString &name) override;
+        virtual bool rmdirRelativeRootPath(const QString &path) override;
+        virtual QList<QFileInfo> getFilesInfoInWorkingDirectory() const override;
+        virtual QDir getRootDir() const override;
+        virtual QDir getActualDir() const override;
+        virtual ~FTPfileSystemImpl() override;
 
         struct WrongRootDirPathException: std::exception {};
 };

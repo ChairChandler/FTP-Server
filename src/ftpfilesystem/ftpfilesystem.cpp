@@ -1,7 +1,7 @@
 #include "ftpfilesystem.h"
 #include <QRegExp>
 
-FTPfileSystem::FTPfileSystem(const QFileInfo &beginUserFileSpace) {
+FTPfileSystemImpl::FTPfileSystemImpl(const QFileInfo &beginUserFileSpace) {
     if(beginUserFileSpace.exists() && beginUserFileSpace.isDir()) {
         rootDir = QDir(beginUserFileSpace.absolutePath() + QDir::separator() + beginUserFileSpace.fileName());
         actualDir = rootDir;
@@ -10,7 +10,7 @@ FTPfileSystem::FTPfileSystem(const QFileInfo &beginUserFileSpace) {
     }
 }
 
-QString FTPfileSystem::printWorkingDirectory(bool relativePath) const {
+QString FTPfileSystemImpl::printWorkingDirectory(bool relativePath) const {
     QString path;
     if(relativePath) {
         path = actualDir.absolutePath().remove(rootDir.absolutePath());
@@ -25,7 +25,7 @@ QString FTPfileSystem::printWorkingDirectory(bool relativePath) const {
     return path;
 }
 
-bool FTPfileSystem::changeWorkingDirectory(const QFileInfo &dir) {
+bool FTPfileSystemImpl::changeWorkingDirectory(const QFileInfo &dir) {
     QRegExp r("^" + rootDir.path() + QDir::separator());
     if(r.indexIn(dir.path()) == -1 || !actualDir.cd(dir.path())) {
         return false;
@@ -33,21 +33,21 @@ bool FTPfileSystem::changeWorkingDirectory(const QFileInfo &dir) {
     return true;
 }
 
-bool FTPfileSystem::changeWorkingDirectoryToParent() {
+bool FTPfileSystemImpl::changeWorkingDirectoryToParent() {
     if(rootDir == actualDir.absolutePath() || !actualDir.cdUp()) {
         return false;
     }
     return true;
 }
 
-bool FTPfileSystem::mkdirWD(const QString &name) {
+bool FTPfileSystemImpl::mkdirWD(const QString &name) {
     if(!actualDir.mkdir(name)) {
         return false;
     }
     return true;
 }
 
-bool FTPfileSystem::mkdirRelativeRootPath(const QString &path) {
+bool FTPfileSystemImpl::mkdirRelativeRootPath(const QString &path) {
     QString dirPath = rootDir.absolutePath() + path;
 
     if(QDir(dirPath).exists() || !QDir().mkpath(dirPath)) {
@@ -56,14 +56,14 @@ bool FTPfileSystem::mkdirRelativeRootPath(const QString &path) {
     return true;
 }
 
-bool FTPfileSystem::rmdirWD(const QString &name) {
+bool FTPfileSystemImpl::rmdirWD(const QString &name) {
     if(!actualDir.rmdir(name)) {
         return false;
     }
     return true;
 }
 
-bool FTPfileSystem::rmdirRelativeRootPath(const QString &path) {
+bool FTPfileSystemImpl::rmdirRelativeRootPath(const QString &path) {
     QString dirPath = rootDir.absolutePath() + path;
 
     if(!QDir(dirPath).exists() || !QDir().rmpath(rootDir.absolutePath() + path)) {
@@ -72,18 +72,23 @@ bool FTPfileSystem::rmdirRelativeRootPath(const QString &path) {
     return true;
 }
 
-QList<QFileInfo> FTPfileSystem::getFilesInfoInWorkingDirectory() const {
+QList<QFileInfo> FTPfileSystemImpl::getFilesInfoInWorkingDirectory() const {
     return actualDir.entryInfoList();
 }
 
-QDir FTPfileSystem::getRootDir() const {
+QDir FTPfileSystemImpl::getRootDir() const {
     return rootDir;
 }
 
-QDir FTPfileSystem::getActualDir() const {
+QDir FTPfileSystemImpl::getActualDir() const {
     return actualDir;
 }
 
-FTPfileSystem::~FTPfileSystem() {
+FTPfileSystemImpl::~FTPfileSystemImpl() {
+
+}
+
+FTPfileSystem::~FTPfileSystem()
+{
 
 }

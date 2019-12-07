@@ -1,8 +1,7 @@
 #ifndef CMDPORT_H
 #define CMDPORT_H
 #include "ftpcommand.h"
-#include <arpa/inet.h>
-#include <netinet/ip.h>
+#include "bsdsocketfactory.h"
 
 /*
          DATA PORT (PORT)
@@ -33,6 +32,8 @@ class CmdPort : public FTPcommand {
         const sockaddr_in address;
         const int cmdSocket;
         int dataSocket = -1;
+        using FactoryRef = std::unique_ptr<BsdSocketFactory>;
+        static inline auto bsdSocketFactory = FactoryRef(new BsdSocketFactoryDefault);
 
     public:
         /**
@@ -43,6 +44,7 @@ class CmdPort : public FTPcommand {
         CmdPort(int commandChannelSocket, sockaddr_in address);
         void execute() override;
         int getDataChannelSocket() const;
+        static void setBsdSocketFactory(const BsdSocketFactory &bsdSocketFactory);
 
         using AccountNotFoundException = AccountDatabase::AccountNotFoundException;
         struct CannotConnectException: std::exception {};

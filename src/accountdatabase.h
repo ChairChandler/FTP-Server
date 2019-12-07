@@ -2,46 +2,23 @@
 #define ACCOUNTDATABASE_H
 #include <QString>
 #include <QVector>
-#include "transmission/transmission.h"
-#include "mode/mode.h"
-#include "structure/structure.h"
-#include "ftpfilesystem/ftpfilesystem.h"
-
+#include "accountinfo.h"
 
 class AccountDatabase {
 
     public:
-        enum struct LoginStatus {
-            LoggedOut,
-            LoggedIn
-        };
+        virtual AccountInfo getAccountInfo(QString name) = 0;
+        virtual AccountInfo getAccountInfo(int socket) = 0;
+        virtual void addAccountInfo(AccountInfo accountInfo) = 0;
+        virtual void setAccountInfo(AccountInfo accountInfo) = 0;
+        virtual void resetDatabase() = 0;
+        virtual ~AccountDatabase();
 
-        struct AccountInfo {
-            QString name;
-            LoginStatus status;
-            int commandChannelSocket;
-            int dataChannelSocket;
-            Transmission *transmission;
-            Mode *mode;
-            Structure *structure;
-            FTPfileSystem *fileSystem;
+        struct AccountNotFoundException: std::exception {};
+        struct AccountExistsException: std::exception {};
+};
 
-            bool operator==(const AccountInfo &a) const {
-                return  name == a.name &&
-                        status == a.status &&
-                        commandChannelSocket == a.commandChannelSocket &&
-                        dataChannelSocket == a.dataChannelSocket &&
-                        transmission == a.transmission &&
-                        mode == a.mode &&
-                        structure == a.structure &&
-                        fileSystem == a.fileSystem;
-            }
-
-            AccountInfo(): status(LoginStatus::LoggedOut), commandChannelSocket(-1), dataChannelSocket(-1), transmission(nullptr),
-            mode(nullptr), structure(nullptr), fileSystem(nullptr) {
-
-            }
-        };
+class AccountDatabaseImpl: public AccountDatabase {
 
     private:
         QVector<AccountInfo> accounts;
@@ -51,16 +28,34 @@ class AccountDatabase {
         bool isAccountCreated(AccountInfo*);
 
     public:
-        static AccountDatabase& getInstance();
-        AccountInfo getAccountInfo(QString name);
-        AccountInfo getAccountInfo(int socket);
-        void addAccountInfo(AccountInfo accountInfo);
-        void setAccountInfo(AccountInfo accountInfo);
-        void resetDatabase();
+        AccountDatabaseImpl() = default;
+        AccountInfo getAccountInfo(QString name) override;
+        AccountInfo getAccountInfo(int socket) override;
+        void addAccountInfo(AccountInfo accountInfo) override;
+        void setAccountInfo(AccountInfo accountInfo) override;
+        void resetDatabase() override;
+        ~AccountDatabaseImpl() override = default;
+};
 
+class AccountDatabaseSingletonFactory {
 
-        struct AccountNotFoundException: std::exception {};
-        struct AccountExistsException: std::exception {};
+    public:
+        virtual AccountDatabase& getInstance() = 0;
+        virtual AccountDatabaseSingletonFactory* clone() const {
+            return doClone();
+        }
+        virtual ~AccountDatabaseSingletonFactory();
+
+    protected:
+        virtual AccountDatabaseSingletonFactory* doClone() const = 0;
+};
+
+class AccountDatabaseSingletonFactoryDefault: public AccountDatabaseSingletonFactory {
+        static inline AccountDatabase *instance = new AccountDatabaseImpl();
+    public:
+        virtual AccountDatabase& getInstance() override;
+        virtual AccountDatabaseSingletonFactory* doClone() const override;
+        virtual ~AccountDatabaseSingletonFactoryDefault() override = default;
 };
 
 #endif // ACCOUNTDATABASE_H

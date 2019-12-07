@@ -8,7 +8,7 @@ CmdMode::CmdMode(int commandChannelSocket, Mode * const mode): mode(mode), cmdSo
 
 void CmdMode::execute() {
     try{
-        ADB::AccountInfo account = getDatabase().getAccountInfo(cmdSocket);
+        AccountInfo account = getDatabase().getAccountInfo(cmdSocket);
         account.mode = mode;
         getDatabase().setAccountInfo(account);
     } catch(ADB::AccountNotFoundException) {

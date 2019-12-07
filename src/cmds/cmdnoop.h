@@ -10,7 +10,7 @@ class CmdNoop: public FTPcommand {
 
     public:
         CmdNoop() = default;
-        void execute() override;
+        void execute() override {}
 };
 
 #endif // CMDNOOP_H

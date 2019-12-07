@@ -1,4 +1,6 @@
 HEADERS += \
+$$PWD/src/accountinfo.h\
+$$PWD/src/bsdsocketfactory.h\
 $$PWD/src/cmds/cmdnoop.h\
 $$PWD/src/cmds/cmdport.h\
 $$PWD/src/cmds/cmdpwd.h\
@@ -18,7 +20,8 @@ $$PWD/src/transmission/transmission.h\
 $$PWD/src/transmission/types/asciitransmission.h\
 $$PWD/src/transmission/types/binarytransmission.h
 SOURCES += \
-$$PWD/src/cmds/cmdnoop.cpp\
+$$PWD/src/accountinfo.cpp\
+$$PWD/src/bsdsocketfactory.cpp\
 $$PWD/src/cmds/cmdport.cpp\
 $$PWD/src/cmds/cmdpwd.cpp\
 $$PWD/src/cmds/cmdquit.cpp\

@@ -1,5 +1,6 @@
 #ifndef CMDSTRU_H
 #define CMDSTRU_H
+#pragma GCC diagnostic ignored "-Wpadded"
 #include "ftpcommand.h"
 #include "structure/structure.h"
 

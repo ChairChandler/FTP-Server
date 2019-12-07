@@ -1,6 +1,4 @@
 #include "transmission.h"
-#include <unistd.h>
-#pragma GCC diagnostic ignored "-Wc++17-extensions"
 
 Transmission::Transmission(TransmissionReaderInterface &reader, TransmissionWriterInterface &writer): reader(reader), writer(writer) {
 
@@ -25,7 +23,7 @@ void Transmission::send(int dataChannelSocket, QFile &file) {
     }
 
     reader.cleanUp();
-    write(dataChannelSocket, EOF_BYTES.data(), EOF_BYTES.size());
+    bsdSocketFactory->write(dataChannelSocket, EOF_BYTES.data(), EOF_BYTES.size());
 }
 
 void Transmission::receive(int dataChannelSocket, QFile &file) {
@@ -37,7 +35,7 @@ void Transmission::receive(int dataChannelSocket, QFile &file) {
     bool endOfTransmission = false;
 
     do{
-        read(dataChannelSocket, localBuff.data(), localBuff.size());
+        bsdSocketFactory->read(dataChannelSocket, localBuff.data(), localBuff.size());
 
         if(containsEOF()) {
             endOfTransmission = true;
@@ -51,6 +49,10 @@ void Transmission::receive(int dataChannelSocket, QFile &file) {
     }while(!endOfTransmission);
 
     writer.cleanUp();
+}
+
+void Transmission::setBsdSocketFactory(const BsdSocketFactory &newFactory) {
+    bsdSocketFactory = FactoryRef(newFactory.clone());
 }
 
 void Transmission::copyConverted(std::array<QChar, Transmission::BUFF_SIZE> &src, std::array<char, Transmission::BUFF_SIZE> &dst) {

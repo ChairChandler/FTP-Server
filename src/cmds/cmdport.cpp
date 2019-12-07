@@ -9,10 +9,10 @@ CmdPort::CmdPort(int commandChannelSocket, sockaddr_in address): address(address
 
 void CmdPort::execute() {
     try {
-        DB::AccountInfo account = getDatabase().getAccountInfo(cmdSocket);
-        int dSocket = socket(AF_INET, SOCK_STREAM, 0);
+        AccountInfo account = getDatabase().getAccountInfo(cmdSocket);
+        int dSocket = bsdSocketFactory->socket(AF_INET, SOCK_STREAM, 0);
 
-        if(connect(dSocket, (const sockaddr*)&address, sizeof(address))) {
+        if(bsdSocketFactory->connect(dSocket, (const sockaddr*)&address, sizeof(address))) {
             throw CannotConnectException();
         } else {
             dataSocket = dSocket;
@@ -28,4 +28,8 @@ int CmdPort::getDataChannelSocket() const {
     } else {
         return dataSocket;
     }
+}
+
+void CmdPort::setBsdSocketFactory(const BsdSocketFactory &newBsdSocketFactory) {
+    bsdSocketFactory = FactoryRef(newBsdSocketFactory.clone());
 }

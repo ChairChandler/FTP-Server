@@ -1,12 +1,7 @@
 #include "accountdatabase.h"
 #include <algorithm>
 
-AccountDatabase& AccountDatabase::getInstance() {
-    static AccountDatabase instance;
-    return instance;
-}
-
-AccountDatabase::AccountInfo AccountDatabase::getAccountInfo(QString name) {
+AccountInfo AccountDatabaseImpl::getAccountInfo(QString name) {
     AccountInfo *account = findAccount(name);
     if(isAccountCreated(account)) {
         return *account;
@@ -15,7 +10,7 @@ AccountDatabase::AccountInfo AccountDatabase::getAccountInfo(QString name) {
     }
 }
 
-AccountDatabase::AccountInfo AccountDatabase::getAccountInfo(int socket) {
+AccountInfo AccountDatabaseImpl::getAccountInfo(int socket) {
     AccountInfo *account = findAccount(socket);
     if(isAccountCreated(account)) {
         return *account;
@@ -24,7 +19,7 @@ AccountDatabase::AccountInfo AccountDatabase::getAccountInfo(int socket) {
     }
 }
 
-void AccountDatabase::addAccountInfo(AccountDatabase::AccountInfo accountInfo) {
+void AccountDatabaseImpl::addAccountInfo(AccountInfo accountInfo) {
     AccountInfo *ac = findAccount(accountInfo.name);
 
     if(!isAccountCreated(ac)) {
@@ -34,7 +29,7 @@ void AccountDatabase::addAccountInfo(AccountDatabase::AccountInfo accountInfo) {
     }
 }
 
-void AccountDatabase::setAccountInfo(AccountDatabase::AccountInfo accountInfo) {
+void AccountDatabaseImpl::setAccountInfo(AccountInfo accountInfo) {
     AccountInfo *ac = findAccount(accountInfo.name);
 
     if(isAccountCreated(ac)) {
@@ -44,22 +39,38 @@ void AccountDatabase::setAccountInfo(AccountDatabase::AccountInfo accountInfo) {
     }
 }
 
-void AccountDatabase::resetDatabase() {
+void AccountDatabaseImpl::resetDatabase() {
     accounts.clear();
 }
 
-AccountDatabase::AccountInfo *AccountDatabase::findAccount(QString name) {
+AccountInfo *AccountDatabaseImpl::findAccount(QString name) {
     auto iter = std::find_if(accounts.begin(), accounts.end(), [name](AccountInfo acc){return acc.name == name;});
     AccountInfo *ac = (iter != accounts.end())? iter : nullptr;
     return ac;
 }
 
-AccountDatabase::AccountInfo *AccountDatabase::findAccount(int socket) {
+AccountInfo *AccountDatabaseImpl::findAccount(int socket) {
     auto iter = std::find_if(accounts.begin(), accounts.end(), [socket](AccountInfo acc){return acc.commandChannelSocket == socket;});
     AccountInfo *ac = (iter != accounts.end())? iter : nullptr;
     return ac;
 }
 
-bool AccountDatabase::isAccountCreated(AccountInfo *acc) {
+bool AccountDatabaseImpl::isAccountCreated(AccountInfo *acc) {
     return acc;
+}
+
+AccountDatabase& AccountDatabaseSingletonFactoryDefault::getInstance() {
+    return *instance;
+}
+
+AccountDatabaseSingletonFactory* AccountDatabaseSingletonFactoryDefault::doClone() const {
+    return new AccountDatabaseSingletonFactoryDefault(*this);
+}
+
+AccountDatabase::~AccountDatabase() {
+
+}
+
+AccountDatabaseSingletonFactory::~AccountDatabaseSingletonFactory() {
+
 }

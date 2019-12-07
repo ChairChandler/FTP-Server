@@ -1,3 +1,2 @@
-INCLUDEPATH += $$PWD/src
-INCLUDEPATH += $$PWD
-HEADERS += $$PWD/test.h
+INCLUDEPATH += $$PWD/src $$PWD/resources
+HEADERS += $$PWD/resources/test.h $$PWD/resources/fakeit.hpp

@@ -7,5 +7,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    src.pro \
-    test
+    integration_tests \
+    src \
+    unit_tests

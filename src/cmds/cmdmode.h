@@ -1,5 +1,6 @@
 #ifndef CMDMODE_H
 #define CMDMODE_H
+#pragma GCC diagnostic ignored "-Wpadded"
 #include "ftpcommand.h"
 #include "mode/mode.h"
 

@@ -1,17 +1,20 @@
 #ifndef FTPCOMMAND_H
 #define FTPCOMMAND_H
 #include "accountdatabase.h"
+#include <memory>
 
 class FTPcommand {
 
     private:
-        AccountDatabase &database;
+        using FactoryRef = std::unique_ptr<AccountDatabaseSingletonFactory>;
+        static inline auto factory = FactoryRef(new AccountDatabaseSingletonFactoryDefault);
 
     protected:
         FTPcommand();
         AccountDatabase& getDatabase() const;
 
     public:
+        static void setAccountDatabaseFactory(const AccountDatabaseSingletonFactory &newFactory);
         virtual void execute() = 0;
         virtual ~FTPcommand() = default;
 };
@@ -35,8 +38,7 @@ enum CommandList {
     CWD,
     CDUP,
     PWD,
-    LIST,
-    HELP
+    LIST
 };
 
 #endif // FTPCOMMAND_H

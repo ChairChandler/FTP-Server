@@ -8,7 +8,7 @@ CmdType::CmdType(int commandChannelSocket, Transmission * const transmission): t
 
 void CmdType::execute() {
     try{
-        ADB::AccountInfo account = getDatabase().getAccountInfo(cmdSocket);
+        AccountInfo account = getDatabase().getAccountInfo(cmdSocket);
         account.transmission = transmission;
         getDatabase().setAccountInfo(account);
     } catch(ADB::AccountNotFoundException) {

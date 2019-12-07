@@ -8,7 +8,7 @@ CmdStru::CmdStru(int commandChannelSocket, Structure * const fileStructure): str
 
 void CmdStru::execute() {
     try{
-        ADB::AccountInfo account = getDatabase().getAccountInfo(cmdSocket);
+        AccountInfo account = getDatabase().getAccountInfo(cmdSocket);
         account.structure = structure;
         getDatabase().setAccountInfo(account);
     } catch(ADB::AccountNotFoundException) {

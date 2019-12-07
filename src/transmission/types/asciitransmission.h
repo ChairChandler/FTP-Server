@@ -1,6 +1,6 @@
 #ifndef ASCIITRANSMISSION_H
 #define ASCIITRANSMISSION_H
-#include "src/transmission/transmission.h"
+#include "transmission/transmission.h"
 #include <QTextStream>
 
 class AsciiTransmissionReader: public TransmissionReaderInterface {

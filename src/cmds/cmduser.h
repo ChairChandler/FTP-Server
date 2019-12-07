@@ -30,8 +30,9 @@
 class CmdUser: public FTPcommand {
 
     private:
-        AccountDatabase::AccountInfo account;
-        QDir USERS_DIR = QDir().absolutePath() + QDir::separator() + "Users";
+        AccountInfo account;
+        using BuilderRef = std::unique_ptr<AccountInfoBuilder>;
+        static inline auto builder = BuilderRef(new AccountInfoBuilderDefault);
 
     public:
         /**
@@ -41,8 +42,11 @@ class CmdUser: public FTPcommand {
          */
         CmdUser(QString name, int commandChannelSocket);
         void execute() override;
+        static void setAccountInfoBuilder(const AccountInfoBuilder &newBuilder);
 
         struct AccountIsLoggedException: std::exception {};
+
+
 };
 
 #endif // CMDUSER_H

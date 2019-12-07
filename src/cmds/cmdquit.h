@@ -1,5 +1,6 @@
 #ifndef CMDQUIT_H
 #define CMDQUIT_H
+#pragma GCC diagnostic ignored "-Wpadded"
 #include "ftpcommand.h"
 
 /*

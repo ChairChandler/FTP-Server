@@ -1,6 +1,9 @@
 #ifndef TRANSMISSION_H
 #define TRANSMISSION_H
+#pragma GCC diagnostic ignored "-Wpadded"
 #include <QFile>
+#include <memory>
+#include "bsdsocketfactory.h"
 
 class TransmissionFileAccessInterface;
 class TransmissionReaderInterface;
@@ -20,6 +23,9 @@ class Transmission {
         InternalBuffer localBuff;
         TransmissionReaderInterface &reader;
         TransmissionWriterInterface &writer;
+        using FactoryRef = std::unique_ptr<BsdSocketFactory>;
+        static inline auto bsdSocketFactory = FactoryRef(new BsdSocketFactoryDefault);
+
 
 
         void copyConverted(std::array<QChar, BUFF_SIZE> &src, std::array<char, BUFF_SIZE> &dst);
@@ -31,10 +37,13 @@ class Transmission {
 
     public:
 
+        static void setBsdSocketFactory(const BsdSocketFactory &newFactory);
         static size_t getBuffSize();
         Transmission(TransmissionReaderInterface&, TransmissionWriterInterface&);
         void send(int dataChannelSocket, QFile &file);
         void receive(int dataChannelSocket, QFile &file);
+
+
         virtual ~Transmission() = default;
         virtual bool operator==(Transmission &transmission) = 0;
 };
