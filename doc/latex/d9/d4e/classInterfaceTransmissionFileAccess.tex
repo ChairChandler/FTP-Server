@@ -1,0 +1,60 @@
+\hypertarget{classInterfaceTransmissionFileAccess}{}\section{Interface\+Transmission\+File\+Access Class Reference}
+\label{classInterfaceTransmissionFileAccess}\index{Interface\+Transmission\+File\+Access@{Interface\+Transmission\+File\+Access}}
+
+
+Inheritance diagram for Interface\+Transmission\+File\+Access\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/dd6/classInterfaceTransmissionFileAccess__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structInterfaceTransmissionFileAccess_1_1FileOpeningException}{File\+Opening\+Exception}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classInterfaceTransmissionFileAccess_ad55c52a834e6c0832685a5a351ee705d}\label{classInterfaceTransmissionFileAccess_ad55c52a834e6c0832685a5a351ee705d}} 
+using {\bfseries data\+\_\+size} = size\+\_\+t
+\item 
+\mbox{\Hypertarget{classInterfaceTransmissionFileAccess_ad01badb0873f5db255889ad20115f5c3}\label{classInterfaceTransmissionFileAccess_ad01badb0873f5db255889ad20115f5c3}} 
+using {\bfseries Buffer\+Info} = Q\+Pair$<$ Abstract\+File\+Transmission\+::\+External\+Buffer, data\+\_\+size $>$
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classInterfaceTransmissionFileAccess_a8c423ccb527b1dda62c798a75b6eb690}{init} (const Q\+File \&file)=0
+\begin{DoxyCompactList}\small\item\em Open file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classInterfaceTransmissionFileAccess_ab23bc8abfef07a7f30f05e87b25bbcfd}\label{classInterfaceTransmissionFileAccess_ab23bc8abfef07a7f30f05e87b25bbcfd}} 
+virtual void \hyperlink{classInterfaceTransmissionFileAccess_ab23bc8abfef07a7f30f05e87b25bbcfd}{clean\+Up} ()=0
+\begin{DoxyCompactList}\small\item\em Close file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classInterfaceTransmissionFileAccess_a8c423ccb527b1dda62c798a75b6eb690}\label{classInterfaceTransmissionFileAccess_a8c423ccb527b1dda62c798a75b6eb690}} 
+\index{Interface\+Transmission\+File\+Access@{Interface\+Transmission\+File\+Access}!init@{init}}
+\index{init@{init}!Interface\+Transmission\+File\+Access@{Interface\+Transmission\+File\+Access}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily virtual void Interface\+Transmission\+File\+Access\+::init (\begin{DoxyParamCaption}\item[{const Q\+File \&}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Open file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & File to be read/write \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classBinaryTransmissionWriter_a40cc3d88d6501af5db2ed2acd05caacc}{Binary\+Transmission\+Writer}, \hyperlink{classAsciiTransmissionWriter_af9a2b271e8e051b7dbd266ba8207b4e7}{Ascii\+Transmission\+Writer}, \hyperlink{classBinaryTransmissionReader_a28c85fe81913ccb4ba6aee44d84dbf7d}{Binary\+Transmission\+Reader}, and \hyperlink{classAsciiTransmissionReader_ab0c198c17eded2a978d974c01aebae37}{Ascii\+Transmission\+Reader}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/transmission/filetransmission.\+h\end{DoxyCompactItemize}

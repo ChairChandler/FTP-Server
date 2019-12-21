@@ -1,0 +1,55 @@
+\hypertarget{classInterfaceBsdSocketFactory}{}\section{Interface\+Bsd\+Socket\+Factory Class Reference}
+\label{classInterfaceBsdSocketFactory}\index{Interface\+Bsd\+Socket\+Factory@{Interface\+Bsd\+Socket\+Factory}}
+
+
+Inheritance diagram for Interface\+Bsd\+Socket\+Factory\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{dc/dfa/classInterfaceBsdSocketFactory__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classInterfaceBsdSocketFactory_aa259ed6a1bd32e3bf77e97fc150cd54a}\label{classInterfaceBsdSocketFactory_aa259ed6a1bd32e3bf77e97fc150cd54a}} 
+virtual int {\bfseries socket} (int \+\_\+\+\_\+domain, int \+\_\+\+\_\+type, int \+\_\+\+\_\+protocol)=0
+\item 
+\mbox{\Hypertarget{classInterfaceBsdSocketFactory_a389576ba0564ce79ce650f300921b533}\label{classInterfaceBsdSocketFactory_a389576ba0564ce79ce650f300921b533}} 
+virtual int {\bfseries connect} (int \+\_\+\+\_\+fd, \+\_\+\+\_\+\+C\+O\+N\+S\+T\+\_\+\+S\+O\+C\+K\+A\+D\+D\+R\+\_\+\+A\+RG \+\_\+\+\_\+addr, socklen\+\_\+t \+\_\+\+\_\+len)=0
+\item 
+\mbox{\Hypertarget{classInterfaceBsdSocketFactory_a762639f3055ce6e4b21a092f96d6e515}\label{classInterfaceBsdSocketFactory_a762639f3055ce6e4b21a092f96d6e515}} 
+virtual ssize\+\_\+t {\bfseries write} (int \+\_\+\+\_\+fd, const void $\ast$\+\_\+\+\_\+buf, size\+\_\+t \+\_\+\+\_\+n)=0
+\item 
+\mbox{\Hypertarget{classInterfaceBsdSocketFactory_a8b2965f642070600bed86e4664beec8b}\label{classInterfaceBsdSocketFactory_a8b2965f642070600bed86e4664beec8b}} 
+virtual ssize\+\_\+t {\bfseries read} (int \+\_\+\+\_\+fd, void $\ast$\+\_\+\+\_\+buf, size\+\_\+t \+\_\+\+\_\+nbytes)=0
+\item 
+\mbox{\Hypertarget{classInterfaceBsdSocketFactory_a6e38160aac35e1f64b35c205de2f9452}\label{classInterfaceBsdSocketFactory_a6e38160aac35e1f64b35c205de2f9452}} 
+virtual int {\bfseries bind} (int \+\_\+\+\_\+fd, \+\_\+\+\_\+\+C\+O\+N\+S\+T\+\_\+\+S\+O\+C\+K\+A\+D\+D\+R\+\_\+\+A\+RG \+\_\+\+\_\+addr, socklen\+\_\+t \+\_\+\+\_\+len)=0
+\item 
+\mbox{\Hypertarget{classInterfaceBsdSocketFactory_a2f2c6dbbb9d1f7fa0a42f0039178836c}\label{classInterfaceBsdSocketFactory_a2f2c6dbbb9d1f7fa0a42f0039178836c}} 
+virtual int {\bfseries listen} (int \+\_\+\+\_\+fd, int \+\_\+\+\_\+n)=0
+\item 
+\mbox{\Hypertarget{classInterfaceBsdSocketFactory_a3be681ec6b076c808a8563daf481c118}\label{classInterfaceBsdSocketFactory_a3be681ec6b076c808a8563daf481c118}} 
+virtual int {\bfseries accept} (int \+\_\+\+\_\+fd, \+\_\+\+\_\+\+S\+O\+C\+K\+A\+D\+D\+R\+\_\+\+A\+RG \+\_\+\+\_\+addr, socklen\+\_\+t $\ast$\+\_\+\+\_\+restrict \+\_\+\+\_\+addr\+\_\+len)=0
+\item 
+\mbox{\Hypertarget{classInterfaceBsdSocketFactory_a2cb114ed8514fdb9a5a231a14e36ef5a}\label{classInterfaceBsdSocketFactory_a2cb114ed8514fdb9a5a231a14e36ef5a}} 
+virtual int {\bfseries close} (int \+\_\+\+\_\+fd)=0
+\item 
+\mbox{\Hypertarget{classInterfaceBsdSocketFactory_a6081647e7bcffdb4af53cc71ff42f792}\label{classInterfaceBsdSocketFactory_a6081647e7bcffdb4af53cc71ff42f792}} 
+virtual int {\bfseries getsockopt} (int \+\_\+\+\_\+fd, int \+\_\+\+\_\+level, int \+\_\+\+\_\+optname, void $\ast$\+\_\+\+\_\+restrict \+\_\+\+\_\+optval, socklen\+\_\+t $\ast$\+\_\+\+\_\+restrict \+\_\+\+\_\+optlen)=0
+\item 
+\mbox{\Hypertarget{classInterfaceBsdSocketFactory_aa58c4e561966713dc3b64c31a7d65adb}\label{classInterfaceBsdSocketFactory_aa58c4e561966713dc3b64c31a7d65adb}} 
+virtual \hyperlink{classInterfaceBsdSocketFactory}{Interface\+Bsd\+Socket\+Factory} $\ast$ {\bfseries clone} () const
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classInterfaceBsdSocketFactory_aa6918ad69cb7f660a8e79643f2ebe8ef}\label{classInterfaceBsdSocketFactory_aa6918ad69cb7f660a8e79643f2ebe8ef}} 
+virtual \hyperlink{classInterfaceBsdSocketFactory}{Interface\+Bsd\+Socket\+Factory} $\ast$ {\bfseries do\+Clone} () const =0
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/bsdsocket/bsdsocketfactory.\+h\end{DoxyCompactItemize}

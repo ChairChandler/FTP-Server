@@ -1,0 +1,8 @@
+<map id="NamedException" name="NamedException">
+<area shape="rect" id="node3" href="$d8/dff/structAbstractFileTransmission_1_1FileTransmissionReceiveException.html" title="AbstractFileTransmission\l::FileTransmissionReceiveException" alt="" coords="328,5,563,47"/>
+<area shape="rect" id="node4" href="$d4/d13/structAbstractFileTransmission_1_1FileTransmissionSendException.html" title="AbstractFileTransmission\l::FileTransmissionSendException" alt="" coords="337,71,554,112"/>
+<area shape="rect" id="node5" href="$d9/d2d/structInterfaceAccountDatabase_1_1AccountExistsException.html" title="InterfaceAccountDatabase\l::AccountExistsException" alt="" coords="357,136,534,177"/>
+<area shape="rect" id="node6" href="$da/d1a/structInterfaceAccountDatabase_1_1AccountNotFoundException.html" title="InterfaceAccountDatabase\l::AccountNotFoundException" alt="" coords="349,201,542,243"/>
+<area shape="rect" id="node7" href="$d3/def/structInterfaceFTPfileSystem_1_1WrongRootDirPathException.html" title="InterfaceFTPfileSystem\l::WrongRootDirPathException" alt="" coords="346,267,545,308"/>
+<area shape="rect" id="node8" href="$db/da8/structInterfaceTransmissionFileAccess_1_1FileOpeningException.html" title="InterfaceTransmissionFile\lAccess::FileOpeningException" alt="" coords="345,332,546,373"/>
+</map>

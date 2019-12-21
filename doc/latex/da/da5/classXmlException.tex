@@ -1,0 +1,115 @@
+\hypertarget{classXmlException}{}\section{Xml\+Exception Class Reference}
+\label{classXmlException}\index{Xml\+Exception@{Xml\+Exception}}
+
+
+Creates exception in X\+ML style.  
+
+
+
+
+{\ttfamily \#include $<$xmlexception.\+h$>$}
+
+
+
+Inheritance diagram for Xml\+Exception\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{dc/d4b/classXmlException__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Xml\+Exception\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{d7/dd4/classXmlException__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classXmlException_a912e299d8bfb810f42a2d4c95621b221}{Xml\+Exception} (const Q\+String \&tag)
+\item 
+\hyperlink{classXmlException}{Xml\+Exception} \& \hyperlink{classXmlException_a6a357f5a13ec354b84fb17ca5b5003a0}{key} (const Q\+String \&key) override
+\item 
+\hyperlink{classXmlException}{Xml\+Exception} \& \hyperlink{classXmlException_ae51cb72a2a9db85e12409c5e3408ea4d}{value} (const Q\+String \&value) override
+\item 
+\mbox{\Hypertarget{classXmlException_a2a1dfe24234debf275fc173ac7c8418e}\label{classXmlException_a2a1dfe24234debf275fc173ac7c8418e}} 
+\hyperlink{classXmlException}{Xml\+Exception} \& {\bfseries end} ()
+\item 
+\mbox{\Hypertarget{classXmlException_a4c6857b08997d4bbc147584ade11cc85}\label{classXmlException_a4c6857b08997d4bbc147584ade11cc85}} 
+virtual const char $\ast$ {\bfseries what} () const noexcept override
+\item 
+\mbox{\Hypertarget{classXmlException_ad78827ab05bc42239b2c508637f499c5}\label{classXmlException_ad78827ab05bc42239b2c508637f499c5}} 
+void {\bfseries print} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classXmlException_a3f8af7698fbadda2967314b5cff33825}\label{classXmlException_a3f8af7698fbadda2967314b5cff33825}} 
+static void {\bfseries turn\+Output\+Off} ()
+\item 
+\mbox{\Hypertarget{classXmlException_a0bc0cd232f67fcef7ffe0cbd2ceef99d}\label{classXmlException_a0bc0cd232f67fcef7ffe0cbd2ceef99d}} 
+static void {\bfseries turn\+Output\+On} ()
+\item 
+\mbox{\Hypertarget{classXmlException_aed6cfbcbf3cd68112a59194baedf329d}\label{classXmlException_aed6cfbcbf3cd68112a59194baedf329d}} 
+static void {\bfseries add\+Stream} (const Q\+Text\+Stream \&stream)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Creates exception in X\+ML style. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classXmlException_a912e299d8bfb810f42a2d4c95621b221}\label{classXmlException_a912e299d8bfb810f42a2d4c95621b221}} 
+\index{Xml\+Exception@{Xml\+Exception}!Xml\+Exception@{Xml\+Exception}}
+\index{Xml\+Exception@{Xml\+Exception}!Xml\+Exception@{Xml\+Exception}}
+\subsubsection{\texorpdfstring{Xml\+Exception()}{XmlException()}}
+{\footnotesize\ttfamily Xml\+Exception\+::\+Xml\+Exception (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{tag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em tag} & Custom X\+ML tag. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classXmlException_a6a357f5a13ec354b84fb17ca5b5003a0}\label{classXmlException_a6a357f5a13ec354b84fb17ca5b5003a0}} 
+\index{Xml\+Exception@{Xml\+Exception}!key@{key}}
+\index{key@{key}!Xml\+Exception@{Xml\+Exception}}
+\subsubsection{\texorpdfstring{key()}{key()}}
+{\footnotesize\ttfamily \hyperlink{classXmlException}{Xml\+Exception} \& Xml\+Exception\+::key (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Custom X\+ML attribute. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classXmlMessage_a01b2e1d62348aad36158687344d50518}{Xml\+Message}.
+
+\mbox{\Hypertarget{classXmlException_ae51cb72a2a9db85e12409c5e3408ea4d}\label{classXmlException_ae51cb72a2a9db85e12409c5e3408ea4d}} 
+\index{Xml\+Exception@{Xml\+Exception}!value@{value}}
+\index{value@{value}!Xml\+Exception@{Xml\+Exception}}
+\subsubsection{\texorpdfstring{value()}{value()}}
+{\footnotesize\ttfamily \hyperlink{classXmlException}{Xml\+Exception} \& Xml\+Exception\+::value (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Custom X\+ML value. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classXmlMessage_aef54b1b878c75f170139d1885597cb63}{Xml\+Message}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/controller/xmloutput/xmlexception.\+h\item 
+src/controller/xmloutput/xmlexception.\+cpp\end{DoxyCompactItemize}

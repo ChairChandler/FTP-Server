@@ -1,0 +1,66 @@
+\hypertarget{classRetrCmd}{}\section{Retr\+Cmd Class Reference}
+\label{classRetrCmd}\index{Retr\+Cmd@{Retr\+Cmd}}
+
+
+Upload file to the client.  
+
+
+
+
+{\ttfamily \#include $<$retrcmd.\+h$>$}
+
+
+
+Inheritance diagram for Retr\+Cmd\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{d0/dae/classRetrCmd__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Retr\+Cmd\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{dc/d68/classRetrCmd__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRetrCmd_ab20c02dc32c3c300fd3f49dd4da89100}{Retr\+Cmd} (int command\+Channel\+Socket, const Q\+String \&file\+Name)
+\item 
+\mbox{\Hypertarget{classRetrCmd_a605eab8d64737d3ebb2625ba5fc373db}\label{classRetrCmd_a605eab8d64737d3ebb2625ba5fc373db}} 
+void {\bfseries execute} () override
+\item 
+\mbox{\Hypertarget{classRetrCmd_afe6eba7844dbcb8d16c18045fee835ae}\label{classRetrCmd_afe6eba7844dbcb8d16c18045fee835ae}} 
+void {\bfseries set\+Bsd\+Socket\+Factory} (const \hyperlink{classInterfaceBsdSocketFactory}{Interface\+Bsd\+Socket\+Factory} \&new\+Bsd\+Socket\+Factory)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Upload file to the client. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRetrCmd_ab20c02dc32c3c300fd3f49dd4da89100}\label{classRetrCmd_ab20c02dc32c3c300fd3f49dd4da89100}} 
+\index{Retr\+Cmd@{Retr\+Cmd}!Retr\+Cmd@{Retr\+Cmd}}
+\index{Retr\+Cmd@{Retr\+Cmd}!Retr\+Cmd@{Retr\+Cmd}}
+\subsubsection{\texorpdfstring{Retr\+Cmd()}{RetrCmd()}}
+{\footnotesize\ttfamily Retr\+Cmd\+::\+Retr\+Cmd (\begin{DoxyParamCaption}\item[{int}]{command\+Channel\+Socket,  }\item[{const Q\+String \&}]{file\+Name }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em command\+Channel\+Socket} & Socket to communication with client on command channel \\
+\hline
+{\em path} & Absolute path to the dir or relative to the current working directory \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/ftpcommand/cmds/retrcmd.\+h\item 
+src/ftpcommand/cmds/retrcmd.\+cpp\end{DoxyCompactItemize}

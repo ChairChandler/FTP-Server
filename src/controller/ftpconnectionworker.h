@@ -1,33 +1,50 @@
 #ifndef FTPCONNECTIONWORKER_H
 #define FTPCONNECTIONWORKER_H
+
 #include <QRunnable>
 #include <memory>
 #include <QObject>
-#include "ftpcommand.h"
-#include "replycodes.h"
-#include "bsdsocketfactory.h"
-#pragma GCC diagnostic ignored "-Wpadded"
+#include "ftpcommand/ftpcommand.h"
+#include "replycodes/replycodes.h"
+#include "bsdsocket/bsdsocketfactory.h"
+#include "services/FTPservice.h"
 
+/**
+* @brief Manages one ftp connection.
+*/
 class FTPconnectionWorker: public QObject, public QRunnable {
+
+    private:
         Q_OBJECT
 
-        using FactoryRef = std::unique_ptr<BsdSocketFactory>;
+        using FactoryRef = std::unique_ptr<InterfaceBsdSocketFactory>;
         static inline auto bsdSocket = FactoryRef(new BsdSocketFactoryDefault());
-        const ReplyCodes codes;
+        static inline auto &db = AccountDatabaseSingletonFactoryDefault().getInstance();
+
         int clientCommandChannel;
+        static inline int timeoutMs = 20000;
 
         QString receiveCommandString();
-        FTPcommand* toCommand(QString stringCommand);
-        bool sendReplyCode(QString message);
+        AbstractFTPservice* createService(const QString &cmd);
+        bool waitForSentReply(const QString &message);
+        bool sendReplyMessage(const QString &message);
+        bool handleService(AbstractFTPservice * const service);
+        bool isConnection();
+        bool handleResponse(const QString &response);
+        void printError();
 
     public:
+        /**
+        * @param clientCommandChannel Socket to communication with client on command channel.
+        */
         FTPconnectionWorker(int clientCommandChannel);
         virtual ~FTPconnectionWorker() override;
         void run() override;
-        static void setBsdSocketFactory(const BsdSocketFactory &newFactory);
+        static void setTimeoutMs(int value);
+        static void setBsdSocketFactory(const InterfaceBsdSocketFactory &newFactory);
 
     signals:
-        void done();
+        void done(int clientCommandChannel);
 };
 
 #endif // FTPCONNECTIONWORKER_H

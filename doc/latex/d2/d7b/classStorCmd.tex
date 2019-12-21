@@ -1,0 +1,66 @@
+\hypertarget{classStorCmd}{}\section{Stor\+Cmd Class Reference}
+\label{classStorCmd}\index{Stor\+Cmd@{Stor\+Cmd}}
+
+
+Download file from the client.  
+
+
+
+
+{\ttfamily \#include $<$storcmd.\+h$>$}
+
+
+
+Inheritance diagram for Stor\+Cmd\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{dc/dd3/classStorCmd__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Stor\+Cmd\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{d4/d93/classStorCmd__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classStorCmd_a01f911cad15cc9ee4700edf263390489}{Stor\+Cmd} (int command\+Channel\+Socket, const Q\+String \&file\+Name)
+\item 
+\mbox{\Hypertarget{classStorCmd_a6ec9900d7df7a0d2194102c146c7ef0e}\label{classStorCmd_a6ec9900d7df7a0d2194102c146c7ef0e}} 
+void {\bfseries execute} () override
+\item 
+\mbox{\Hypertarget{classStorCmd_a8e6d58c7263f7a2be1184c32debac379}\label{classStorCmd_a8e6d58c7263f7a2be1184c32debac379}} 
+void {\bfseries set\+Bsd\+Socket\+Factory} (const \hyperlink{classInterfaceBsdSocketFactory}{Interface\+Bsd\+Socket\+Factory} \&new\+Bsd\+Socket\+Factory)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Download file from the client. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classStorCmd_a01f911cad15cc9ee4700edf263390489}\label{classStorCmd_a01f911cad15cc9ee4700edf263390489}} 
+\index{Stor\+Cmd@{Stor\+Cmd}!Stor\+Cmd@{Stor\+Cmd}}
+\index{Stor\+Cmd@{Stor\+Cmd}!Stor\+Cmd@{Stor\+Cmd}}
+\subsubsection{\texorpdfstring{Stor\+Cmd()}{StorCmd()}}
+{\footnotesize\ttfamily Stor\+Cmd\+::\+Stor\+Cmd (\begin{DoxyParamCaption}\item[{int}]{command\+Channel\+Socket,  }\item[{const Q\+String \&}]{file\+Name }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em command\+Channel\+Socket} & Socket to communication with client on command channel \\
+\hline
+{\em path} & Absolute path to the dir or relative to the current working directory \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/ftpcommand/cmds/storcmd.\+h\item 
+src/ftpcommand/cmds/storcmd.\+cpp\end{DoxyCompactItemize}

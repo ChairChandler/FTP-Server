@@ -1,0 +1,90 @@
+\hypertarget{classBinaryTransmissionWriter}{}\section{Binary\+Transmission\+Writer Class Reference}
+\label{classBinaryTransmissionWriter}\index{Binary\+Transmission\+Writer@{Binary\+Transmission\+Writer}}
+
+
+Write to file binary chars.  
+
+
+
+
+{\ttfamily \#include $<$binaryfiletransmission.\+h$>$}
+
+
+
+Inheritance diagram for Binary\+Transmission\+Writer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{d4/d45/classBinaryTransmissionWriter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Binary\+Transmission\+Writer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{da/d75/classBinaryTransmissionWriter__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classBinaryTransmissionWriter_a40cc3d88d6501af5db2ed2acd05caacc}{init} (const Q\+File \&file) override
+\begin{DoxyCompactList}\small\item\em Open file. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classBinaryTransmissionWriter_aaeee88a165c1a53ef89849c08df6a5e1}{write\+Data\+Portion} (Buffer\+Info buffer) override
+\begin{DoxyCompactList}\small\item\em Read data from the buffer and write them to the file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBinaryTransmissionWriter_ad30e89ab71e1317464fedc4671f2da86}\label{classBinaryTransmissionWriter_ad30e89ab71e1317464fedc4671f2da86}} 
+virtual void \hyperlink{classBinaryTransmissionWriter_ad30e89ab71e1317464fedc4671f2da86}{clean\+Up} () override
+\begin{DoxyCompactList}\small\item\em Close file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Write to file binary chars. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classBinaryTransmissionWriter_a40cc3d88d6501af5db2ed2acd05caacc}\label{classBinaryTransmissionWriter_a40cc3d88d6501af5db2ed2acd05caacc}} 
+\index{Binary\+Transmission\+Writer@{Binary\+Transmission\+Writer}!init@{init}}
+\index{init@{init}!Binary\+Transmission\+Writer@{Binary\+Transmission\+Writer}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Binary\+Transmission\+Writer\+::init (\begin{DoxyParamCaption}\item[{const Q\+File \&}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Open file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & File to be read/write \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classInterfaceTransmissionFileAccess_a8c423ccb527b1dda62c798a75b6eb690}{Interface\+Transmission\+File\+Access}.
+
+\mbox{\Hypertarget{classBinaryTransmissionWriter_aaeee88a165c1a53ef89849c08df6a5e1}\label{classBinaryTransmissionWriter_aaeee88a165c1a53ef89849c08df6a5e1}} 
+\index{Binary\+Transmission\+Writer@{Binary\+Transmission\+Writer}!write\+Data\+Portion@{write\+Data\+Portion}}
+\index{write\+Data\+Portion@{write\+Data\+Portion}!Binary\+Transmission\+Writer@{Binary\+Transmission\+Writer}}
+\subsubsection{\texorpdfstring{write\+Data\+Portion()}{writeDataPortion()}}
+{\footnotesize\ttfamily void Binary\+Transmission\+Writer\+::write\+Data\+Portion (\begin{DoxyParamCaption}\item[{Buffer\+Info}]{info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Read data from the buffer and write them to the file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em info} & Buffer with data size. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classInterfaceTransmissionWriter_a024c3a22d937e659259f2eb242b3ea97}{Interface\+Transmission\+Writer}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/transmission/types/binaryfiletransmission.\+h\item 
+src/transmission/types/binaryfiletransmission.\+cpp\end{DoxyCompactItemize}

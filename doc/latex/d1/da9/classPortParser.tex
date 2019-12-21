@@ -1,0 +1,68 @@
+\hypertarget{classPortParser}{}\section{Port\+Parser Class Reference}
+\label{classPortParser}\index{Port\+Parser@{Port\+Parser}}
+
+
+Parse P\+O\+RT ftp command.  
+
+
+
+
+{\ttfamily \#include $<$portparser.\+h$>$}
+
+
+
+Inheritance diagram for Port\+Parser\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{dc/de1/classPortParser__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Port\+Parser\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{db/d1b/classPortParser__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \hyperlink{classPortParser_a7dbb8e4f695ed023c502a4c1f689d061}{parse} (const Q\+String \&input) override
+\item 
+\mbox{\Hypertarget{classPortParser_a8a653486a450421f735426d2e58b7721}\label{classPortParser_a8a653486a450421f735426d2e58b7721}} 
+sockaddr\+\_\+in {\bfseries get\+Addr} () const
+\item 
+\mbox{\Hypertarget{classPortParser_a191b2f445ee9f1805a92714866f38e72}\label{classPortParser_a191b2f445ee9f1805a92714866f38e72}} 
+Q\+String {\bfseries get\+Ip} () const
+\item 
+\mbox{\Hypertarget{classPortParser_a3b705b28454fb7a9b0559bbb573878be}\label{classPortParser_a3b705b28454fb7a9b0559bbb573878be}} 
+Q\+String {\bfseries get\+Port} () const
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Parse P\+O\+RT ftp command. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classPortParser_a7dbb8e4f695ed023c502a4c1f689d061}\label{classPortParser_a7dbb8e4f695ed023c502a4c1f689d061}} 
+\index{Port\+Parser@{Port\+Parser}!parse@{parse}}
+\index{parse@{parse}!Port\+Parser@{Port\+Parser}}
+\subsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily bool Port\+Parser\+::parse (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\begin{DoxyReturn}{Returns}
+True if parse done successfuly 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classCommandParser_a5ed0855947a9b4500329f29b8123f2ea}{Command\+Parser}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/ftpcommand/parsers/portparser.\+h\item 
+src/ftpcommand/parsers/portparser.\+cpp\end{DoxyCompactItemize}

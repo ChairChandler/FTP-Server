@@ -3,55 +3,109 @@
 
 #TARGET = src
 
+QT += widgets
+
 HEADERS = \
-   accountinfo.h \
-   bsdsocketfactory.h \
-   cmds/cmdnoop.h \
-   cmds/cmdport.h \
-   cmds/cmdpwd.h \
-   cmds/cmdquit.h \
-   cmds/cmdstru.h \
-   cmds/cmduser.h \
-   accountdatabase.h \
+   account/accountinfo.h \
+   bsdsocket/bsdsocketfactory.h \
+   controller/services/srv/cwdservice.h \
+   controller/services/srv/listservice.h \
+   controller/services/srv/mkdservice.h \
+   controller/services/srv/portservice.h \
+   controller/services/srv/pwdservice.h \
+   controller/services/srv/retrservice.h \
+   controller/services/srv/rmdservice.h \
+   controller/services/srv/storservice.h \
+   controller/services/srv/typeservice.h \
+   controller/xmloutput/xmlcout.h \
+   controller/xmloutput/xmlexception.h \
+   controller/xmloutput/xmllogs.h \
+   controller/xmloutput/xmlmessage.h \
+   exception/namedexception.h \
+   ftpcommand/cmds/cdupcmd.h \
+   account/accountdatabase.h \
+   controller/services/FTPservice.h \
    controller/ftpconnectionworker.h \
-   controller/messagecommandparser.h \
+   ftpcommand/cmds/cwdcmd.h \
+   ftpcommand/cmds/listcmd.h \
+   ftpcommand/cmds/mkdcmd.h \
+   ftpcommand/cmds/portcmd.h \
+   ftpcommand/cmds/pwdcmd.h \
+   ftpcommand/cmds/retrcmd.h \
+   ftpcommand/cmds/rmdcmd.h \
+   ftpcommand/cmds/storcmd.h \
+   ftpcommand/cmds/typecmd.h \
+   ftpcommand/commandparser.h \
+   ftpcommand/parsers/cdupparser.h \
+   controller/services/srv/cdupservice.h \
+   ftpcommand/parsers/cwdparser.h \
+   ftpcommand/parsers/listparser.h \
+   ftpcommand/parsers/mkdparser.h \
+   ftpcommand/parsers/portparser.h \
+   ftpcommand/parsers/pwdparser.h \
+   ftpcommand/parsers/retrparser.h \
+   ftpcommand/parsers/rmdparser.h \
+   ftpcommand/parsers/storparser.h \
+   ftpcommand/parsers/typeparser.h \
+   ftpfilesystem/filelocker.h \
    ftpfilesystem/ftpfilesystem.h \
-   mode/types/streammode.h \
-   structure/structure.h \
-   structure/types/filestructure.h \
-   ftpcommand.h \
-   cmds/cmdtype.h \
-   cmds/cmdmode.h \
-   mode/mode.h \
-   transmission/transmission.h \
-   transmission/types/asciitransmission.h \
-   transmission/types/binarytransmission.h \
+   ftpcommand/ftpcommand.h \
+   transmission/filetransmission.h \
    controller/ftpcontroller.h \
-   controller/replycodes.h
+   controller/replycodes/replycodes.h \
+   transmission/types/asciifiletransmission.h \
+   transmission/types/binaryfiletransmission.h
     
 SOURCES = \
-   accountinfo.cpp \
-   bsdsocketfactory.cpp \
-   cmds/cmdport.cpp \
-   cmds/cmdpwd.cpp \
-   cmds/cmdquit.cpp \
-   cmds/cmdstru.cpp \
-   cmds/cmduser.cpp \
-   accountdatabase.cpp \
+   account/accountinfo.cpp \
+   bsdsocket/bsdsocketfactory.cpp \
+   controller/services/FTPservice.cpp \
+   controller/services/srv/cwdservice.cpp \
+   controller/services/srv/listservice.cpp \
+   controller/services/srv/mkdservice.cpp \
+   controller/services/srv/portservice.cpp \
+   controller/services/srv/pwdservice.cpp \
+   controller/services/srv/retrservice.cpp \
+   controller/services/srv/rmdservice.cpp \
+   controller/services/srv/storservice.cpp \
+   controller/services/srv/typeservice.cpp \
+   controller/xmloutput/xmlcout.cpp \
+   controller/xmloutput/xmlexception.cpp \
+   controller/xmloutput/xmllogs.cpp \
+   controller/xmloutput/xmlmessage.cpp \
+   exception/namedexception.cpp \
+   ftpcommand/cmds/cdupcmd.cpp \
+   account/accountdatabase.cpp \
    controller/ftpconnectionworker.cpp \
-   controller/messagecommandparser.cpp \
-   controller/replycodes.cpp \
+   controller/replycodes/replycodes.cpp \
+   ftpcommand/cmds/cwdcmd.cpp \
+   ftpcommand/cmds/listcmd.cpp \
+   ftpcommand/cmds/mkdcmd.cpp \
+   ftpcommand/cmds/portcmd.cpp \
+   ftpcommand/cmds/pwdcmd.cpp \
+   ftpcommand/cmds/retrcmd.cpp \
+   ftpcommand/cmds/rmdcmd.cpp \
+   ftpcommand/cmds/storcmd.cpp \
+   ftpcommand/cmds/typecmd.cpp \
+   ftpcommand/parsers/cdupparser.cpp \
+   controller/services/srv/cdupservice.cpp \
+   ftpcommand/parsers/cwdparser.cpp \
+   ftpcommand/parsers/listparser.cpp \
+   ftpcommand/parsers/mkdparser.cpp \
+   ftpcommand/parsers/portparser.cpp \
+   ftpcommand/parsers/pwdparser.cpp \
+   ftpcommand/parsers/retrparser.cpp \
+   ftpcommand/parsers/rmdparser.cpp \
+   ftpcommand/parsers/storparser.cpp \
+   ftpcommand/parsers/typeparser.cpp \
+   ftpfilesystem/filelocker.cpp \
    ftpfilesystem/ftpfilesystem.cpp \
-   mode/types/streammode.cpp \
-   structure/types/filestructure.cpp \
-   ftpcommand.cpp \
+   ftpcommand/ftpcommand.cpp \
    main.cpp \
-   cmds/cmdtype.cpp \
-   cmds/cmdmode.cpp \
-   transmission/transmission.cpp \
-   transmission/types/asciitransmission.cpp \
-   transmission/types/binarytransmission.cpp \
-   controller/ftpcontroller.cpp
+   transmission/filetransmission.cpp \
+   transmission/types/asciifiletransmission.cpp \
+   controller/ftpcontroller.cpp \
+   transmission/types/binaryfiletransmission.cpp
 INCLUDEPATH += $$PWD
 
 DISTFILES +=

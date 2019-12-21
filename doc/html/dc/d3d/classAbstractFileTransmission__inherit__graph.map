@@ -1,0 +1,4 @@
+<map id="AbstractFileTransmission" name="AbstractFileTransmission">
+<area shape="rect" id="node2" href="$de/d11/classAsciiFileTransmission.html" title="Send or receive file through data channel in ASCII chars. " alt="" coords="5,80,156,107"/>
+<area shape="rect" id="node3" href="$dc/dbf/classBinaryFileTransmission.html" title="Send or receive file through data channel in binary chars. " alt="" coords="180,80,339,107"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="InterfaceTransmissionReader" name="InterfaceTransmissionReader">
+<area shape="rect" id="node3" href="$d8/dc5/classAsciiTransmissionReader.html" title="Read file in ASCII chars. " alt="" coords="5,169,176,196"/>
+<area shape="rect" id="node4" href="$d9/d70/classBinaryTransmissionReader.html" title="Read file in binary chars. " alt="" coords="200,169,379,196"/>
+<area shape="rect" id="node2" href="$d9/d4e/classInterfaceTransmissionFileAccess.html" title="InterfaceTransmissionFile\lAccess" alt="" coords="103,5,275,47"/>
+</map>

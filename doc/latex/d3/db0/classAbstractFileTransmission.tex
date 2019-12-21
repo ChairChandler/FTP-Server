@@ -1,0 +1,108 @@
+\hypertarget{classAbstractFileTransmission}{}\section{Abstract\+File\+Transmission Class Reference}
+\label{classAbstractFileTransmission}\index{Abstract\+File\+Transmission@{Abstract\+File\+Transmission}}
+
+
+Abstract class for handle low-\/level transmission.  Abstract class for handle low-\/level transmission.  
+
+
+
+
+{\ttfamily \#include $<$filetransmission.\+h$>$}
+
+
+
+Inheritance diagram for Abstract\+File\+Transmission\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{dc/d3d/classAbstractFileTransmission__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structAbstractFileTransmission_1_1FileTransmissionReceiveException}{File\+Transmission\+Receive\+Exception}
+\item 
+struct \hyperlink{structAbstractFileTransmission_1_1FileTransmissionSendException}{File\+Transmission\+Send\+Exception}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAbstractFileTransmission_af504e5e76391ce4a4e5b8a090ba199b1}\label{classAbstractFileTransmission_af504e5e76391ce4a4e5b8a090ba199b1}} 
+using {\bfseries Internal\+Buffer} = std\+::array$<$ char, B\+U\+F\+F\+\_\+\+S\+I\+ZE $>$
+\item 
+\mbox{\Hypertarget{classAbstractFileTransmission_a24ecd3592c22a52086a960772a8e08c1}\label{classAbstractFileTransmission_a24ecd3592c22a52086a960772a8e08c1}} 
+using {\bfseries External\+Buffer} = std\+::array$<$ Q\+Char, B\+U\+F\+F\+\_\+\+S\+I\+ZE $>$
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classAbstractFileTransmission_a91b9eb10d6cf9fbaebf2c23c9cdeb81c}{Abstract\+File\+Transmission} (const \hyperlink{classInterfaceTransmissionReader}{Interface\+Transmission\+Reader} \&reader, const \hyperlink{classInterfaceTransmissionWriter}{Interface\+Transmission\+Writer} \&writer)
+\item 
+void \hyperlink{classAbstractFileTransmission_ad49bd97cf93532458f0eb2808af75e28}{send} (int data\+Channel\+Socket, const Q\+File \&file)
+\item 
+void \hyperlink{classAbstractFileTransmission_a0eaf52c2d4a568833867b59c01d0259b}{receive} (int data\+Channel\+Socket, const Q\+File \&file)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAbstractFileTransmission_a3c05e06b2b543e8ab5a0d0850eed5c6b}\label{classAbstractFileTransmission_a3c05e06b2b543e8ab5a0d0850eed5c6b}} 
+static void {\bfseries set\+Bsd\+Socket\+Factory} (const \hyperlink{classInterfaceBsdSocketFactory}{Interface\+Bsd\+Socket\+Factory} \&new\+Factory)
+\item 
+\mbox{\Hypertarget{classAbstractFileTransmission_a7612e8c1f03dfdbd1f0e463b2935ba39}\label{classAbstractFileTransmission_a7612e8c1f03dfdbd1f0e463b2935ba39}} 
+static size\+\_\+t {\bfseries get\+Buff\+Size} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Abstract class for handle low-\/level transmission.  Abstract class for handle low-\/level transmission. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classAbstractFileTransmission_a91b9eb10d6cf9fbaebf2c23c9cdeb81c}\label{classAbstractFileTransmission_a91b9eb10d6cf9fbaebf2c23c9cdeb81c}} 
+\index{Abstract\+File\+Transmission@{Abstract\+File\+Transmission}!Abstract\+File\+Transmission@{Abstract\+File\+Transmission}}
+\index{Abstract\+File\+Transmission@{Abstract\+File\+Transmission}!Abstract\+File\+Transmission@{Abstract\+File\+Transmission}}
+\subsubsection{\texorpdfstring{Abstract\+File\+Transmission()}{AbstractFileTransmission()}}
+{\footnotesize\ttfamily Abstract\+File\+Transmission\+::\+Abstract\+File\+Transmission (\begin{DoxyParamCaption}\item[{const \hyperlink{classInterfaceTransmissionReader}{Interface\+Transmission\+Reader} \&}]{reader,  }\item[{const \hyperlink{classInterfaceTransmissionWriter}{Interface\+Transmission\+Writer} \&}]{writer }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em reader} & Interface to the transmission reader \\
+\hline
+{\em writer} & Interface to the transmission writer \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classAbstractFileTransmission_a0eaf52c2d4a568833867b59c01d0259b}\label{classAbstractFileTransmission_a0eaf52c2d4a568833867b59c01d0259b}} 
+\index{Abstract\+File\+Transmission@{Abstract\+File\+Transmission}!receive@{receive}}
+\index{receive@{receive}!Abstract\+File\+Transmission@{Abstract\+File\+Transmission}}
+\subsubsection{\texorpdfstring{receive()}{receive()}}
+{\footnotesize\ttfamily void Abstract\+File\+Transmission\+::receive (\begin{DoxyParamCaption}\item[{int}]{data\+Channel\+Socket,  }\item[{const Q\+File \&}]{file }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Channel\+Socket} & Socket to communication with client on data channel \\
+\hline
+{\em file} & File where received data will we written \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classAbstractFileTransmission_ad49bd97cf93532458f0eb2808af75e28}\label{classAbstractFileTransmission_ad49bd97cf93532458f0eb2808af75e28}} 
+\index{Abstract\+File\+Transmission@{Abstract\+File\+Transmission}!send@{send}}
+\index{send@{send}!Abstract\+File\+Transmission@{Abstract\+File\+Transmission}}
+\subsubsection{\texorpdfstring{send()}{send()}}
+{\footnotesize\ttfamily void Abstract\+File\+Transmission\+::send (\begin{DoxyParamCaption}\item[{int}]{data\+Channel\+Socket,  }\item[{const Q\+File \&}]{file }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Channel\+Socket} & Socket to communication with client on data channel \\
+\hline
+{\em file} & File to be sent \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/transmission/filetransmission.\+h\item 
+src/transmission/filetransmission.\+cpp\end{DoxyCompactItemize}

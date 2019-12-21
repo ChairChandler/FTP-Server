@@ -1,0 +1,72 @@
+\hypertarget{classBsdSocketFactoryDefault}{}\section{Bsd\+Socket\+Factory\+Default Class Reference}
+\label{classBsdSocketFactoryDefault}\index{Bsd\+Socket\+Factory\+Default@{Bsd\+Socket\+Factory\+Default}}
+
+
+Default implementation of bsd socket factory interface.  
+
+
+
+
+{\ttfamily \#include $<$bsdsocketfactory.\+h$>$}
+
+
+
+Inheritance diagram for Bsd\+Socket\+Factory\+Default\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{dd/da7/classBsdSocketFactoryDefault__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Bsd\+Socket\+Factory\+Default\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{d5/d23/classBsdSocketFactoryDefault__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBsdSocketFactoryDefault_ae56c8979788fa1092ee7f8b3ed52d2ba}\label{classBsdSocketFactoryDefault_ae56c8979788fa1092ee7f8b3ed52d2ba}} 
+virtual int {\bfseries socket} (int \+\_\+\+\_\+domain, int \+\_\+\+\_\+type, int \+\_\+\+\_\+protocol) override
+\item 
+\mbox{\Hypertarget{classBsdSocketFactoryDefault_a1e2faa4b38f70b662d5fcff501cd1dd1}\label{classBsdSocketFactoryDefault_a1e2faa4b38f70b662d5fcff501cd1dd1}} 
+virtual int {\bfseries connect} (int \+\_\+\+\_\+fd, \+\_\+\+\_\+\+C\+O\+N\+S\+T\+\_\+\+S\+O\+C\+K\+A\+D\+D\+R\+\_\+\+A\+RG \+\_\+\+\_\+addr, socklen\+\_\+t \+\_\+\+\_\+len) override
+\item 
+\mbox{\Hypertarget{classBsdSocketFactoryDefault_a83eaa1d6e746a676ffa049b284fa7d0a}\label{classBsdSocketFactoryDefault_a83eaa1d6e746a676ffa049b284fa7d0a}} 
+virtual ssize\+\_\+t {\bfseries write} (int \+\_\+\+\_\+fd, const void $\ast$\+\_\+\+\_\+buf, size\+\_\+t \+\_\+\+\_\+n) override
+\item 
+\mbox{\Hypertarget{classBsdSocketFactoryDefault_a17cb735df563f8e9d8329f2293f96209}\label{classBsdSocketFactoryDefault_a17cb735df563f8e9d8329f2293f96209}} 
+virtual ssize\+\_\+t {\bfseries read} (int \+\_\+\+\_\+fd, void $\ast$\+\_\+\+\_\+buf, size\+\_\+t \+\_\+\+\_\+nbytes) override
+\item 
+\mbox{\Hypertarget{classBsdSocketFactoryDefault_ab601ea872ecf968e63b1ced7bde5e0da}\label{classBsdSocketFactoryDefault_ab601ea872ecf968e63b1ced7bde5e0da}} 
+virtual int {\bfseries bind} (int \+\_\+\+\_\+fd, \+\_\+\+\_\+\+C\+O\+N\+S\+T\+\_\+\+S\+O\+C\+K\+A\+D\+D\+R\+\_\+\+A\+RG \+\_\+\+\_\+addr, socklen\+\_\+t \+\_\+\+\_\+len) override
+\item 
+\mbox{\Hypertarget{classBsdSocketFactoryDefault_a60acd85e3aa1439b3e91ee673d358ad7}\label{classBsdSocketFactoryDefault_a60acd85e3aa1439b3e91ee673d358ad7}} 
+virtual int {\bfseries listen} (int \+\_\+\+\_\+fd, int \+\_\+\+\_\+n) override
+\item 
+\mbox{\Hypertarget{classBsdSocketFactoryDefault_a4cd3062f5fe9a8fcc0191e51ab2e021a}\label{classBsdSocketFactoryDefault_a4cd3062f5fe9a8fcc0191e51ab2e021a}} 
+virtual int {\bfseries accept} (int \+\_\+\+\_\+fd, \+\_\+\+\_\+\+S\+O\+C\+K\+A\+D\+D\+R\+\_\+\+A\+RG \+\_\+\+\_\+addr, socklen\+\_\+t $\ast$\+\_\+\+\_\+restrict \+\_\+\+\_\+addr\+\_\+len) override
+\item 
+\mbox{\Hypertarget{classBsdSocketFactoryDefault_a74d05cce49a7760d8469f43f731f9a3d}\label{classBsdSocketFactoryDefault_a74d05cce49a7760d8469f43f731f9a3d}} 
+virtual int {\bfseries close} (int \+\_\+\+\_\+fd) override
+\item 
+\mbox{\Hypertarget{classBsdSocketFactoryDefault_a92c76d39e336ac82954f869268df68a4}\label{classBsdSocketFactoryDefault_a92c76d39e336ac82954f869268df68a4}} 
+virtual int {\bfseries getsockopt} (int \+\_\+\+\_\+fd, int \+\_\+\+\_\+level, int \+\_\+\+\_\+optname, void $\ast$\+\_\+\+\_\+restrict \+\_\+\+\_\+optval, socklen\+\_\+t $\ast$\+\_\+\+\_\+restrict \+\_\+\+\_\+optlen) override
+\item 
+\mbox{\Hypertarget{classBsdSocketFactoryDefault_af92759f0383e9314f889482bd5b65e63}\label{classBsdSocketFactoryDefault_af92759f0383e9314f889482bd5b65e63}} 
+virtual \hyperlink{classInterfaceBsdSocketFactory}{Interface\+Bsd\+Socket\+Factory} $\ast$ {\bfseries do\+Clone} () const override
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Default implementation of bsd socket factory interface. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/bsdsocket/bsdsocketfactory.\+h\item 
+src/bsdsocket/bsdsocketfactory.\+cpp\end{DoxyCompactItemize}

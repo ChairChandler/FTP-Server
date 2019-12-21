@@ -1,0 +1,130 @@
+\hypertarget{classAbstractFTPservice}{}\section{Abstract\+F\+T\+Pservice Class Reference}
+\label{classAbstractFTPservice}\index{Abstract\+F\+T\+Pservice@{Abstract\+F\+T\+Pservice}}
+
+
+Abstract ftp service class, provide low-\/level handle of command.  Abstract ftp service class, provide low-\/level handle of command.  
+
+
+
+
+{\ttfamily \#include $<$F\+T\+Pservice.\+h$>$}
+
+
+
+Inheritance diagram for Abstract\+F\+T\+Pservice\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=293pt]{d2/d55/classAbstractFTPservice__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAbstractFTPservice_a9ded9b5067150f1d98ad0d40e489f5d3}\label{classAbstractFTPservice_a9ded9b5067150f1d98ad0d40e489f5d3}} 
+using {\bfseries Exception\+Reply\+Code} = Q\+Map$<$ \hyperlink{classNamedException}{Named\+Exception}, \hyperlink{classReplyCode}{Reply\+Code} $\ast$ $>$
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAbstractFTPservice_a82d0f243f0e89dfd07f40d5d42adbb13}\label{classAbstractFTPservice_a82d0f243f0e89dfd07f40d5d42adbb13}} 
+void {\bfseries start} ()
+\item 
+Q\+String \hyperlink{classAbstractFTPservice_a48c4d339fde37882e48fc9e007184e2f}{reply\+Before} ()
+\item 
+Q\+String \hyperlink{classAbstractFTPservice_aa689acc6cb72ed5255a1ca407059be83}{reply\+After} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classAbstractFTPservice_acaddc197e13656887d4ee18f1119d755}{Abstract\+F\+T\+Pservice} (\hyperlink{classAbstractFTPcommand}{Abstract\+F\+T\+Pcommand} $\ast$const new\+Cmd)
+\item 
+\hyperlink{classAbstractFTPservice_ac420f6055d26efcd511d146a4e52155a}{Abstract\+F\+T\+Pservice} (\hyperlink{classAbstractFTPcommand}{Abstract\+F\+T\+Pcommand} $\ast$const new\+Cmd, Exception\+Reply\+Code new\+Reply\+Codes)
+\item 
+virtual Q\+String \hyperlink{classAbstractFTPservice_a3ac6c2518376864615d68199845d910a}{parse\+Reply\+Before} (\hyperlink{classAbstractFTPcommand}{Abstract\+F\+T\+Pcommand} $\ast$const)
+\begin{DoxyCompactList}\small\item\em Allow to redefined default reply after ending command. \end{DoxyCompactList}\item 
+virtual Q\+String \hyperlink{classAbstractFTPservice_a914cd7810f9e8e563dd0dd7bb34d4224}{parse\+Reply\+After} (\hyperlink{classAbstractFTPcommand}{Abstract\+F\+T\+Pcommand} $\ast$const)
+\begin{DoxyCompactList}\small\item\em Allow to redefined default reply after ending command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Abstract ftp service class, provide low-\/level handle of command.  Abstract ftp service class, provide low-\/level handle of command. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classAbstractFTPservice_acaddc197e13656887d4ee18f1119d755}\label{classAbstractFTPservice_acaddc197e13656887d4ee18f1119d755}} 
+\index{Abstract\+F\+T\+Pservice@{Abstract\+F\+T\+Pservice}!Abstract\+F\+T\+Pservice@{Abstract\+F\+T\+Pservice}}
+\index{Abstract\+F\+T\+Pservice@{Abstract\+F\+T\+Pservice}!Abstract\+F\+T\+Pservice@{Abstract\+F\+T\+Pservice}}
+\subsubsection{\texorpdfstring{Abstract\+F\+T\+Pservice()}{AbstractFTPservice()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Abstract\+F\+T\+Pservice\+::\+Abstract\+F\+T\+Pservice (\begin{DoxyParamCaption}\item[{\hyperlink{classAbstractFTPcommand}{Abstract\+F\+T\+Pcommand} $\ast$const}]{new\+Cmd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Cmd} & Command to handle. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classAbstractFTPservice_ac420f6055d26efcd511d146a4e52155a}\label{classAbstractFTPservice_ac420f6055d26efcd511d146a4e52155a}} 
+\index{Abstract\+F\+T\+Pservice@{Abstract\+F\+T\+Pservice}!Abstract\+F\+T\+Pservice@{Abstract\+F\+T\+Pservice}}
+\index{Abstract\+F\+T\+Pservice@{Abstract\+F\+T\+Pservice}!Abstract\+F\+T\+Pservice@{Abstract\+F\+T\+Pservice}}
+\subsubsection{\texorpdfstring{Abstract\+F\+T\+Pservice()}{AbstractFTPservice()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Abstract\+F\+T\+Pservice\+::\+Abstract\+F\+T\+Pservice (\begin{DoxyParamCaption}\item[{\hyperlink{classAbstractFTPcommand}{Abstract\+F\+T\+Pcommand} $\ast$const}]{new\+Cmd,  }\item[{Abstract\+F\+T\+Pservice\+::\+Exception\+Reply\+Code}]{new\+Reply\+Codes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Cmd} & Command to handle. \\
+\hline
+{\em new\+Reply\+Codes} & Exceptions that may be throw by command and replies assigned to them. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classAbstractFTPservice_a914cd7810f9e8e563dd0dd7bb34d4224}\label{classAbstractFTPservice_a914cd7810f9e8e563dd0dd7bb34d4224}} 
+\index{Abstract\+F\+T\+Pservice@{Abstract\+F\+T\+Pservice}!parse\+Reply\+After@{parse\+Reply\+After}}
+\index{parse\+Reply\+After@{parse\+Reply\+After}!Abstract\+F\+T\+Pservice@{Abstract\+F\+T\+Pservice}}
+\subsubsection{\texorpdfstring{parse\+Reply\+After()}{parseReplyAfter()}}
+{\footnotesize\ttfamily Q\+String Abstract\+F\+T\+Pservice\+::parse\+Reply\+After (\begin{DoxyParamCaption}\item[{\hyperlink{classAbstractFTPcommand}{Abstract\+F\+T\+Pcommand} $\ast$ const}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Allow to redefined default reply after ending command. 
+
+Default reply is empty string. \begin{DoxyReturn}{Returns}
+Reply after ending command. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classAbstractFTPservice_a3ac6c2518376864615d68199845d910a}\label{classAbstractFTPservice_a3ac6c2518376864615d68199845d910a}} 
+\index{Abstract\+F\+T\+Pservice@{Abstract\+F\+T\+Pservice}!parse\+Reply\+Before@{parse\+Reply\+Before}}
+\index{parse\+Reply\+Before@{parse\+Reply\+Before}!Abstract\+F\+T\+Pservice@{Abstract\+F\+T\+Pservice}}
+\subsubsection{\texorpdfstring{parse\+Reply\+Before()}{parseReplyBefore()}}
+{\footnotesize\ttfamily Q\+String Abstract\+F\+T\+Pservice\+::parse\+Reply\+Before (\begin{DoxyParamCaption}\item[{\hyperlink{classAbstractFTPcommand}{Abstract\+F\+T\+Pcommand} $\ast$ const}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Allow to redefined default reply after ending command. 
+
+Default reply is code number 200. \begin{DoxyReturn}{Returns}
+Reply before starting command. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classAbstractFTPservice_aa689acc6cb72ed5255a1ca407059be83}\label{classAbstractFTPservice_aa689acc6cb72ed5255a1ca407059be83}} 
+\index{Abstract\+F\+T\+Pservice@{Abstract\+F\+T\+Pservice}!reply\+After@{reply\+After}}
+\index{reply\+After@{reply\+After}!Abstract\+F\+T\+Pservice@{Abstract\+F\+T\+Pservice}}
+\subsubsection{\texorpdfstring{reply\+After()}{replyAfter()}}
+{\footnotesize\ttfamily Q\+String Abstract\+F\+T\+Pservice\+::reply\+After (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Reply after ending command. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classAbstractFTPservice_a48c4d339fde37882e48fc9e007184e2f}\label{classAbstractFTPservice_a48c4d339fde37882e48fc9e007184e2f}} 
+\index{Abstract\+F\+T\+Pservice@{Abstract\+F\+T\+Pservice}!reply\+Before@{reply\+Before}}
+\index{reply\+Before@{reply\+Before}!Abstract\+F\+T\+Pservice@{Abstract\+F\+T\+Pservice}}
+\subsubsection{\texorpdfstring{reply\+Before()}{replyBefore()}}
+{\footnotesize\ttfamily Q\+String Abstract\+F\+T\+Pservice\+::reply\+Before (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Reply before starting command. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/controller/services/F\+T\+Pservice.\+h\item 
+src/controller/services/F\+T\+Pservice.\+cpp\end{DoxyCompactItemize}
