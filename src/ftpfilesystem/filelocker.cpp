@@ -8,6 +8,7 @@ bool FileLocker::tryHardLockFile(const QFileInfo &lockFile) {
     QString pathLockFile = extractRelativeRootPath(lockFile);
 
     for(auto [pathOpenFile, isDir, _]: openedFiles) {
+        Q_UNUSED(_)
         if(lockFile.isDir() && !fileDir(pathLockFile, pathOpenFile, isDir)) {
             return false;
         } else if(!fileNotDir(pathLockFile, pathOpenFile, isDir)){
@@ -80,6 +81,7 @@ void FileLocker::softUnLockFile(const QFileInfo &lockFile) {
             int &accessCounter = std::get<2>(info);
             if(accessCounter > 1) {
                 accessCounter--;
+                return false;
             } else {
                 return true;
             }
