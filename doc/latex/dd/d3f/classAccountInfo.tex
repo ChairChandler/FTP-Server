@@ -1,0 +1,67 @@
+\hypertarget{classAccountInfo}{}\section{Account\+Info Class Reference}
+\label{classAccountInfo}\index{Account\+Info@{Account\+Info}}
+
+
+Structure for handle ftp user information.  
+
+
+
+
+{\ttfamily \#include $<$accountinfo.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAccountInfo_a7c804c71299c02010e99514eafb04a63}\label{classAccountInfo_a7c804c71299c02010e99514eafb04a63}} 
+enum {\bfseries Transmission\+Type} \{ {\bfseries Ascii}, 
+{\bfseries Binary}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAccountInfo_afc6cb2f3521a7ebf8d16f004f61533f4}\label{classAccountInfo_afc6cb2f3521a7ebf8d16f004f61533f4}} 
+sockaddr\+\_\+in {\bfseries get\+Command\+Channel\+Address} () const
+\item 
+\mbox{\Hypertarget{classAccountInfo_a473dfbf8850784ad41454d5e2086d172}\label{classAccountInfo_a473dfbf8850784ad41454d5e2086d172}} 
+void {\bfseries set\+Command\+Channel\+Address} (const sockaddr\+\_\+in \&value)
+\item 
+\mbox{\Hypertarget{classAccountInfo_af22c3388b12cd7f0073921d8416561a5}\label{classAccountInfo_af22c3388b12cd7f0073921d8416561a5}} 
+sockaddr\+\_\+in {\bfseries get\+Data\+Channel\+Address} () const
+\item 
+\mbox{\Hypertarget{classAccountInfo_a744ad5f4281ab1c2719c95554fcefd14}\label{classAccountInfo_a744ad5f4281ab1c2719c95554fcefd14}} 
+void {\bfseries set\+Data\+Channel\+Address} (const sockaddr\+\_\+in \&value)
+\item 
+\mbox{\Hypertarget{classAccountInfo_a646c0cf60d1817fbc0308527908f2eb0}\label{classAccountInfo_a646c0cf60d1817fbc0308527908f2eb0}} 
+int {\bfseries get\+Command\+Channel\+Socket} () const
+\item 
+\mbox{\Hypertarget{classAccountInfo_a8f26940fe646a532c98aec6ada6ee113}\label{classAccountInfo_a8f26940fe646a532c98aec6ada6ee113}} 
+void {\bfseries set\+Command\+Channel\+Socket} (int value)
+\item 
+\mbox{\Hypertarget{classAccountInfo_ace3df4d708b419f64a6593d80bed5f32}\label{classAccountInfo_ace3df4d708b419f64a6593d80bed5f32}} 
+Transmission\+Type {\bfseries get\+Transmission\+Type} () const
+\item 
+\mbox{\Hypertarget{classAccountInfo_a49608ec2fcbae0ff6a984fa6667808ce}\label{classAccountInfo_a49608ec2fcbae0ff6a984fa6667808ce}} 
+void {\bfseries set\+Transmission\+Type} (const Transmission\+Type \&value)
+\item 
+\mbox{\Hypertarget{classAccountInfo_a268caf5cf743d60cfa4381de959d926a}\label{classAccountInfo_a268caf5cf743d60cfa4381de959d926a}} 
+\hyperlink{classInterfaceFTPfileSystem}{Interface\+F\+T\+Pfile\+System} $\ast$ {\bfseries get\+File\+System} () const
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAccountInfo_aa3c9fcca47dc666090d8a316b2fe72d2}\label{classAccountInfo_aa3c9fcca47dc666090d8a316b2fe72d2}} 
+static Q\+File\+Info {\bfseries get\+Default\+Root\+Path} ()
+\item 
+\mbox{\Hypertarget{classAccountInfo_a3a88b32d15964447cedf68513c0ec006}\label{classAccountInfo_a3a88b32d15964447cedf68513c0ec006}} 
+static void \hyperlink{classAccountInfo_a3a88b32d15964447cedf68513c0ec006}{set\+Default\+Root\+Path} (const Q\+File\+Info \&value)
+\begin{DoxyCompactList}\small\item\em Have to be done before server is running. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Structure for handle ftp user information. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/account/accountinfo.\+h\item 
+src/account/accountinfo.\+cpp\end{DoxyCompactItemize}

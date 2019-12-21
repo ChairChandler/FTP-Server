@@ -1,0 +1,42 @@
+\hypertarget{classInterfaceAccountDatabase}{}\section{Interface\+Account\+Database Class Reference}
+\label{classInterfaceAccountDatabase}\index{Interface\+Account\+Database@{Interface\+Account\+Database}}
+
+
+Inheritance diagram for Interface\+Account\+Database\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{d0/dcd/classInterfaceAccountDatabase__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structInterfaceAccountDatabase_1_1AccountExistsException}{Account\+Exists\+Exception}
+\item 
+struct \hyperlink{structInterfaceAccountDatabase_1_1AccountNotFoundException}{Account\+Not\+Found\+Exception}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classInterfaceAccountDatabase_a54f1a9870a88598e8953759541a0b5cc}\label{classInterfaceAccountDatabase_a54f1a9870a88598e8953759541a0b5cc}} 
+virtual void {\bfseries add\+Account\+Info} (const \hyperlink{classAccountInfo}{Account\+Info} \&account\+Info)=0
+\item 
+\mbox{\Hypertarget{classInterfaceAccountDatabase_a198df5c7964870e0feee9cf26a7dca7a}\label{classInterfaceAccountDatabase_a198df5c7964870e0feee9cf26a7dca7a}} 
+virtual \hyperlink{classAccountInfo}{Account\+Info} {\bfseries get\+Account\+Info} (int command\+Channel\+Socket)=0
+\item 
+\mbox{\Hypertarget{classInterfaceAccountDatabase_a6984fa5e427b80b6710b0cf122e52579}\label{classInterfaceAccountDatabase_a6984fa5e427b80b6710b0cf122e52579}} 
+virtual void {\bfseries set\+Account\+Info} (const \hyperlink{classAccountInfo}{Account\+Info} \&account\+Info)=0
+\item 
+\mbox{\Hypertarget{classInterfaceAccountDatabase_a182c1d1ca50325dc73a5e00cafe4d0f2}\label{classInterfaceAccountDatabase_a182c1d1ca50325dc73a5e00cafe4d0f2}} 
+virtual void {\bfseries del\+Account\+Info} (int command\+Channel\+Socket)=0
+\item 
+\mbox{\Hypertarget{classInterfaceAccountDatabase_af1489731737b67931d0601c964fa5883}\label{classInterfaceAccountDatabase_af1489731737b67931d0601c964fa5883}} 
+virtual void {\bfseries reset\+Database} ()=0
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/account/accountdatabase.\+h\item 
+src/account/accountdatabase.\+cpp\end{DoxyCompactItemize}

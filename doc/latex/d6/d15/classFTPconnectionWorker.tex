@@ -1,0 +1,75 @@
+\hypertarget{classFTPconnectionWorker}{}\section{F\+T\+Pconnection\+Worker Class Reference}
+\label{classFTPconnectionWorker}\index{F\+T\+Pconnection\+Worker@{F\+T\+Pconnection\+Worker}}
+
+
+Manages one ftp connection.  
+
+
+
+
+{\ttfamily \#include $<$ftpconnectionworker.\+h$>$}
+
+
+
+Inheritance diagram for F\+T\+Pconnection\+Worker\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{d2/df5/classFTPconnectionWorker__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for F\+T\+Pconnection\+Worker\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{de/da8/classFTPconnectionWorker__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFTPconnectionWorker_a0783b9741d75098496bfd7276d37a9ea}\label{classFTPconnectionWorker_a0783b9741d75098496bfd7276d37a9ea}} 
+void {\bfseries done} (int client\+Command\+Channel)
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFTPconnectionWorker_a6763cf440da5695484f0ec06feb84b38}{F\+T\+Pconnection\+Worker} (int client\+Command\+Channel)
+\item 
+\mbox{\Hypertarget{classFTPconnectionWorker_a60ea10b434bcd8c7ad8e39e0f0e61ed6}\label{classFTPconnectionWorker_a60ea10b434bcd8c7ad8e39e0f0e61ed6}} 
+void {\bfseries run} () override
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFTPconnectionWorker_a3772837b65d47738e76df6078e48dab4}\label{classFTPconnectionWorker_a3772837b65d47738e76df6078e48dab4}} 
+static void {\bfseries set\+Timeout\+Ms} (int value)
+\item 
+\mbox{\Hypertarget{classFTPconnectionWorker_a3760a2531e1fa2a5717ba4775be36dab}\label{classFTPconnectionWorker_a3760a2531e1fa2a5717ba4775be36dab}} 
+static void {\bfseries set\+Bsd\+Socket\+Factory} (const \hyperlink{classInterfaceBsdSocketFactory}{Interface\+Bsd\+Socket\+Factory} \&new\+Factory)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Manages one ftp connection. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classFTPconnectionWorker_a6763cf440da5695484f0ec06feb84b38}\label{classFTPconnectionWorker_a6763cf440da5695484f0ec06feb84b38}} 
+\index{F\+T\+Pconnection\+Worker@{F\+T\+Pconnection\+Worker}!F\+T\+Pconnection\+Worker@{F\+T\+Pconnection\+Worker}}
+\index{F\+T\+Pconnection\+Worker@{F\+T\+Pconnection\+Worker}!F\+T\+Pconnection\+Worker@{F\+T\+Pconnection\+Worker}}
+\subsubsection{\texorpdfstring{F\+T\+Pconnection\+Worker()}{FTPconnectionWorker()}}
+{\footnotesize\ttfamily F\+T\+Pconnection\+Worker\+::\+F\+T\+Pconnection\+Worker (\begin{DoxyParamCaption}\item[{int}]{client\+Command\+Channel }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em client\+Command\+Channel} & Socket to communication with client on command channel. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/controller/ftpconnectionworker.\+h\item 
+src/controller/ftpconnectionworker.\+cpp\end{DoxyCompactItemize}

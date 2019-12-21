@@ -1,0 +1,91 @@
+\hypertarget{classBinaryTransmissionReader}{}\section{Binary\+Transmission\+Reader Class Reference}
+\label{classBinaryTransmissionReader}\index{Binary\+Transmission\+Reader@{Binary\+Transmission\+Reader}}
+
+
+Read file in binary chars.  
+
+
+
+
+{\ttfamily \#include $<$binaryfiletransmission.\+h$>$}
+
+
+
+Inheritance diagram for Binary\+Transmission\+Reader\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{d4/dda/classBinaryTransmissionReader__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Binary\+Transmission\+Reader\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{d5/da5/classBinaryTransmissionReader__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classBinaryTransmissionReader_a28c85fe81913ccb4ba6aee44d84dbf7d}{init} (const Q\+File \&file) override
+\begin{DoxyCompactList}\small\item\em Open file. \end{DoxyCompactList}\item 
+virtual Buffer\+Info \hyperlink{classBinaryTransmissionReader_a003a0b7a500a15ddfc573e6f54006b0c}{read\+Data\+Portion} () override
+\begin{DoxyCompactList}\small\item\em Read data from the file and write them to the buffer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBinaryTransmissionReader_af324c2292bcc28c64d11d754c110e9bf}\label{classBinaryTransmissionReader_af324c2292bcc28c64d11d754c110e9bf}} 
+virtual bool {\bfseries is\+End\+Of\+File} () override
+\item 
+\mbox{\Hypertarget{classBinaryTransmissionReader_add9c1a4adb7fe8098d81bb0f5f916c93}\label{classBinaryTransmissionReader_add9c1a4adb7fe8098d81bb0f5f916c93}} 
+virtual void \hyperlink{classBinaryTransmissionReader_add9c1a4adb7fe8098d81bb0f5f916c93}{clean\+Up} () override
+\begin{DoxyCompactList}\small\item\em Close file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Read file in binary chars. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classBinaryTransmissionReader_a28c85fe81913ccb4ba6aee44d84dbf7d}\label{classBinaryTransmissionReader_a28c85fe81913ccb4ba6aee44d84dbf7d}} 
+\index{Binary\+Transmission\+Reader@{Binary\+Transmission\+Reader}!init@{init}}
+\index{init@{init}!Binary\+Transmission\+Reader@{Binary\+Transmission\+Reader}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Binary\+Transmission\+Reader\+::init (\begin{DoxyParamCaption}\item[{const Q\+File \&}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Open file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & File to be read/write \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classInterfaceTransmissionFileAccess_a8c423ccb527b1dda62c798a75b6eb690}{Interface\+Transmission\+File\+Access}.
+
+\mbox{\Hypertarget{classBinaryTransmissionReader_a003a0b7a500a15ddfc573e6f54006b0c}\label{classBinaryTransmissionReader_a003a0b7a500a15ddfc573e6f54006b0c}} 
+\index{Binary\+Transmission\+Reader@{Binary\+Transmission\+Reader}!read\+Data\+Portion@{read\+Data\+Portion}}
+\index{read\+Data\+Portion@{read\+Data\+Portion}!Binary\+Transmission\+Reader@{Binary\+Transmission\+Reader}}
+\subsubsection{\texorpdfstring{read\+Data\+Portion()}{readDataPortion()}}
+{\footnotesize\ttfamily Interface\+Transmission\+File\+Access\+::\+Buffer\+Info Binary\+Transmission\+Reader\+::read\+Data\+Portion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Read data from the file and write them to the buffer. 
+
+\begin{DoxyReturn}{Returns}
+Buffer with data size. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classInterfaceTransmissionReader_ab8733fbc3a4f6dc8279c363212fd3f51}{Interface\+Transmission\+Reader}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/transmission/types/binaryfiletransmission.\+h\item 
+src/transmission/types/binaryfiletransmission.\+cpp\end{DoxyCompactItemize}

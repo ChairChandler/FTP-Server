@@ -1,5 +1,0 @@
-<map id="Transmission" name="Transmission">
-<area shape="rect" id="node2" href="$classAsciiTransmission.html" title="Send or receive file through data channel in ASCII chars. " alt="" coords="5,80,135,107"/>
-<area shape="rect" id="node3" href="$classFakeClassA.html" title="FakeClassA" alt="" coords="159,80,253,107"/>
-<area shape="rect" id="node4" href="$classFakeClassB.html" title="FakeClassB" alt="" coords="277,80,372,107"/>
-</map>

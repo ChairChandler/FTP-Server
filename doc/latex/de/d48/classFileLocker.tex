@@ -1,0 +1,100 @@
+\hypertarget{classFileLocker}{}\section{File\+Locker Class Reference}
+\label{classFileLocker}\index{File\+Locker@{File\+Locker}}
+
+
+Lock files from being deleted/modified by transmission or rmdir command.  
+
+
+
+
+{\ttfamily \#include $<$filelocker.\+h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{classFileLocker_ad8380762c767d038ec02d936bf974180}{try\+Hard\+Lock\+File} (const Q\+File\+Info \&lock\+File)
+\begin{DoxyCompactList}\small\item\em Lock file from read/write/delete. \end{DoxyCompactList}\item 
+static void \hyperlink{classFileLocker_a22ccc8e611b73bdfad46f410530c5ac9}{hard\+Un\+Lock\+File} (const Q\+File\+Info \&lock\+File)
+\begin{DoxyCompactList}\small\item\em Unlock file for read/write/delete. \end{DoxyCompactList}\item 
+static bool \hyperlink{classFileLocker_a107060898062f6990b58d0cb102551ac}{try\+Soft\+Lock\+File} (const Q\+File\+Info \&lock\+File)
+\begin{DoxyCompactList}\small\item\em Lock file from write/delete. \end{DoxyCompactList}\item 
+static void \hyperlink{classFileLocker_afcffcde6a3a2a410fc981c17c63fe706}{soft\+Un\+Lock\+File} (const Q\+File\+Info \&lock\+File)
+\begin{DoxyCompactList}\small\item\em Unlock file for write/delete. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Lock files from being deleted/modified by transmission or rmdir command. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classFileLocker_a22ccc8e611b73bdfad46f410530c5ac9}\label{classFileLocker_a22ccc8e611b73bdfad46f410530c5ac9}} 
+\index{File\+Locker@{File\+Locker}!hard\+Un\+Lock\+File@{hard\+Un\+Lock\+File}}
+\index{hard\+Un\+Lock\+File@{hard\+Un\+Lock\+File}!File\+Locker@{File\+Locker}}
+\subsubsection{\texorpdfstring{hard\+Un\+Lock\+File()}{hardUnLockFile()}}
+{\footnotesize\ttfamily void File\+Locker\+::hard\+Un\+Lock\+File (\begin{DoxyParamCaption}\item[{const Q\+File\+Info \&}]{lock\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Unlock file for read/write/delete. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lock\+File} & File which is locked by try\+Hard\+Lock\+File method. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classFileLocker_afcffcde6a3a2a410fc981c17c63fe706}\label{classFileLocker_afcffcde6a3a2a410fc981c17c63fe706}} 
+\index{File\+Locker@{File\+Locker}!soft\+Un\+Lock\+File@{soft\+Un\+Lock\+File}}
+\index{soft\+Un\+Lock\+File@{soft\+Un\+Lock\+File}!File\+Locker@{File\+Locker}}
+\subsubsection{\texorpdfstring{soft\+Un\+Lock\+File()}{softUnLockFile()}}
+{\footnotesize\ttfamily void File\+Locker\+::soft\+Un\+Lock\+File (\begin{DoxyParamCaption}\item[{const Q\+File\+Info \&}]{lock\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Unlock file for write/delete. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lock\+File} & File which is locked by try\+Soft\+Lock\+File method. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classFileLocker_ad8380762c767d038ec02d936bf974180}\label{classFileLocker_ad8380762c767d038ec02d936bf974180}} 
+\index{File\+Locker@{File\+Locker}!try\+Hard\+Lock\+File@{try\+Hard\+Lock\+File}}
+\index{try\+Hard\+Lock\+File@{try\+Hard\+Lock\+File}!File\+Locker@{File\+Locker}}
+\subsubsection{\texorpdfstring{try\+Hard\+Lock\+File()}{tryHardLockFile()}}
+{\footnotesize\ttfamily bool File\+Locker\+::try\+Hard\+Lock\+File (\begin{DoxyParamCaption}\item[{const Q\+File\+Info \&}]{lock\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Lock file from read/write/delete. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lock\+File} & File to be locked. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if file is locked. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classFileLocker_a107060898062f6990b58d0cb102551ac}\label{classFileLocker_a107060898062f6990b58d0cb102551ac}} 
+\index{File\+Locker@{File\+Locker}!try\+Soft\+Lock\+File@{try\+Soft\+Lock\+File}}
+\index{try\+Soft\+Lock\+File@{try\+Soft\+Lock\+File}!File\+Locker@{File\+Locker}}
+\subsubsection{\texorpdfstring{try\+Soft\+Lock\+File()}{trySoftLockFile()}}
+{\footnotesize\ttfamily bool File\+Locker\+::try\+Soft\+Lock\+File (\begin{DoxyParamCaption}\item[{const Q\+File\+Info \&}]{lock\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Lock file from write/delete. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lock\+File} & File to be locked. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if file is locked. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/ftpfilesystem/filelocker.\+h\item 
+src/ftpfilesystem/filelocker.\+cpp\end{DoxyCompactItemize}

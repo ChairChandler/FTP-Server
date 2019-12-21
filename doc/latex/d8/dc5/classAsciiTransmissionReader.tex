@@ -1,0 +1,91 @@
+\hypertarget{classAsciiTransmissionReader}{}\section{Ascii\+Transmission\+Reader Class Reference}
+\label{classAsciiTransmissionReader}\index{Ascii\+Transmission\+Reader@{Ascii\+Transmission\+Reader}}
+
+
+Read file in A\+S\+C\+II chars.  
+
+
+
+
+{\ttfamily \#include $<$asciifiletransmission.\+h$>$}
+
+
+
+Inheritance diagram for Ascii\+Transmission\+Reader\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{de/d54/classAsciiTransmissionReader__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Ascii\+Transmission\+Reader\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{d3/dac/classAsciiTransmissionReader__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classAsciiTransmissionReader_ab0c198c17eded2a978d974c01aebae37}{init} (const Q\+File \&file) override
+\begin{DoxyCompactList}\small\item\em Open file. \end{DoxyCompactList}\item 
+virtual Buffer\+Info \hyperlink{classAsciiTransmissionReader_a5fd477415e273e4943caac08e8b0a7e5}{read\+Data\+Portion} () override
+\begin{DoxyCompactList}\small\item\em Read data from the file and write them to the buffer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classAsciiTransmissionReader_abfbbb093791319058a769845934b9ecd}\label{classAsciiTransmissionReader_abfbbb093791319058a769845934b9ecd}} 
+virtual bool {\bfseries is\+End\+Of\+File} () override
+\item 
+\mbox{\Hypertarget{classAsciiTransmissionReader_a42e738fa2ccdf476d916e47c8fdbbecf}\label{classAsciiTransmissionReader_a42e738fa2ccdf476d916e47c8fdbbecf}} 
+virtual void \hyperlink{classAsciiTransmissionReader_a42e738fa2ccdf476d916e47c8fdbbecf}{clean\+Up} () override
+\begin{DoxyCompactList}\small\item\em Close file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Read file in A\+S\+C\+II chars. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classAsciiTransmissionReader_ab0c198c17eded2a978d974c01aebae37}\label{classAsciiTransmissionReader_ab0c198c17eded2a978d974c01aebae37}} 
+\index{Ascii\+Transmission\+Reader@{Ascii\+Transmission\+Reader}!init@{init}}
+\index{init@{init}!Ascii\+Transmission\+Reader@{Ascii\+Transmission\+Reader}}
+\subsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void Ascii\+Transmission\+Reader\+::init (\begin{DoxyParamCaption}\item[{const Q\+File \&}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Open file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & File to be read/write \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classInterfaceTransmissionFileAccess_a8c423ccb527b1dda62c798a75b6eb690}{Interface\+Transmission\+File\+Access}.
+
+\mbox{\Hypertarget{classAsciiTransmissionReader_a5fd477415e273e4943caac08e8b0a7e5}\label{classAsciiTransmissionReader_a5fd477415e273e4943caac08e8b0a7e5}} 
+\index{Ascii\+Transmission\+Reader@{Ascii\+Transmission\+Reader}!read\+Data\+Portion@{read\+Data\+Portion}}
+\index{read\+Data\+Portion@{read\+Data\+Portion}!Ascii\+Transmission\+Reader@{Ascii\+Transmission\+Reader}}
+\subsubsection{\texorpdfstring{read\+Data\+Portion()}{readDataPortion()}}
+{\footnotesize\ttfamily Interface\+Transmission\+File\+Access\+::\+Buffer\+Info Ascii\+Transmission\+Reader\+::read\+Data\+Portion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Read data from the file and write them to the buffer. 
+
+\begin{DoxyReturn}{Returns}
+Buffer with data size. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classInterfaceTransmissionReader_ab8733fbc3a4f6dc8279c363212fd3f51}{Interface\+Transmission\+Reader}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/transmission/types/asciifiletransmission.\+h\item 
+src/transmission/types/asciifiletransmission.\+cpp\end{DoxyCompactItemize}

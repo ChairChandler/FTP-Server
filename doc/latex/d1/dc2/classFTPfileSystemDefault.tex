@@ -1,0 +1,83 @@
+\hypertarget{classFTPfileSystemDefault}{}\section{F\+T\+Pfile\+System\+Default Class Reference}
+\label{classFTPfileSystemDefault}\index{F\+T\+Pfile\+System\+Default@{F\+T\+Pfile\+System\+Default}}
+
+
+Default implementation of ftp filesystem interface, provide private user file space.  
+
+
+
+
+{\ttfamily \#include $<$ftpfilesystem.\+h$>$}
+
+
+
+Inheritance diagram for F\+T\+Pfile\+System\+Default\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{d9/d6b/classFTPfileSystemDefault__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for F\+T\+Pfile\+System\+Default\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{da/d1c/classFTPfileSystemDefault__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFTPfileSystemDefault_ac815690308b16bad4ed9754ac462ff29}\label{classFTPfileSystemDefault_ac815690308b16bad4ed9754ac462ff29}} 
+{\bfseries F\+T\+Pfile\+System\+Default} (const Q\+File\+Info \&begin\+User\+File\+Space)
+\item 
+\mbox{\Hypertarget{classFTPfileSystemDefault_a8133a418858f97b9fb5a60efdc47d5c1}\label{classFTPfileSystemDefault_a8133a418858f97b9fb5a60efdc47d5c1}} 
+virtual Q\+String {\bfseries print\+Working\+Directory} (bool relative\+Path) const override
+\item 
+\mbox{\Hypertarget{classFTPfileSystemDefault_a8a217c19ac3a375033790b50f4ea5007}\label{classFTPfileSystemDefault_a8a217c19ac3a375033790b50f4ea5007}} 
+virtual bool {\bfseries change\+Absolute\+Working\+Directory} (const Q\+String \&path) override
+\item 
+\mbox{\Hypertarget{classFTPfileSystemDefault_aedfd0d666deeb47c00204c72fd758450}\label{classFTPfileSystemDefault_aedfd0d666deeb47c00204c72fd758450}} 
+virtual bool {\bfseries change\+Relative\+Root\+Working\+Directory} (const Q\+String \&path) override
+\item 
+\mbox{\Hypertarget{classFTPfileSystemDefault_a5760b8bee8657ea1be5b789a695b22c1}\label{classFTPfileSystemDefault_a5760b8bee8657ea1be5b789a695b22c1}} 
+virtual bool {\bfseries change\+Relative\+Current\+Working\+Directory} (const Q\+String \&path) override
+\item 
+\mbox{\Hypertarget{classFTPfileSystemDefault_a93e87fb1c7cf499e9558b611ee514259}\label{classFTPfileSystemDefault_a93e87fb1c7cf499e9558b611ee514259}} 
+virtual bool {\bfseries change\+Working\+Directory\+To\+Parent} () override
+\item 
+\mbox{\Hypertarget{classFTPfileSystemDefault_a7834af9643939e5a586a28eb23198abe}\label{classFTPfileSystemDefault_a7834af9643939e5a586a28eb23198abe}} 
+virtual bool {\bfseries mkdir\+WD} (const Q\+String \&name) override
+\item 
+\mbox{\Hypertarget{classFTPfileSystemDefault_a8b9682168e31ded3c24088dca5cf9c57}\label{classFTPfileSystemDefault_a8b9682168e31ded3c24088dca5cf9c57}} 
+virtual bool {\bfseries mkdir\+Relative\+Root\+Path} (const Q\+String \&path) override
+\item 
+\mbox{\Hypertarget{classFTPfileSystemDefault_a9e2b21a3d300413370aa81b00c7360d9}\label{classFTPfileSystemDefault_a9e2b21a3d300413370aa81b00c7360d9}} 
+virtual bool {\bfseries rmdir\+WD} (const Q\+String \&name) override
+\item 
+\mbox{\Hypertarget{classFTPfileSystemDefault_aae68afe3a1fc386c36bca2e4954bc0e3}\label{classFTPfileSystemDefault_aae68afe3a1fc386c36bca2e4954bc0e3}} 
+virtual bool {\bfseries rmdir\+Relative\+Root\+Path} (const Q\+String \&path) override
+\item 
+\mbox{\Hypertarget{classFTPfileSystemDefault_a6168101554693a5f21a4d85958ec11a4}\label{classFTPfileSystemDefault_a6168101554693a5f21a4d85958ec11a4}} 
+virtual Q\+String\+List {\bfseries get\+Linux\+Files\+Info\+List\+In\+Working\+Directory} () override
+\item 
+\mbox{\Hypertarget{classFTPfileSystemDefault_ae0fbf7bf88b89f3df913c1ce7405f8a1}\label{classFTPfileSystemDefault_ae0fbf7bf88b89f3df913c1ce7405f8a1}} 
+virtual Q\+String\+List {\bfseries get\+Linux\+Files\+Info\+List\+In\+Relative\+Path} (const Q\+String \&path) override
+\item 
+\mbox{\Hypertarget{classFTPfileSystemDefault_a9a85a8297bb3fd9141807a0cef70ab84}\label{classFTPfileSystemDefault_a9a85a8297bb3fd9141807a0cef70ab84}} 
+virtual Q\+Dir {\bfseries get\+Root\+Dir} () const override
+\item 
+\mbox{\Hypertarget{classFTPfileSystemDefault_aafa723712bbbed51e29658fa36c0f9ad}\label{classFTPfileSystemDefault_aafa723712bbbed51e29658fa36c0f9ad}} 
+virtual Q\+Dir {\bfseries get\+Actual\+Dir} () const override
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Default implementation of ftp filesystem interface, provide private user file space. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/ftpfilesystem/ftpfilesystem.\+h\item 
+src/ftpfilesystem/ftpfilesystem.\+cpp\end{DoxyCompactItemize}

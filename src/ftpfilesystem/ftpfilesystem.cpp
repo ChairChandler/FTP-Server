@@ -1,17 +1,21 @@
 #include "ftpfilesystem.h"
+#include "transmission/filetransmission.h"
+#include "filelocker.h"
 #include <QRegExp>
+#include <QProcess>
 
-FTPfileSystemImpl::FTPfileSystemImpl(const QFileInfo &beginUserFileSpace) {
+FTPfileSystemDefault::FTPfileSystemDefault(const QFileInfo &beginUserFileSpace) {
     if(beginUserFileSpace.exists() && beginUserFileSpace.isDir()) {
-        rootDir = QDir(beginUserFileSpace.absolutePath() + QDir::separator() + beginUserFileSpace.fileName());
+        rootDir = QDir(beginUserFileSpace.absoluteFilePath());
         actualDir = rootDir;
     } else {
         throw WrongRootDirPathException();
     }
 }
 
-QString FTPfileSystemImpl::printWorkingDirectory(bool relativePath) const {
+QString FTPfileSystemDefault::printWorkingDirectory(bool relativePath) const {
     QString path;
+
     if(relativePath) {
         path = actualDir.absolutePath().remove(rootDir.absolutePath());
     } else {
@@ -25,70 +29,128 @@ QString FTPfileSystemImpl::printWorkingDirectory(bool relativePath) const {
     return path;
 }
 
-bool FTPfileSystemImpl::changeWorkingDirectory(const QFileInfo &dir) {
+bool FTPfileSystemDefault::changeAbsoluteWorkingDirectory(const QString &path) {
     QRegExp r("^" + rootDir.path() + QDir::separator());
-    if(r.indexIn(dir.path()) == -1 || !actualDir.cd(dir.path())) {
+    if(r.indexIn(path) == -1 || !actualDir.cd(path)) {
         return false;
+    } else {
+        return true;
     }
-    return true;
 }
 
-bool FTPfileSystemImpl::changeWorkingDirectoryToParent() {
-    if(rootDir == actualDir.absolutePath() || !actualDir.cdUp()) {
+bool FTPfileSystemDefault::changeRelativeRootWorkingDirectory(const QString &path) {
+    if(!actualDir.cd(rootDir.absolutePath() + path)) {
         return false;
+    } else {
+        return true;
     }
-    return true;
 }
 
-bool FTPfileSystemImpl::mkdirWD(const QString &name) {
+bool FTPfileSystemDefault::changeRelativeCurrentWorkingDirectory(const QString &path) {
+    if(!actualDir.cd(actualDir.absolutePath() + QDir::separator() + path)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+bool FTPfileSystemDefault::changeWorkingDirectoryToParent() {
+    if(rootDir.absolutePath() == actualDir.absolutePath() || !actualDir.cdUp()) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+bool FTPfileSystemDefault::mkdirWD(const QString &name) {
     if(!actualDir.mkdir(name)) {
         return false;
+    } else {
+        return true;
     }
-    return true;
 }
 
-bool FTPfileSystemImpl::mkdirRelativeRootPath(const QString &path) {
+bool FTPfileSystemDefault::mkdirRelativeRootPath(const QString &path) {
     QString dirPath = rootDir.absolutePath() + path;
 
     if(QDir(dirPath).exists() || !QDir().mkpath(dirPath)) {
         return false;
+    } else {
+        return true;
     }
-    return true;
 }
 
-bool FTPfileSystemImpl::rmdirWD(const QString &name) {
-    if(!actualDir.rmdir(name)) {
+bool FTPfileSystemDefault::rmdirWD(const QString &name) {
+    QString dirAbsPath = actualDir.absolutePath() + QDir::separator() + name;
+    if(!FileLocker::tryHardLockFile(dirAbsPath)) {
+        throw InterfaceTransmissionFileAccess::FileOpeningException();
+    }
+
+    if(!QDir(actualDir.filePath(name)).removeRecursively()) {
+        FileLocker::hardUnLockFile(dirAbsPath);
         return false;
+    } else {
+        FileLocker::hardUnLockFile(dirAbsPath);
+        return true;
     }
-    return true;
 }
 
-bool FTPfileSystemImpl::rmdirRelativeRootPath(const QString &path) {
+bool FTPfileSystemDefault::rmdirRelativeRootPath(const QString &path) {
     QString dirPath = rootDir.absolutePath() + path;
 
-    if(!QDir(dirPath).exists() || !QDir().rmpath(rootDir.absolutePath() + path)) {
-        return false;
+    if(!FileLocker::tryHardLockFile(path)) {
+        throw InterfaceTransmissionFileAccess::FileOpeningException();
     }
-    return true;
+
+    if(!QDir(dirPath).exists() || !QDir().rmpath(rootDir.absolutePath() + path)) {
+        FileLocker::hardUnLockFile(path);
+        return false;
+    } else {
+        FileLocker::hardUnLockFile(path);
+        return true;
+    }
 }
 
-QList<QFileInfo> FTPfileSystemImpl::getFilesInfoInWorkingDirectory() const {
-    return actualDir.entryInfoList();
+QString FTPfileSystemDefault::runLs(const QString &path) {
+    QByteArray lsOutput;
+
+    QProcess p;
+
+    p.setWorkingDirectory(path);
+    p.start("ls", QStringList() << "-l" << "-a");
+
+    p.waitForFinished(-1);
+
+    return p.readAllStandardOutput();
 }
 
-QDir FTPfileSystemImpl::getRootDir() const {
+QStringList FTPfileSystemDefault::getLinuxFilesInfoListInAbsolutePath(const QString &path) {
+    auto splitBytes = runLs(path).split('\n');
+
+    QStringList filesInfo;
+    for(QString s: splitBytes) {
+        filesInfo << QString::fromStdString(s.toStdString()) + "\r\n";
+    }
+
+    filesInfo.removeFirst();
+    filesInfo.removeLast();
+
+    return filesInfo;
+}
+
+QStringList FTPfileSystemDefault::getLinuxFilesInfoListInWorkingDirectory() {
+    return getLinuxFilesInfoListInAbsolutePath(actualDir.path());
+}
+
+QStringList FTPfileSystemDefault::getLinuxFilesInfoListInRelativePath(const QString &path) {
+    QString dirPath = rootDir.absolutePath() + path;
+    return getLinuxFilesInfoListInAbsolutePath(dirPath);
+}
+
+QDir FTPfileSystemDefault::getRootDir() const {
     return rootDir;
 }
 
-QDir FTPfileSystemImpl::getActualDir() const {
+QDir FTPfileSystemDefault::getActualDir() const {
     return actualDir;
-}
-
-FTPfileSystemImpl::~FTPfileSystemImpl() {
-
-}
-
-FTPfileSystem::~FTPfileSystem()
-{
-
 }

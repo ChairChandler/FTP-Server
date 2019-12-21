@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$d9/d4e/classInterfaceTransmissionFileAccess.html" title="InterfaceTransmissionFile\lAccess" alt="" coords="5,74,177,115"/>
+<area shape="rect" id="node2" href="$df/d5b/classInterfaceTransmissionReader.html" title="InterfaceTransmissionReader" alt="" coords="225,56,419,83"/>
+<area shape="rect" id="node5" href="$dd/dfc/classInterfaceTransmissionWriter.html" title="InterfaceTransmissionWriter" alt="" coords="229,107,415,133"/>
+<area shape="rect" id="node3" href="$d8/dc5/classAsciiTransmissionReader.html" title="Read file in ASCII chars. " alt="" coords="471,5,641,32"/>
+<area shape="rect" id="node4" href="$d9/d70/classBinaryTransmissionReader.html" title="Read file in binary chars. " alt="" coords="467,56,645,83"/>
+<area shape="rect" id="node6" href="$d5/d88/classAsciiTransmissionWriter.html" title="Write to file ASCII chars. " alt="" coords="474,107,638,133"/>
+<area shape="rect" id="node7" href="$d9/d09/classBinaryTransmissionWriter.html" title="Write to file binary chars. " alt="" coords="470,157,642,184"/>
+</map>

@@ -1,8 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node2" href="$structAccountDatabase_1_1AccountExistsException.html" title="AccountDatabase::Account\lExistsException" alt="" coords="156,5,339,47"/>
-<area shape="rect" id="node3" href="$structAccountDatabase_1_1AccountNotFoundException.html" title="AccountDatabase::Account\lNotFoundException" alt="" coords="156,71,339,112"/>
-<area shape="rect" id="node4" href="$structCmdPort_1_1CannotConnectException.html" title="CmdPort::CannotConnectException" alt="" coords="132,137,363,163"/>
-<area shape="rect" id="node5" href="$structCmdPort_1_1DataChannelSocketNotExistsException.html" title="CmdPort::DataChannelSocket\lNotExistsException" alt="" coords="148,188,347,229"/>
-<area shape="rect" id="node6" href="$structCmdQuit_1_1AccountIsUnloggedException.html" title="CmdQuit::AccountIsUnlogged\lException" alt="" coords="149,253,345,295"/>
-<area shape="rect" id="node7" href="$structCmdUser_1_1AccountIsLoggedException.html" title="CmdUser::AccountIsLogged\lException" alt="" coords="154,319,341,360"/>
+<area shape="rect" id="node1" href="$d3/db0/classAbstractFileTransmission.html" title="Abstract class for handle low&#45;level transmission. &#160;Abstract class for handle low&#45;level transmission..." alt="" coords="5,31,176,57"/>
+<area shape="rect" id="node2" href="$de/d11/classAsciiFileTransmission.html" title="Send or receive file through data channel in ASCII chars. " alt="" coords="228,5,379,32"/>
+<area shape="rect" id="node3" href="$dc/dbf/classBinaryFileTransmission.html" title="Send or receive file through data channel in binary chars. " alt="" coords="224,56,383,83"/>
 </map>

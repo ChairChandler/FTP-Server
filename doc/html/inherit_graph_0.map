@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classAccountDatabase.html" title="AccountDatabase" alt="" coords="5,5,132,32"/>
+<area shape="rect" id="node1" href="$d8/d79/classAbstractAccountDatabaseSingletonFactory.html" title="Abstract factory, which provide access to single global account database. &#160;Abstract factory..." alt="" coords="5,5,235,47"/>
+<area shape="rect" id="node2" href="$d1/d62/classAccountDatabaseSingletonFactoryDefault.html" title="Default implementation of abstract account database singleton factory. " alt="" coords="283,5,463,47"/>
 </map>
