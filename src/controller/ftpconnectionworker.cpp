@@ -74,18 +74,27 @@ void FTPconnectionWorker::setTimeoutMs(int value) {
 }
 
 QString FTPconnectionWorker::receiveCommandString() {
-    QByteArray array(1024, '\0');
-    if(bsdSocket->read(clientCommandChannel, array.data(), static_cast<size_t>(array.size())) == -1) {
-        throw XmlException("server").
-                key("phase").value("run").
-                key("status").value("error").
-                key("socket").value(QString::number(clientCommandChannel)).
-                key("what").value("Connection closed during receiving cmd.").
-                end();
-    }
+    QByteArray array(32, '\0');
+    QString cmd;
+
+    do{
+        ssize_t receivedDataSize = bsdSocket->read(clientCommandChannel, array.data(), static_cast<size_t>(array.size()));
+        if(receivedDataSize <= 0) {
+            throw XmlException("server").
+                    key("phase").value("run").
+                    key("status").value("error").
+                    key("socket").value(QString::number(clientCommandChannel)).
+                    key("what").value("Connection closed during receiving cmd.").
+                    end();
+        } else {
+            for(int i=0; i<receivedDataSize; i++) {
+                cmd += array.at(i);
+            }
+        }
+    }while(!array.contains("\r\n"));
 
     //clients like FileZilla append this string to the command
-    return QString(array).remove("\r\n");
+    return cmd.replace("\r\n", "\0\0");
 }
 
 AbstractFTPservice* FTPconnectionWorker::createService(const QString &cmd) {
